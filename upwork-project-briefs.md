@@ -88,3 +88,30 @@ See [How we use Upwork at Glasswall](https://www.slideshare.net/LukeRobbertse/ho
  - Managed EKS (AWS or Azure)
 - Implement logging solutions to visualize what is going on inside the K8 environnement
 
+### Project #4) Glasswall Reverse Proxy use-cases
+
+**Objective**: Use Reverse Proxy to protect specific websites using the Glasswall Rebuild Engine
+
+- Glasswall Rebuild engine creates safe files using [CDR technology](https://glasswallsolutions.com/technology/). We have and SDK and Cloud-Native API solution that allows customers/OEMs to use CDR in their products. The problem is that this requires heavy integrations and code changes by our customers on their applications/appliances
+- the key objective for this project is to use a Reverse Proxy that is placed between the user and the target website, use that Proxy to intercept the files and use the Glasswall ICAP solution to rebuild the file safely
+- there are two key milestones for this project:
+  - 1) reverse proxy the target website (with website working with no side-effects)
+  - 2) use proxy's ICAP to send files to externally hosted Glasswall ICAP Server  (i.e. the ICAP Server is not part of this project) 
+- First batch of reserve proxies to use (we will need a reference implementation for each one):
+  - Squid Proxy (http://www.squid-cache.org/) - hosted on docker
+  - ProxyEG (https://www.proxyeg.com/squidva/) - hosted on docker
+  - F5 (we have an VM Appliance that can be used)
+- Target execution environments:
+ - locally (using Docker Desktop)
+ - EC2 or Azure VM 
+- Target websites to proxy and protect (fell free to propose more) :
+  - https://glasswallsolutions.com
+  - https://engineering.glasswallsolutions.com
+  - https://file-drop.co.uk
+  - https://www.vmray.com
+  - https://gohire.io
+  - https://gofile.io
+- Each website will need its own separate deployment environment 
+- Note that some of the websites should work with no modification of request/response http traffic , but some sites (like gofile.io) will require real-time changes (in the gofile.io example, the rewrite of the url returned by an API call with the location of the file to download)
+- creation of an CI and CD pipeline to build, configure and deploy each solution 
+- Implement logging solutions to visualize what is going on the proxy
