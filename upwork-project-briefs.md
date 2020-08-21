@@ -8,19 +8,21 @@ See [How we use Upwork at Glasswall](https://www.slideshare.net/LukeRobbertse/ho
  - All work and conversation threads to be public (on GitHub or Slack)
     - There is no direct (i.e. private) support. 
     - Part of the exercise is to see how Upwork resources are able to: 
-      - a) work independently and 
+      - a) work independently 
       - b) collaborate effectively (namely with other Upwork resources)
  - These projects are used to evaluate new Upwork resources 
  - At times, there will be multiple Upwork resources working on the same tasks
  - Each Upwork resource is allocated (via the Upwork UI) a number of hours to work on these projects (which represents the maximum that Glasswall will pay for the work done)
- - Tech Stack
-    - Python and Javascript (node) for backend code
+ - Tech Stack:
+    - Python and NodeJS for backend code
     - React for frontend code
     - Jupyter Notebooks
     - AWS lambda or Azure Serverless functions
     - Git
     - GitHub Actions
     - Markdown
+ - We encourage innovation and creative thinking, so please fell free to show alternative technologies, workflows and visualizations
+
     
 
 
@@ -32,7 +34,9 @@ See [How we use Upwork at Glasswall](https://www.slideshare.net/LukeRobbertse/ho
 - There are a number of sub-projects (each with it's own set of issues)
   - https://github.com/filetrust/mvp-icap-service
   - https://github.com/filetrust/mvp-icap-cloud
+  - https://github.com/filetrust/mvp-icap-squid-cache-proxy
   - https://github.com/filetrust/rebuild-k8s-filetypedetection
+  - https://github.com/filetrust/icap-performance-tests
   - https://github.com/filetrust/rebuild-k8s
 - At the moment we are using https://www.zenhub.com/extension to consolidate and understand the data, but there are a number of workflows that require the creation of data-connectors and custom visualizations
 - Here is the recommended workflow for this project:
@@ -40,10 +44,47 @@ See [How we use Upwork at Glasswall](https://www.slideshare.net/LukeRobbertse/ho
   - write Tests for all APIs created
   - create CI Pipeline 
   - use Jupyter notebook to present data 
-  - create visualizations using Javascript visualization APIs
+  - create visualizations using native Jupyter APIs or other Javascript visualization APIs (like https://visjs.org/, https://plantuml.com/ , https://gojs.net/ , https://mermaid-js.github.io/)
   - transform data into graph-based objects and visualize them
   - create as much detailed technical documentation as possible (namely architecture and data-flow diagrams)
-- That said, we encourage innovation and creative thinking, so please fell free to show alternative technologies, workflows and visualizations
  
 
+### Project #2) K8 Traffic Generator
+
+**Objective**: Create a Kubernetes (K8) native application that is able to generate large amounts of web traffic (namely file downloads)
+
+- In order to effectively test the [Glasswall ICAP project](https://github.com/filetrust/program-icap) we need a test framework that is able to simulate user traffic like:
+  - Open pages
+  - Follow links
+  - Upload files
+  - Download files
+- Key concept is to use each K8 pod as an 'user', which depending on some configurable values, will perform a number of pre-determined or random actions
+- Key objective is to be able to use this K8 solution to scale up and down the traffic (which should simply be a case of adding or removing pods from the cluster)
+  - key milestone is to be able to find the limitations of a particular ICAP deployment
+- CI and CD pipeline are a key requirement (with the entire test scenario being able to be executed from scratch)
+- Target execution environments for the k8 environment:
+ - locally (using Docker Desktop)
+ - EC2 or Azure VM (with K8 installed)
+ - Managed EKS (AWS or Azure)
+- implement logging solutions to visualize what is going on inside the K8 environnement (with a special focus on the individual pods actions and the server's responses)
+
+### Project #3) K8 Glasswall Rebuild
+
+**Objective**: Create a Kubernetes (K8) native application that is able to process 1000s of files using the Glasswall Rebuild engine
+
+- Glasswall Rebuild is a CDR (Content Disarm and Reconstruction) tool that creates safe files by rebuilding the original file into a new file in 'known good' state (for example with no Macros, Javascript or Metadata)
+- Due to the fact that this engine is designed to receive potentially malicious files, the securty of the execution environment is super important.   
+  - In practice this means that we want to execute each file rebuild in a pristine (i.e. new) docker container
+  - in K8 this means that we need 1 pod per file to be processed
+- Here are the key workflows required for this project:
+  - Folder exist with 100 or 1000s of files to be processed
+  - K8 environments boots up and starts processing the files 
+  - One pod and one container is used for each file (note that there could be other supporting containers in that pod, but only one should be using the Glasswall engine to process the target file)
+  - one rebuild is complete, the engine output (rebuilt file and xml report) are stored in a separate folder, and pod is destroyed
+- use CI and CD pipeline has a way to trigger workflow
+- Target execution environments for the k8 environment:
+ - locally (using Docker Desktop)
+ - EC2 or Azure VM (with K8 installed)
+ - Managed EKS (AWS or Azure)
+- Implement logging solutions to visualize what is going on inside the K8 environnement
 
