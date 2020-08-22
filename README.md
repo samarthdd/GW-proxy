@@ -8,4 +8,4 @@ Here are the Open Source projects we are funding via Upwork
 
 - [K8 Glasswall Rebuild](upwork/project-k8-glasswall-rebuild)
 
-See [Upwork Project briefs][upwork-project-briefs.md] (for the draft list)
+See [Upwork Project briefs](upwork-project-briefs.md) (for the draft list)
