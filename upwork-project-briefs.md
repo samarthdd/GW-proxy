@@ -2,30 +2,6 @@
 
 See [How we use Upwork at Glasswall](https://www.slideshare.net/LukeRobbertse/how-we-use-upwork-at-glasswall) for more context about how Glasswall has embraced Upwork to find and hire talent. 
 
-## Rules of engagement
-  
- - All work done for the projects defined below are to be released under the Apache 2.0 Open Source license
- - All work and conversation threads to be public (on GitHub or Slack)
-    - There is no direct (i.e. private) support. 
-    - Part of the exercise is to see how Upwork resources are able to: 
-      - a) work independently 
-      - b) collaborate effectively (namely with other Upwork resources)
- - These projects are used to evaluate new Upwork resources 
- - At times, there will be multiple Upwork resources working on the same tasks
- - Each Upwork resource is allocated (via the Upwork UI) a number of hours to work on these projects (which represents the maximum that Glasswall will pay for the work done)
- - Tech Stack:
-    - Python and NodeJS for backend code
-    - React for frontend code
-    - Jupyter Notebooks
-    - AWS lambda or Azure Serverless functions
-    - Git
-    - GitHub Actions
-    - Markdown
- - We encourage innovation and creative thinking, so please fell free to show alternative technologies, workflows and visualizations
-
-    
-
-
 ### Project #1) Data analysis and visualization
 
 **Objective**: Consume, process, normalize and visualize GitHub Issues data
@@ -70,23 +46,7 @@ See [How we use Upwork at Glasswall](https://www.slideshare.net/LukeRobbertse/ho
 
 ### Project #3) K8 Glasswall Rebuild
 
-**Objective**: Create a Kubernetes (K8) native application that is able to process 1000s of files using the Glasswall Rebuild engine
 
-- Glasswall Rebuild is a CDR (Content Disarm and Reconstruction) tool that creates safe files by rebuilding the original file into a new file in 'known good' state (for example without Macros, Javascript or Metadata)
-- Due to the fact that this engine is designed to receive potentially malicious files, the security of the execution environment is super important.   
-  - In practice this means that we want to execute each file rebuild in a pristine (i.e. new) docker container
-  - in K8 this means that we need 1 pod per file to be processed
-- Here are the key workflows required for this project:
-  - Folder exist with 100 or 1000s of files to be processed
-  - K8 environments boots up and starts processing the files 
-  - One pod and one container is used for each file (note that there could be other supporting containers in that pod, but only one should be using the Glasswall engine to process the target file)
-  - one rebuild is complete, the engine output (rebuilt file and xml report) are stored in a separate folder, and pod is destroyed
-- use CI and CD pipeline has a way to trigger workflow
-- Target execution environments for the K8 environment:
- - locally (using Docker Desktop)
- - EC2 or Azure VM (with K8 installed)
- - Managed EKS (AWS or Azure)
-- Implement logging solutions to visualize what is going on inside the K8 environnement
 
 ### Project #4) Glasswall Reverse Proxy use-cases
 
@@ -115,3 +75,29 @@ See [How we use Upwork at Glasswall](https://www.slideshare.net/LukeRobbertse/ho
 - Note that some of the websites should work with no modification of request/response http traffic , but some sites (like gofile.io) will require real-time changes (in the gofile.io example, the rewrite of the url returned by an API call with the location of the file to download)
 - creation of an CI and CD pipeline to build, configure and deploy each solution 
 - Implement logging solutions to visualize what is going on the proxy
+
+
+
+### Project #5) Technical Documentation
+
+**Objective**: 
+
+
+### Project #6) CDR Security Community 
+
+**Objective**: Find and engage with security engineers and developers who are doing CDR related research
+
+- for example:
+  - https://redteamer.tips/introducing-gg-aesy-a-stegocryptor/
+  - 
+- other tasks:
+ - editor for out medium blog
+
+
+### Project #7) Slack Bot Developer (based on Python AWS Serverless functions)
+ 
+### Project #8) XML analysis of Glasswall Rebuild 
+- visualise it
+- create threat intelligence reports
+
+### Project #9) Project management
