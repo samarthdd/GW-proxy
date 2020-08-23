@@ -10,7 +10,7 @@
  - At times, there will be multiple Upwork resources working on the same tasks
  - Each Upwork resource is allocated (via the Upwork UI) a number of hours to work on these projects (which represents the maximum that Glasswall will pay for the work done)
  - Tech Stack:
-    - Python and NodeJS for backend code
+    - Python,  NodeJS or Golang for backend code
     - React for frontend code
     - Jupyter Notebooks
     - AWS lambda or Azure Serverless functions
