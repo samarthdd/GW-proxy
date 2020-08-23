@@ -46,6 +46,11 @@ For more details about how the Glasswall Engine works, please see:
  
  A: Yes that is the idea. We want a solution that has zero 'rebuild' pods running when there are no files on the queue, and as many pods as possible (depending on config and resources) when there is files to process (with the Glasswall Rebuild engine which is already dockerized or available as an Cloud API)
  
-  **Q: Do you utilize any kind of log analysis tools? If yes, could you specify which particular ones??**
+ **Q: Do you utilize any kind of log analysis tools? If yes, could you specify which particular ones?**
  
  A: We use Elastic and DataDog in production (and the native AWS or Azure tools), but I'm open to explore new tools and workflows
+ 
+ **Q: What does it mean "1 pod per file processed" not "running multiple pods at the same time, and allocate a file to an pod that is available"
+ 
+ A: I mean that for each file to be processed by the Glassewall Engine, you need to start a new pod (with new docker container) to run the Glasswall Rebuild engine inside it
+once the process is completed and the new file (and rebuild xml report) are saved in another folder, that pod (and container) needs to be terminated and destroyed
