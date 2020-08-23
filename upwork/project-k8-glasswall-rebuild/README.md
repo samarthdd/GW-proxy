@@ -34,3 +34,18 @@ For more details about how the Glasswall Engine works, please see:
 - https://github.com/filetrust/Glasswall-Rebuild-SDK-Evaluation : here you will find the engine and docker builds
 - https://github.com/filetrust/Glasswall-Rebuild-SDK-Evaluation/blob/master/Getting-Started/Getting-Started.md : here are instructions for getting it running on docker
 - https://engineering.glasswallsolutions.com/docs/product-descriptions/product-overview
+
+
+ ## FAQ
+
+ **Q: What to use for CI?**
+
+ A: At the moment we are either using GitHub Actions, Azure DevOps or AWS Code Build
+ 
+ **Q: Do you expect the developed solution to scale it up and down automatically?**
+ 
+ A: Yes that is the idea. We want a solution that has zero 'rebuild' pods running when there are no files on the queue, and as many pods as possible (depending on config and resources) when there is files to process (with the Glasswall Rebuild engine which is already dockerized or available as an Cloud API)
+ 
+  **Q: Do you utilize any kind of log analysis tools? If yes, could you specify which particular ones??**
+ 
+ A: We use Elastic and DataDog in production (and the native AWS or Azure tools), but I'm open to explore new tools and workflows
