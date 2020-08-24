@@ -50,7 +50,7 @@ For more details about how the Glasswall Engine works, please see:
  
  A: We use Elastic and DataDog in production (and the native AWS or Azure tools), but I'm open to explore new tools and workflows
  
- **Q: What does it mean "1 pod per file processed" not "running multiple pods at the same time, and allocate a file to an pod that is available"
+ **Q: What does it mean "1 pod per file processed" not "running multiple pods at the same time, and allocate a file to an pod that is available"?**
  
  A: I mean that for each file to be processed by the Glassewall Engine, you need to start a new pod (with new docker container) to run the Glasswall Rebuild engine inside it
 once the process is completed and the new file (and rebuild xml report) are saved in another folder, that pod (and container) needs to be terminated and destroyed
