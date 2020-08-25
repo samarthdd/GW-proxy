@@ -42,7 +42,7 @@ Notes:
 - To help with reviewing the PRs please add the screenshots and comments of what supposed to be reviewed to the issue
 - Think of the reviewer flow while submitting for review
 
-### GITHub Boards Descriptions(Backlog, Todo, In Progress, Done)
+### GITHub Boards Descriptions(New Issues, Backlog, In Progress, Done)
 
 -  New Issues are newly created issues 
 
