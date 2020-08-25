@@ -71,6 +71,7 @@ See [How we use Upwork at Glasswall](https://www.slideshare.net/LukeRobbertse/ho
   - https://www.vmray.com
   - https://gohire.io
   - https://gofile.io
+  - https://www.upwork.com/
 - Each website will need its own separate deployment environment 
 - Note that some of the websites should work with no modification of request/response http traffic , but some sites (like gofile.io) will require real-time changes (in the gofile.io example, the rewrite of the url returned by an API call with the location of the file to download)
 - creation of an CI and CD pipeline to build, configure and deploy each solution 
