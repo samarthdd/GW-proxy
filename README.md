@@ -27,8 +27,6 @@ This tool provide sufficient planning and tracking capabilities from simply trac
 
 Zenhub supplements the project tracking functionality by Github by aggregating the issues from multiple repos into a workspace which is then a single point for reporting. From the workspace Zenhub offers a Kanban Board, Reports and a Roadmap to track and report progress.
 
-![Zenhub Sidebar Commands](img/zenhub_sidebar_commands.png)
-
 ### How to work with Github Issues
 - Review the issues in "To Do" Column
 - Assign one of them to you or coordinate with PM to open new issue
