@@ -47,7 +47,7 @@ Notes:
 - To help with reviewing the PRs please add the screenshots and comments of what supposed to be reviewed to the issue
 - Think of the reviewer flow while submitting for review
 
-### GITHub Boards Descriptions(New Issues, Backlog, In Progress, Done)
+### GITHub Boards Descriptions(New Issues, Backlog, In Progress, Closed)
 
 -  New Issues are newly created issues 
 
@@ -55,5 +55,5 @@ Notes:
 
 -  In Progress are issues that somebody is ACTIVELY WORKING ON RIGHT NOW (this last bit is important since you are clocking for the day, and have not move that issue the To Review status, then move it back to the backlog
 
--  In Review/QA we have the issues that need review from a member of the Glasswall team (important: only members of the Glasswall team should move issues from the Review status to the Done status)
+-  In Review/QA we have the issues that need review from a member of the Glasswall team (important: only members of the Glasswall team should move issues from the Review status to the Closed status)
 
