@@ -21,6 +21,13 @@ See the example below:
 
 - Join GITHub corresponding repo
 
+### Zehub Board
+Open source projects contains a number of Github Repos used as the repository for documentation and tracking. The planning and tracking of work within an individual repo can be achieved simply through the use of Github’s built in functionality. To track the progress of the projects across multiple repos, a third-party tool is required. The tool chosen to fulfil this role is [Zenhub](https://www.zenhub.com/).
+This tool provide sufficient planning and tracking capabilities from simply tracking work across a Kanban board. 
+
+Zenhub supplements the project tracking functionality by Github by aggregating the issues from multiple repos into a workspace which is then a single point for reporting. From the workspace Zenhub offers a Kanban Board, Reports and a Roadmap to track and report progress.
+
+![Zenhub Sidebar Commands](img/zenhub_sidebar_commands.png)
 
 ### How to work with Github Issues
 - Review the issues in "To Do" Column
