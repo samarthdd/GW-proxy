@@ -4,12 +4,13 @@
 
 **Resources**:
 
-- PM Chris Diao
+- PM Chris Diao (chrisdiao)
 - Data Science Lwasampijja Baker (baker371)
 - Data Science Moses Mugo (mnjenga2)
 - Data Science Giuseppe Mazzacua (GiuseMSD)
 - Data Science Ian Atkinson
 - Data Science Aman Kumar
+- Performance QA Rhia Rodriguez
 
 ### Project #2) K8 Traffic Generator
 
@@ -24,25 +25,29 @@
 - Developer Silvana Youssef
 - Developer Reem Masoud
 - Rajwinder Kumar
+- Performance test engineer Son Ha
 
 ### Project #3) K8 Glasswall Rebuild
 
 **Resources**:
 
 - PM Faisal Adnan (faisaladnanpeltops)
+- PM Mark Bandillo (markband)
 - DevOps Shashank Patel (shashank0202)
 - DevOps Azogni Patrick (azopat)
-- Mohamed Ayman
-- Roozbeh Moayyedian
+- DevOps Mohamed Ayman
+- Cloud engineer Roozbeh Moayyedian
+- DevOps Shubham Kamboj
+- Cloud engineer AbdelRahman Khaled
 
 ### Project #4) Glasswall Reverse Proxy use-cases
 
 **Resources**:
 
 - PM Georgina González (ginagc)
-- PM Mahmoud Nouman
+- PM Mahmoud Nouman (mahnouman)
 - DevOps Architect Mariusz Ferdyn
-- Shubham Kamboj 
+- DevOps Shubham Kamboj (kambojoodles)
 - Cloud Engineer NourEddine Yassine (NourEddineX)
 
 ### Project #5) K8 performance use-cases
@@ -52,5 +57,6 @@
 - Performance Test Engineer Son Ha
 - Principal Performance Engineer Farid Sharipov
 - Performance Test Engineer Maria Neskovic
+- Performance Test Engineer Marija
 
 
