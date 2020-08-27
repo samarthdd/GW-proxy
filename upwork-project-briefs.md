@@ -14,6 +14,7 @@ See [How we use Upwork at Glasswall](https://www.slideshare.net/LukeRobbertse/ho
   - https://github.com/filetrust/rebuild-k8s-filetypedetection
   - https://github.com/filetrust/icap-performance-tests
   - https://github.com/filetrust/rebuild-k8s
+  - https://github.com/filetrust/k8-reverse-proxy
 - At the moment we are using https://www.zenhub.com/extension to consolidate and understand the data, but there are a number of workflows that require the creation of data-connectors and custom visualizations
 - Here is the recommended workflow for this project:
   - create API (Python or Node) to consume data from GitHub (all repos are public, so there is no dependency on Glasswall to provide access)
@@ -77,7 +78,8 @@ See [How we use Upwork at Glasswall](https://www.slideshare.net/LukeRobbertse/ho
 - creation of an CI and CD pipeline to build, configure and deploy each solution 
 - Implement logging solutions to visualize what is going on the proxy
 
-
+- Project Repository:
+- https://github.com/filetrust/k8-reverse-proxy
 
 ### Project #5) Technical Documentation
 
