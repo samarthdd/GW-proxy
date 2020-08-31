@@ -9,8 +9,8 @@
 - Data Science Moses Mugo (mnjenga2)
 - Data Science Giuseppe Mazzacua (GiuseMSD)
 - Data Science Ian Atkinson
-- Data Science Aman Kumar
-- Performance QA Rhia Rodriguez
+- Data Science Aman Kumar (amanthegeek)
+- Performance QA Rhia Rodriguez (RhiaRodriguez)
 
 ### Project #2) K8 Traffic Generator
 
@@ -22,10 +22,10 @@
 - Backend dev Ashish Belwase (belwase)
 - DevOps engineer Pranay Sahith Bejgum (pranaysahith)
 - Developer Harut Grigoryan (ggrig)
-- Developer Silvana Youssef
-- Developer Reem Masoud
-- Rajwinder Kumar
-- Performance test engineer Son Ha
+- Developer Silvana Youssef (silvanayousry)
+- Developer Reem Masoud (reem-masoud)
+- Rajwinder Kumar (Xuxant)
+- Performance test engineer Son Ha (hongson1981)
 
 ### Project #3) K8 Glasswall Rebuild
 
@@ -35,10 +35,10 @@
 - PM Mark Bandillo (markband)
 - DevOps Shashank Patel (shashank0202)
 - DevOps Azogni Patrick (azopat)
-- DevOps Mohamed Ayman
-- Cloud engineer Roozbeh Moayyedian
-- DevOps Shubham Kamboj
-- Cloud engineer AbdelRahman Khaled
+- DevOps Mohamed Ayman (M-Ayman)
+- Cloud engineer Roozbeh Moayyedian (upwork.roozbeh@gmail.com)
+- DevOps Shubham Kamboj (kambojoodles)
+- Cloud engineer AbdelRahman Khaled (a-khaledf)
 
 ### Project #4) Glasswall Reverse Proxy use-cases
 
@@ -46,7 +46,7 @@
 
 - PM Georgina González (ginagc)
 - PM Mahmoud Nouman (mahnouman)
-- DevOps Architect Mariusz Ferdyn
+- DevOps Architect Mariusz Ferdyn (MariuszFerdyn)
 - DevOps Shubham Kamboj (kambojoodles)
 - Cloud Engineer NourEddine Yassine (NourEddineX)
 - Nader Amin
@@ -56,10 +56,10 @@
 
 **Resources**:
 - PM Faisal Adnan (faisaladnanpeltops)
-- Performance QA Rhia Rodriguez
-- Performance Test Engineer Son Ha
-- Principal Performance Engineer Farid Sharipov
-- Performance Test Engineer Maria Neskovic
+- Performance QA Rhia Rodriguez (RhiaRodriguez)
+- Performance Test Engineer Son Ha (hongson1981)
+- Principal Performance Engineer Farid Sharipov (uzfarid@gmail.com)
+- Performance Test Engineer Maria Neskovic (MaNe2020)
 - Performance Test Engineer Marija
 - Performance Test Engineer Kostya Dibrov
 
