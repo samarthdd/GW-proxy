@@ -63,4 +63,8 @@
 - Performance Test Engineer Marija
 - Performance Test Engineer Kostya Dibrov
 
+### Project #6) K8 Test Data
+
+**Resources**:
+- PM Susil Parida
 
