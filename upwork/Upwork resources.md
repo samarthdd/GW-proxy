@@ -49,14 +49,18 @@
 - DevOps Architect Mariusz Ferdyn
 - DevOps Shubham Kamboj (kambojoodles)
 - Cloud Engineer NourEddine Yassine (NourEddineX)
+- Nader Amin
+- Ibrahim Albarki 
 
 ### Project #5) K8 performance use-cases
 
 **Resources**:
+- PM Faisal Adnan (faisaladnanpeltops)
 - Performance QA Rhia Rodriguez
 - Performance Test Engineer Son Ha
 - Principal Performance Engineer Farid Sharipov
 - Performance Test Engineer Maria Neskovic
 - Performance Test Engineer Marija
+- Performance Test Engineer Kostya Dibrov
 
 
