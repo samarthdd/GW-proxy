@@ -1,28 +1,5 @@
-# Open-Source
+### Zenhub Board
 
-This repo contains information about a number of Open Source process that Glasswall is currently developing
-
-### Upwork Projects
-
-Here are the Open Source projects we are funding via Upwork
-
-- [K8 Glasswall Rebuild](upwork/project-k8-glasswall-rebuild)
-
-See [Upwork Project briefs](upwork-project-briefs.md) (for the draft list)
-
-
-### Checklist for new comers
-- Log in to Slack
-1. Add a photo to your profile
-2. Add extension after your name (Upwork - Job Title)
-3. Add the flag of where you currently are to your status
-4. Add the time zone to your status
-See the example below: 
-![image (10)](https://user-images.githubusercontent.com/10744307/75746757-8d0a8b00-5d1b-11ea-9cd7-0cb60f773f53.png)
-
-- Join GITHub corresponding repo
-
-### Zehub Board
 Open source projects contains a number of Github Repos used as the repository for documentation and tracking. The planning and tracking of work within an individual repo can be achieved simply through the use of Github’s built in functionality. To track the progress of the projects across multiple repos, a third-party tool is required. The tool chosen to fulfil this role is [Zenhub](https://www.zenhub.com/).
 This tool provide sufficient planning and tracking capabilities from simply tracking work across a Kanban board. 
 
@@ -57,4 +34,3 @@ Notes:
 -  In Progress are issues that somebody is ACTIVELY WORKING ON RIGHT NOW (this last bit is important since you are clocking for the day, and have not move that issue the To Review status, then move it back to the backlog
 
 -  In Review/QA we have the issues that need review from a member of the Glasswall team (important: only members of the Glasswall team should move issues from the Review status to the Closed status)
-
