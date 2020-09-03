@@ -11,9 +11,11 @@ These are the coding guidelines we tend to follow for Python projects at Glasswa
 
 * Align formatting of code using common sense
 
+<br><img src="../img/code_alignment.png" alt="Example Formatting" width="650"/><br>
+
 * Parameter formatting (Readable and easy to find issues if any)
 
-<br><img src="./img/code_formatting.png" alt="Example Formatting" width="650"/><br>
+<br><img src="../img/code_formatting.png" alt="Example Formatting" width="650"/><br>
 
 * Code lengths should be based on code readability (for example in the case below)
 
@@ -41,7 +43,7 @@ e.g
 	class Http_Api_Issues:
 ```
 
-* File names should match the class name. E.g. Above file to be saved as ìHttp_Api_Issues.pyî
+* File names should match the class name. E.g. Above file to be saved as ‚ÄúHttp_Api_Issues.py‚Äù
 
 * Function names to follow lower camel case e.g
 
@@ -50,7 +52,7 @@ e.g.
 def get_all_issues():
 ```
 
-* We donít follow any standards e.g. PEP. Code readability and easy to understand and debug are must.
+* We don‚Äôt follow any standards e.g. PEP. Code readability and easy to understand and debug are must.
 
 E.g. Compare a more readable code
 
@@ -71,7 +73,7 @@ CONST_GW_PROXY='gw-proxy'
 * Put CONST (when used) on separate python, json or yaml files
 
 
-![Constants](./img/consts.png)
+![Constants](../img/consts.png)
 
 
 
