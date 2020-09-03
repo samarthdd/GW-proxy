@@ -11,6 +11,8 @@ These are the coding guidelines we tend to follow for Python projects at Glasswa
 
 * Align formatting of code using common sense
 
+<br><img src="../img/code_alignment.png" alt="Example Formatting" width="650"/><br>
+
 * Parameter formatting (Readable and easy to find issues if any)
 
 <br><img src="../img/code_formatting.png" alt="Example Formatting" width="650"/><br>
