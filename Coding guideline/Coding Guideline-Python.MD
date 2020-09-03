@@ -71,7 +71,7 @@ CONST_GW_PROXY='gw-proxy'
 * Put CONST (when used) on separate python, json or yaml files
 
 
-![Constants](./img/consts.png)
+![Constants](../img/consts.png)
 
 
 
