@@ -7,7 +7,7 @@ This repo contains information about a number of Open Source process that Glassw
 Here are the Open Source projects we are funding via Upwork
 
 - [K8 Glasswall Rebuild](upwork/project-k8-glasswall-rebuild)
-- [k8-traffic-generator]
+- [k8-traffic-generator](https://github.com/filetrust/k8-traffic-generator)
 - [k8-data-visualization](https://github.com/filetrust/k8-data-visualization)
 - [k8-glasswall-rebuild](https://github.com/filetrust/k8-glasswall-rebuild)
 - [k8-reverse-proxy](https://github.com/filetrust/k8-reverse-proxy)
