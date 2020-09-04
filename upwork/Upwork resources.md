@@ -5,12 +5,15 @@
 **Resources**:
 
 - PM Chris Diao (chrisdiao)
+- PM Susil Parida (susilupwork)
 - Data Science Lwasampijja Baker (baker371)
 - Data Science Moses Mugo (mnjenga2)
 - Data Science Giuseppe Mazzacua (GiuseMSD)
 - Data Science Ian Atkinson
 - Data Science Aman Kumar (amanthegeek)
 - Performance QA Rhia Rodriguez (RhiaRodriguez)
+- Python Anish Agarwal (manish2kcoder)
+- Python Sanchit Garg (rajmbcoderx)
 
 ### Project #2) K8 Traffic Generator
 
@@ -50,7 +53,7 @@
 - DevOps Shubham Kamboj (kambojoodles)
 - Cloud Engineer NourEddine Yassine (NourEddineX)
 - Nader Amin
-- Ibrahim Albarki 
+- Ibrahim Albarki
 
 ### Project #5) K8 performance use-cases
 
@@ -67,4 +70,3 @@
 
 **Resources**:
 - PM Susil Parida
-
