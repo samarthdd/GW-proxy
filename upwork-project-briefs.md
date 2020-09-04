@@ -105,7 +105,7 @@ Add data from services like VirusTotal and Reversing Labs
 
 Description of the slides:
 
-- Slide 1- Title- Overall summary and overview 
+Slide 1- Title- Overall summary and overview 
 
 Slide 2 - Title - Emails and files processed
 
