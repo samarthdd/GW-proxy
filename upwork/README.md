@@ -7,7 +7,8 @@
 3. [Introduction to K8 projects](https://github.com/filetrust/Open-Source/blob/master/upwork/Introduction%20to%20Projects.md)
 4. [Project Briefs](https://github.com/filetrust/Open-Source/blob/master/upwork/upwork-project-briefs.md)
 5. [Setup GitHub and ZenHub](https://github.com/filetrust/Open-Source/blob/master/upwork/GitHub%20and%20ZenHub%20intro.md)
-6.  Review [FAQ](https://github.com/filetrust/Open-Source/blob/master/upwork/FAQ.md), let us know if we are missing any additional info.
+6. [Coding Guidelines](https://github.com/filetrust/Open-Source/tree/master/Coding%20guideline)
+7. Review [FAQ](https://github.com/filetrust/Open-Source/blob/master/upwork/FAQ.md), let us know if we are missing any additional info.
 
 
 ## Next steps:
