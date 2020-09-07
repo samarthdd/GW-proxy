@@ -3,7 +3,7 @@
 ## Please start by reading the following pages: 
 
 1. [Slack operating model](https://github.com/filetrust/Open-Source/blob/master/upwork/Slack%20Operating%20model.md)
-2. [General Rules](https://github.com/filetrust/Open-Source/blob/master/upwork/General%20Rules)
+2. [General Rules](https://github.com/filetrust/Open-Source/blob/master/upwork/General%20Rules.md)
 3. [Introduction to K8 projects](https://github.com/filetrust/Open-Source/blob/master/upwork/Introduction%20to%20Projects.md)
 4. [Project Briefs](https://github.com/filetrust/Open-Source/blob/master/upwork/upwork-project-briefs.md)
 5. [Setup GitHub and ZenHub](https://github.com/filetrust/Open-Source/blob/master/upwork/GitHub%20and%20ZenHub%20intro.md)
