@@ -1,0 +1,34 @@
+@startuml
+!include <c4/C4_Container.puml>  
+
+title Glass Wall Reverse Proxy + Traffic Generator Container Overview
+
+Person(client, Client, "A client for glasswall")
+Person(tester, "Glass Wall QA", "test the functionality and performance of the system")
+
+System_Boundary(c0, "Traffic Generator") {
+    Container(gui, "GUI", "react", "upload Files Interface")
+    Container(controller, Controller, "go python", "K8 Controller responsible for spawning pods")
+    Container(user_pod, Pod, "python pyppeteer", "pod that acts as a user")
+}
+
+System_Boundary(c1, "CDR") {
+    Container(proxy, Proxy, "Squid Proxy", "Proxy the Files")
+    Container(icap_server, ICAP Server, "ICAP Server", "Use D-First technology to transform files")
+}
+
+System(website, "glasswall.com", "glass wall website") 
+
+Rel_Down(tester, gui, "Upload Files")
+Rel_Down(gui, controller, "Files")
+
+Rel_Left(controller, user_pod, "spawn one or multiple Pods")
+
+Rel_Down(user_pod, proxy, "Open Pages, Follow Links, Download and Upload files")
+Rel(client, proxy, "Download / Upload Files")
+Rel_Down(proxy, icap_server, "requests")
+Rel_Back(proxy, icap_server, "responses")
+Rel_Right(proxy, website, "requests")
+Rel_Back(proxy, website, "responses")
+
+@enduml
