@@ -16,4 +16,4 @@ Here are the Open Source projects we are funding via Upwork
 - [rebuild-k8s-filetypedetection](https://github.com/filetrust/rebuild-k8s-filetypedetection)
 
 
-See [Upwork Project briefs](upwork-project-briefs.md) for additional details.
+See [Upwork Project briefs](/upwork/upwork-project-briefs.md) for additional details.
