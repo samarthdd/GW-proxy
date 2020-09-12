@@ -1,0 +1,29 @@
+@startuml
+' Reverse Proxy
+!include <c4/C4_Context.puml>  
+
+title Glass Wall Reverse Proxy + Traffic Generator Context Overview
+
+Person(client, Client, "A client for the glasswall")
+
+System(glasswall, "GlassWall CDR", "deep-File Inspection, Remediation and Sanitisation")
+System(website, "glasswall.com", "glass wall website")
+
+Rel_Down(client, glasswall, "Download / Upload Files")
+
+Rel_Back(client, glasswall, "Download Santizied Files")
+
+Rel(glasswall, website, "Upload Sanitized Files")
+Rel_Back(glasswall, website, "Requested Files")
+
+' Traffic Generator
+
+Person(tester, "Glass Wall QA", "test the functionality and performance of the system")
+
+System(traffic_generator, "Traffic Generator", "glasswall traffic generator")
+System(website, "glasswall.com", "glass wall website")
+
+Rel_Down(tester, traffic_generator, "Upload Files")
+Rel_Left(traffic_generator, glasswall, "Upload Files")
+
+@enduml
