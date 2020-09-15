@@ -23,6 +23,7 @@ Here are the Open Source projects we are funding via Upwork:
 |s-k8-buildpipeline |Georgina Gonzalez  |Settlers  |
 |s-k8-core | NA  |Settlers  |
 |k8-wardley-maps | TBD  | Pioneer |
+|[p-k8-security](https://github.com/filetrust/k8-security)| Jonathan Canales  | Pioneer |
 
 
 ###  Upwork support projects
