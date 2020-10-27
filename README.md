@@ -3,18 +3,18 @@
 The following websites have ICAP proxy implementation in production. 
 
 
-| Website  | Flavor | Ports opened | Status|
-|---|---|---|---|
-|https://engineering.glasswallsolutions.com.glasswall-icap.com/ | B: Docker v0.1  |  443 |Live in testing |
-|gov.uk |A: K8s v0.1||in Development|
-|sharepoint |A: K8s v0.1||in Development|
-|https://glasswallsolutions.com.glasswall-icap.com/ |A: K8s v0.1||in Development|
-| dataport.emma.msrb.org |E: SOW v0.2||in Development|
-| glasswall-file-drop.com|A: K8s v0.1||in Development|
-| Atlasian|SOW v0.2||in Development|
-| owasp.org|SOW v0.2||in Development|
-| GitHub.com|SOW v0.2||in Development|
-| Microsoft.com|SOW v0.2||in Development|
+| Original Website  |Proxy website | Flavor | Ports opened | Status|
+|---|---|---|---|---|
+| https://engineering.glasswallsolutions.com|https://engineering.glasswallsolutions.com.glasswall-icap.com/ | B: Docker v0.1  |  443 |Live in testing |
+| https://www.gov.uk/ ||A: K8s v0.1||in Development|
+| sharepoint ||A: K8s v0.1||in Development|
+| https://glasswallsolutions.com|https://glasswallsolutions.com.glasswall-icap.com/ |A: K8s v0.1||in Development|
+| https://dataport.emma.msrb.org/Home/Index| |E: SOW v0.2||in Development|
+| https://glasswall-file-drop.com/ ||A: K8s v0.1||in Development|
+| https://mariusztst.atlassian.net/||SOW v0.2||in Development|
+| https://owasp.org/search/?searchString=PDF ||SOW v0.2||in Development|
+| GitHub.com||SOW v0.2||in Development|
+| Microsoft.com||SOW v0.2||in Development|
 
 
 
