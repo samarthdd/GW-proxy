@@ -6,7 +6,7 @@ The following websites have ICAP proxy implementation in production.
 | Website  | URL | IP | Flavor | Ports opened | Status |
 |---|---|---|---|---|---|
 | GW Engineering  | https://engineering.glasswallsolutions.com.glasswall-icap.com | 54.170.84.172 | B: Docker v0.1  |  443 | Live in testing |
-| gov.uk          | ||A: K8s v0.1||in Development|
+| gov.uk          | https://gov.uk.glasswall-icap.com | 51.11.8.179 |A: K8s v0.1||in Development|
 | sharepoint      |||A: K8s v0.1||in Development|
 | GW Website      | https://glasswallsolutions.com.glasswall-icap.com             | 54.78.209.23  |A: K8s v0.1      | 443  | Live in testing |
 | dataport.emma.msrb.org |||E: SOW v0.2||in Development|
@@ -18,7 +18,12 @@ The following websites have ICAP proxy implementation in production.
 | UK Zones  | https://uk.zones.com.glasswall-icap.com | 54.78.104.24 |???| 443 | in Development |
 
 
+Other dns mappings:
 
+- gw-demo-sample-files-eu1.s3-eu-west-1.amazonaws.com.glasswall-icap.com : 54.170.84.172
+- www.glasswallsolutions.com.glasswall-icap.com : 54.78.209.23
+- *.gov.uk.glasswall-icap.com , assets.publishing.service.gov.uk.glasswall-icap.com , www.gov.uk.glasswall-icap.com : 51.11.8.179
+- 
 
 
 
