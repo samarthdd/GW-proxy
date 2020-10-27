@@ -3,18 +3,18 @@
 The following websites have ICAP proxy implementation in production. 
 
 
-| Website  | Flavor | Ports opened | Status|
-|---|---|---|---|
-|https://engineering.glasswallsolutions.com.glasswall-icap.com/ | B: Docker v0.1  |  443 |Live in testing |
-|gov.uk |A: K8s v0.1||in Development|
-|sharepoint |A: K8s v0.1||in Development|
-|Glasswallsolutions.com |A: K8s v0.1||in Development|
-| dataport.emma.msrb.org |E: SOW v0.2||in Development|
-| glasswall-file-drop.com|A: K8s v0.1||in Development|
-| Atlasian|SOW v0.2||in Development|
-| owasp.org|SOW v0.2||in Development|
-| GitHub.com|SOW v0.2||in Development|
-| Microsoft.com|SOW v0.2||in Development|
+| Website  | URL | IP | Flavor | Ports opened | Status |
+|---|---|---|---|---|---|
+| GW Engineering site | https://engineering.glasswallsolutions.com.glasswall-icap.com | 54.170.84.172 | B: Docker v0.1  |  443 |Live in testing |
+| gov.uk        |||A: K8s v0.1||in Development|
+| sharepoint   |||A: K8s v0.1||in Development|
+| Glasswallsolutions.com |||A: K8s v0.1||in Development|
+| dataport.emma.msrb.org |||E: SOW v0.2||in Development|
+| glasswall-file-drop.com |||A: K8s v0.1||in Development|
+| Atlasian |||SOW v0.2||in Development|
+| owasp.org |||SOW v0.2||in Development|
+| GitHub.com |||SOW v0.2||in Development|
+| Microsoft.com |||SOW v0.2||in Development|
 
 
 
