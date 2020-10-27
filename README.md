@@ -10,7 +10,7 @@ The following websites have ICAP proxy implementation in production.
 | sharepoint      |||A: K8s v0.1||in Development|
 | GW Website      | https://glasswallsolutions.com.glasswall-icap.com             | 54.78.209.23  |A: K8s v0.1      | 443  | Live in testing |
 | dataport.emma.msrb.org |||E: SOW v0.2||in Development|
-| File drop | https://glasswall-file-drop.com | 18.221.160.41 |A: K8s v0.1||in Development|
+| File drop | https://glasswall-file-drop.com.glasswall-icap.com | 18.221.160.41 |A: K8s v0.1||in Development|
 | Atlasian |||SOW v0.2||in Development|
 | owasp.org |||SOW v0.2||in Development|
 | GitHub.com |||SOW v0.2||in Development|
