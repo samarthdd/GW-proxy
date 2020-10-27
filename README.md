@@ -15,7 +15,7 @@ The following websites have ICAP proxy implementation in production.
 | owasp.org |||SOW v0.2||in Development|
 | GitHub.com |||SOW v0.2||in Development|
 | Microsoft.com |||SOW v0.2||in Development|
-| UK Zones  | https://uk.zones.com.glasswall-icap.com | 54.78.104.24 |???| 443 | in Development |
+| UK Zones  | https://uk.zones.com.glasswall-icap.com | 54.78.104.24 |B: Docker v0.1| 443 | in Development |
 
 
 Other dns mappings:
