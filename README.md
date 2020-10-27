@@ -8,7 +8,7 @@ The following websites have ICAP proxy implementation in production.
 |https://engineering.glasswallsolutions.com.glasswall-icap.com/ | B: Docker v0.1  |  443 |Live in testing |
 |gov.uk |A: K8s v0.1||in Development|
 |sharepoint |A: K8s v0.1||in Development|
-|Glasswallsolutions.com |A: K8s v0.1||in Development|
+|https://glasswallsolutions.com.glasswall-icap.com/ |A: K8s v0.1||in Development|
 | dataport.emma.msrb.org |E: SOW v0.2||in Development|
 | glasswall-file-drop.com|A: K8s v0.1||in Development|
 | Atlasian|SOW v0.2||in Development|
