@@ -5,16 +5,18 @@ The following websites have ICAP proxy implementation in production.
 
 | Website  | URL | IP | Flavor | Ports opened | Status |
 |---|---|---|---|---|---|
-| GW Engineering site | https://engineering.glasswallsolutions.com.glasswall-icap.com | 54.170.84.172 | B: Docker v0.1  |  443 |Live in testing |
-| gov.uk        |||A: K8s v0.1||in Development|
-| sharepoint   |||A: K8s v0.1||in Development|
-| Glasswallsolutions.com |||A: K8s v0.1||in Development|
+| GW Engineering  | https://engineering.glasswallsolutions.com.glasswall-icap.com | 54.170.84.172 | B: Docker v0.1  |  443 | Live in testing |
+| gov.uk          | ||A: K8s v0.1||in Development|
+| sharepoint      |||A: K8s v0.1||in Development|
+| GW Website      | https://glasswallsolutions.com.glasswall-icap.com             | 54.78.209.23  |A: K8s v0.1      | 443  | Live in testing |
 | dataport.emma.msrb.org |||E: SOW v0.2||in Development|
-| glasswall-file-drop.com |||A: K8s v0.1||in Development|
+| File drop | https://glasswall-file-drop.com | 18.221.160.41 |A: K8s v0.1||in Development|
 | Atlasian |||SOW v0.2||in Development|
 | owasp.org |||SOW v0.2||in Development|
 | GitHub.com |||SOW v0.2||in Development|
 | Microsoft.com |||SOW v0.2||in Development|
+| UK Zones  | https://uk.zones.com.glasswall-icap.com | 54.78.104.24 |???| 443 | in Development |
+
 
 
 
