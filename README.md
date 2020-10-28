@@ -3,19 +3,21 @@
 The following websites have ICAP proxy implementation in production. 
 
 
-| Website  | URL | IP | Flavor | Ports opened | Status |
-|---|---|---|---|---|---|
-| GW Engineering  | https://engineering.glasswallsolutions.com.glasswall-icap.com | 54.170.84.172 | B: Docker v0.1  |  443 | Live in testing |
-| gov.uk          | https://gov.uk.glasswall-icap.com | 51.11.8.179 |A: K8s v0.1||in Development|
-| sharepoint      |||A: K8s v0.1||in Development|
-| GW Website      | https://glasswallsolutions.com.glasswall-icap.com             | 54.78.209.23  |A: K8s v0.1      | 443  | Live in testing |
-| dataport.emma.msrb.org |||E: SOW v0.2||in Development|
-| File drop | https://glasswall-file-drop.com.glasswall-icap.com | 18.221.160.41 |A: K8s v0.1||in Development|
-| Atlasian |||SOW v0.2||in Development|
-| owasp.org |||SOW v0.2||in Development|
-| GitHub.com |||SOW v0.2||in Development|
+| Website  | URL | IP | Flavor | Ports opened | Status | Repo |
+|---|---|---|---|---|---|---|
+| GW Engineering  | https://engineering.glasswallsolutions.com.glasswall-icap.com | 54.170.84.172 | B: Docker v0.1  |  443 | Live in testing |[GW engineering](https://github.com/k8-proxy/gp-engineering-website)|
+| gov.uk          | https://gov.uk.glasswall-icap.com | 51.11.8.179 |A: K8s v0.1||in Development|[Gov UK](https://github.com/k8-proxy/gp-gov-uk-website)|
+| Xamarines sharepoint      |||A: K8s v0.1||in Development|[Xamarines sharepoint](https://github.com/k8-proxy/gp-sharepoint/issues)|
+| Internal sharepoint      |||||in Development||
+| GW Website      | https://glasswallsolutions.com.glasswall-icap.com             | 54.78.209.23  |A: K8s v0.1      | 443  | Live in testing |[Glasswall Solutions](https://github.com/k8-proxy/gp-glasswallsolutions-website)|
+| dataport.emma.msrb.org |||E: SOW v0.2||in Development|[Emma port](https://github.com/k8-proxy/gp-emma-dataport-website)|
+| File drop | https://glasswall-file-drop.com.glasswall-icap.com | 18.221.160.41 |A: K8s v0.1||in Development|[File drop](https://github.com/k8-proxy/gp-filedrop-website)|
+| Atlasian |||SOW v0.2||in Development|[JIRA](https://github.com/k8-proxy/gp-jira-website)|
+| owasp.org |||SOW v0.2||in Development|[OWASP](https://github.com/k8-proxy/gp-owasp-website)|
+| GitHub.com |||SOW v0.2||in Development| [GitHub](https://github.com/k8-proxy/gp-github)|
 | Microsoft.com |||SOW v0.2||in Development|
-| UK Zones  | https://uk.zones.com.glasswall-icap.com | 54.78.104.24 |B: Docker v0.1| 443 | Live in testing |
+| UK Zones  | https://uk.zones.com.glasswall-icap.com | 54.78.104.24 |B: Docker v0.1| 443 | Live in testing |[UK zones](https://github.com/k8-proxy/gp-uk-zones-com)|
+
 
 
 Other dns mappings:
@@ -23,7 +25,6 @@ Other dns mappings:
 - gw-demo-sample-files-eu1.s3-eu-west-1.amazonaws.com.glasswall-icap.com : 54.170.84.172
 - www.glasswallsolutions.com.glasswall-icap.com : 54.78.209.23
 - *.gov.uk.glasswall-icap.com , assets.publishing.service.gov.uk.glasswall-icap.com , www.gov.uk.glasswall-icap.com : 51.11.8.179
-- 
 
 
 
