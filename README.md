@@ -10,7 +10,7 @@ The following websites have ICAP proxy implementation in production.
 | Xamarines sharepoint      |||A: K8s v0.1||in Development|[Xamarines sharepoint](https://github.com/k8-proxy/gp-sharepoint/issues)|
 | Internal sharepoint      |||||in Development||
 | GW Website      | https://glasswallsolutions.com.glasswall-icap.com             | 54.78.209.23  |A: K8s v0.1      | 443  | Live in testing |[Glasswall Solutions](https://github.com/k8-proxy/gp-glasswallsolutions-website)|
-| dataport.emma.msrb.org |||E: SOW v0.2||in Development|[Emma port](https://github.com/k8-proxy/gp-emma-dataport-website)|
+| dataport.emma.msrb.org |https://dataport.emma.msrb.org.glasswall-icap.com/Home/Index||E: SOW v0.2||Live in Testing|[Emma port](https://github.com/k8-proxy/gp-emma-dataport-website)|
 | File drop | https://glasswall-file-drop.com.glasswall-icap.com | 18.221.160.41 |A: K8s v0.1||in Development|[File drop](https://github.com/k8-proxy/gp-filedrop-website)|
 | Atlasian |||SOW v0.2||in Development|[JIRA](https://github.com/k8-proxy/gp-jira-website)|
 | owasp.org |||SOW v0.2||in Development|[OWASP](https://github.com/k8-proxy/gp-owasp-website)|
