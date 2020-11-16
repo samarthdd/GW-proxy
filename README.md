@@ -5,6 +5,82 @@ Please refer to wiki for the latest information: https://github.com/k8-proxy/GW-
 
 ## OVAs
 
+Several OVAs to demonstrate Glasswall's rebuild engine.
+
+### ICAP server OVA
+
+- Download OVA file from [here](https://glasswall-sow-ova.s3.amazonaws.com/vms/ICAP-Server/ubuntu.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201116%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20201116T133751Z&X-Amz-Expires=31536000&X-Amz-SignedHeaders=host&X-Amz-Signature=2dd3a33c8075d65eb371587ceb5b785789bfb5186660efb35c5f0de6f424d1ab)
+
+- Import the OVA to virtualbox and start the VM.
+
+- Login (username: **user**, password: **secret**)
+
+- In command line shell, type:
+  
+  `ip a show eth1`
+​
+- check the ip address for eth1 (this address to be used in the following step)
+
+- From the host machine run below command to test the connectivity to ICAP server after updating the IP address from above step.
+
+```
+c-icap-client -i 192.168.56.104
+```
+
+- Expected results: The command should respond with 200 OK.
+
+### Glasswall Engineering OVA
+​
+Glasswall Engineering OVA for demoing Glasswall Rebuild engine proxy for **engineering.glasswallsolutions.com** website
+​
+#### Importing the OVA
+​
+- Download OVA file from: **s3://glasswall-sow-ova/vms/Engineering-website/glasswall-engineering.ova**
+- Open VirtualBox
+- Import downloaded OVA file: glasswall-engineering.ova
+    
+     Expected Result: File is successfully imported
+​
+- Once OVA is imported, go to the VM **Settings > Network > Adapter 2** 
+
+
+    Expected Result: 
+    ​
+    Attached to: Host-Only Adapter
+
+    Name: VirtualBox Host-Only Ethernet Adapter
+​
+- Start the glasswall-proxy
+​
+- Login (username: **user**, password: **secret**)
+​
+- In command line shell, type:
+  
+  `ip a show eth1`
+​
+
+- check the ip address for eth1 (this address to be used in the following step)
+​
+- If you need to set custom ICAP url, modify **/home/user/k8-reverse-proxy/stable-src/gwproxy.env** as follows
+​
+- ```bash
+  nano /home/user/k8-reverse-proxy/stable-src/gwproxy.env
+  ```
+  
+  Find the line that starts with **ICAP_URL=** , and change the value to the desired ICAP server URL 
+​​
+- In your hosts file (on Windows: **C:\Windows\System32\drivers\etc**, on MAC/Linux: **/etc/hosts**) add following lines
+  
+  ```bash
+  <IPADDRESS> engineering.glasswallsolutions.com.glasswall-icap.com
+  <IPADDRESS> gw-demo-sample-files-eu1.s3-eu-west-1.amazonaws.com.glasswall-icap.com
+  ```
+​
+- Open any browser and try to access: [engineering.glasswallsolutions.com.glasswall-icap.com](https://engineering.glasswallsolutions.com.glasswall-icap.com)
+  
+  Add needed exceptions to be able to bypass the SSL Certificate warning.
+
+
 ## Setup Minio server using virtualbox and OVA
 
 - Download the OVA from [here](https://glasswall-sow-ova.s3.eu-west-1.amazonaws.com/vms/Minio-Server/minio_server.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYW4UDSC6T%2F20201116%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20201116T095417Z&X-Amz-Expires=604740&X-Amz-SignedHeaders=host&X-Amz-Signature=15e1d91a6ac7b149ef2d92ef99928f4101c6a5a11e340c1c666bad6362397f88)
@@ -65,51 +141,3 @@ nano /home/user/k8-reverse-proxy/stable-src/gwproxy.env
   
 -  Find the line that starts with **ICAP_URL=** , and change the value to the desired ICAP server URL 
 ​
-
-### Glasswall Engineering OVA
-​
-Glasswall Engineering OVA for demoing Glasswall Rebuild engine proxy for **engineering.glasswallsolutions.com** website
-​
-### Importing the OVA
-​
-- Download OVA file from: **s3://glasswall-sow-ova/vms/Engineering-website/glasswall-engineering.ova**
-- Open VirtualBox
-- Import downloaded OVA file: glasswall-engineering.ova
-​
-Expected Result: File is successfully imported
-​
-- Once OVA is imported, go to the VM **Settings > Network > Adapter 2**
-​
-Expected Result: 
-​
-Attached to: Host-Only Adapter
-Name: VirtualBox Host-Only Ethernet Adapter
-​
-- Start the glasswall-proxy
-​
-- Login (username: **user**, password: **secret**)
-​
-- In command line shell, type:
-  
-  `ip a show eth1`
-​
-        check the ip address for eth1 (this address to be used in the following step)
-​
-- If you need to set custom ICAP url, modify **/home/user/k8-reverse-proxy/stable-src/gwproxy.env** as follows
-​
-- ```bash
-  nano /home/user/k8-reverse-proxy/stable-src/gwproxy.env
-  ```
-  
-  Find the line that starts with **ICAP_URL=** , and change the value to the desired ICAP server URL 
-​​
-- In your hosts file (on Windows: **C:\Windows\System32\drivers\etc**, on MAC/Linux: **/etc/hosts**) add following lines
-  
-  ```bash
-  <IPADDRESS> engineering.glasswallsolutions.com.glasswall-icap.com
-  <IPADDRESS> gw-demo-sample-files-eu1.s3-eu-west-1.amazonaws.com.glasswall-icap.com
-  ```
-​
-- Open any browser and try to access: [engineering.glasswallsolutions.com.glasswall-icap.com](https://engineering.glasswallsolutions.com.glasswall-icap.com)
-  
-  Add needed exceptions to be able to bypass the SSL Certificate warning.
