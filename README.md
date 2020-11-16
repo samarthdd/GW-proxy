@@ -9,7 +9,7 @@ Several OVAs to demonstrate Glasswall's rebuild engine.
 
 ### ICAP server OVA
 
-- Download OVA file from [here](https://glasswall-sow-ova.s3.amazonaws.com/vms/ICAP-Server/ubuntu.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201116%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20201116T133751Z&X-Amz-Expires=31536000&X-Amz-SignedHeaders=host&X-Amz-Signature=2dd3a33c8075d65eb371587ceb5b785789bfb5186660efb35c5f0de6f424d1ab)
+- Download OVA file from [here](https://glasswall-sow-ova.s3.amazonaws.com/vms/ICAP-Server/ubuntu.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201116%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20201116T154927Z&X-Amz-Expires=31536000&X-Amz-SignedHeaders=host&X-Amz-Signature=be6d14893edfa8a63426d0b85de8f8ca5c4d0e9cfa90939f0bf116c654d9dea9)
 
 - Import the OVA to virtualbox and start the VM.
 
@@ -35,7 +35,7 @@ Glasswall Engineering OVA for demoing Glasswall Rebuild engine proxy for **engin
 ​
 #### Importing the OVA
 ​
-- Download OVA file from: **s3://glasswall-sow-ova/vms/Engineering-website/glasswall-engineering.ova**
+- Download OVA file from [here](https://glasswall-sow-ova.s3.amazonaws.com/vms/Engineering-website/glasswall-engineering.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201116%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20201116T155056Z&X-Amz-Expires=31536000&X-Amz-SignedHeaders=host&X-Amz-Signature=f3e4fd8bac2f4b6bb91169496527bcceb7781cf247d4fec4cfc3676d200aa372)
 - Open VirtualBox
 - Import downloaded OVA file: glasswall-engineering.ova
     
