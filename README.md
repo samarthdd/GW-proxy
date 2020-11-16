@@ -23,9 +23,7 @@ Several OVAs to demonstrate Glasswall's rebuild engine.
 
 - From the host machine run below command to test the connectivity to ICAP server after updating the IP address from above step.
 
-```
-c-icap-client -i 192.168.56.104
-```
+  `c-icap-client -i 192.168.56.104`
 
 - Expected results: The command should respond with 200 OK.
 
@@ -63,9 +61,7 @@ Glasswall Engineering OVA for demoing Glasswall Rebuild engine proxy for **engin
 ​
 - If you need to set custom ICAP url, modify **/home/user/k8-reverse-proxy/stable-src/gwproxy.env** as follows
 ​
-- ```bash
-  nano /home/user/k8-reverse-proxy/stable-src/gwproxy.env
-  ```
+  `nano /home/user/k8-reverse-proxy/stable-src/gwproxy.env`
   
   Find the line that starts with **ICAP_URL=** , and change the value to the desired ICAP server URL 
 ​​
@@ -95,11 +91,13 @@ Glasswall Engineering OVA for demoing Glasswall Rebuild engine proxy for **engin
 
 Example:
 
-    ```
     192.168.56.102 minio.server
-    ```
 
 - Once the hosts file is updated, minio can be accessed at http://minio.server from browser.
+
+#### Here is the video with above instructions:
+
+[![Minio server OVA](https://img.youtube.com/vi/itMyB8-HTMk/0.jpg)](https://www.youtube.com/watch?v=itMyB8-HTMk)
 
 ## Setup proxy for minio server
 
@@ -111,33 +109,28 @@ Example:
 
 Example:
 
-    ```
     192.168.56.102 minio.server
-    ```
 
 - In the host machine update the /etc/hosts file with IP address of this server and DNS name as `minio.server.glasswall-icap.com`
 
 Example:
 
-```
-192.168.56.102 minio.server
-192.168.56.103 minio.server.glasswall-icap.com
-```
+    192.168.56.102 minio.server
+    192.168.56.103 minio.server.glasswall-icap.com
 
 - Proxied minio server can be now accessed at http://minio.server.glasswall-icap.com
 
 - **Note:** Make sure the IP addresses of above 2 servers are not same. If the IP address is same, run below commands on both VMs to get a new IP address.
 
-```
-sudo ip addr flush eth1
-sudo dhclient
-```
+    ```
+    sudo ip addr flush eth1
+    sudo dhclient
+    ```
 
 - If you need to set custom ICAP url, modify **/home/user/k8-reverse-proxy/stable-src/gwproxy.env** as follows
 ​
-```bash
-nano /home/user/k8-reverse-proxy/stable-src/gwproxy.env
-```
+
+  `nano /home/user/k8-reverse-proxy/stable-src/gwproxy.env`
   
 -  Find the line that starts with **ICAP_URL=** , and change the value to the desired ICAP server URL 
 ​
