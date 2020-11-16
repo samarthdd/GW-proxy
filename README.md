@@ -129,6 +129,7 @@ Example:
 
 - If you need to set custom ICAP url, modify **/home/user/k8-reverse-proxy/stable-src/gwproxy.env** as follows
 ​
+
   `nano /home/user/k8-reverse-proxy/stable-src/gwproxy.env`
   
 -  Find the line that starts with **ICAP_URL=** , and change the value to the desired ICAP server URL 
