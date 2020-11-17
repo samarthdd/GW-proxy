@@ -75,6 +75,10 @@ Glasswall Engineering OVA for demoing Glasswall Rebuild engine proxy for **engin
 - Open any browser and try to access: [engineering.glasswallsolutions.com.glasswall-icap.com](https://engineering.glasswallsolutions.com.glasswall-icap.com)
   
   Add needed exceptions to be able to bypass the SSL Certificate warning.
+  
+#### Here is the video with above instructions:
+
+[![GW Engineering OVA](https://img.youtube.com/vi/itMyB8-HTMk/0.jpg)](https://youtu.be/vXrL_LYcamo)
 
 
 ## Setup Minio server using virtualbox and OVA
