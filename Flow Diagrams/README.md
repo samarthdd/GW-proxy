@@ -12,3 +12,9 @@
 ![Minio_Server_OVA](https://user-images.githubusercontent.com/8102313/99834657-91f6bf80-2b74-11eb-9fbe-a80b495c1972.png)
 
 
+
+![Minio_Proxy_OVA](https://user-images.githubusercontent.com/8102313/99837199-3dedda00-2b78-11eb-9ff4-8e113e3578ba.png)
+
+
+
+
