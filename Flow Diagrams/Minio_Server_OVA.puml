@@ -1,0 +1,39 @@
+@startuml
+skinparam defaultTextAlignment center
+
+!include <awslib/AWSCommon>
+!include <awslib/AWSSimplified.puml>
+!include <awslib/Compute/all.puml>
+!include <awslib/ManagementAndGovernance/all.puml>
+!include <awslib/DeveloperTools/all.puml>
+!include <awslib/MigrationAndTransfer/all.puml>
+!include <awslib/General/all.puml>
+!include <awslib/NetworkingAndContentDelivery/all.puml>
+
+title: <size:20>Minio Server OVA</size>
+
+CloudWatch(download_ova,                "\nDownload OVA" ," ")
+VMwareCloudOnAWS(virtual_box,           "\nVirtualBox" ," ")
+DeveloperTools(settings,                "\nSettings" ,"")
+ServerMigrationService(icap_server,     "\nMinio Server VM" ," ")
+User(user,                              "\nUser" ," ")
+CommandLineInterface(cmd,               "\nCommand Line" ," ")
+Client(terminal,                        "\nTerminal" ," ")
+ECSService(host_file,                   "\nLocal Host Files" ," ")
+GlobalAccelerator(browser,              "\nBrowser" ," ")
+CloudFormation(minio_server,            "\nMinio Server" ," ")
+User(users,                             "\nUser" ," ")
+
+
+download_ova      -->      virtual_box   :Open and Import
+virtual_box       ->       settings      :Go
+settings          ->       icap_server   :Start
+user              -->      icap_server   :Login
+icap_server       ->       cmd           :ip a show eth1
+cmd               -->      terminal      :Check the ip address
+terminal          -left->  host_file     :Edit
+host_file         -left->  browser       :Open
+browser           -->      minio_server  :Access
+users             ->       minio_server  :Login
+
+@enduml

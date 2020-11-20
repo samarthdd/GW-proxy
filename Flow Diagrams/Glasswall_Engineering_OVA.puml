@@ -4,8 +4,8 @@ skinparam defaultTextAlignment center
 
 !include <office/Users/user.puml>
 !includeurl ICONURL/common.puml
-!includeurl ICONURL/font-awesome-5/check_circle.puml
-!includeurl ICONURL/font-awesome-5/docker.puml
+!includeurl ICONURL/font-awesome-5/file_pdf.puml
+!includeurl ICONURL/font-awesome-5/firefox_browser.puml
 !include <awslib/AWSCommon>
 !include <awslib/AWSSimplified.puml>
 !include <awslib/Compute/all.puml>
@@ -13,9 +13,7 @@ skinparam defaultTextAlignment center
 !include <awslib/DeveloperTools/all.puml>
 !include <awslib/MigrationAndTransfer/all.puml>
 !include <awslib/General/all.puml>
-!include <awslib/ManagementAndGovernance/all.puml>
-!include <awslib/MachineLearning/all.puml>
-!include <awslib/NetworkingAndContentDelivery/all.puml>
+
 
 title: <size:20>Glasswall Engineering OVA</size>
 
@@ -24,24 +22,18 @@ VMwareCloudOnAWS(virtual_box,           "\nVirtualBox" ," ")
 DeveloperTools(settings,                "\nSettings" ,"")
 ServerMigrationService(icap_server,     "\nGlasswall Engineering VM" ," ")
 User(user,                              "\nUser" ," ")
-CommandLineInterface(cmd,               "\nCommand Line" ," ")
-Client(terminal,                        "\nTerminal" ," ")
-CloudFormation(icap_url,                "\nICAP URL" ," ")
-ECSService(host_file,                   "\nHost Files" ," ")
-DeepLearningContainers(start_docker,    "\nStart Docker" ," ")
-GlobalAccelerator(browser,              "\nBrowser" ," ")
+FA5_FIREFOX_BROWSER(browser,            "\nBrowser")#Orange
+SSLPadlock(ssl,                         "\nSSL Certificate Warning" ," ")
 SystemsManagerDocuments(documentation,  "\nDocumentation" ," ")
+FA5_FILE_PDF(pdf,                       "\nPDF File")#White
 
-download_ova      -right-> virtual_box   :Open and Import
+download_ova      -->      virtual_box   :Open and Import
 virtual_box       ->       settings      :Go
 settings          ->       icap_server   :Start
 user              -->      icap_server   :Login
-icap_server       ->       cmd           :ip a show eth1
-cmd               -->      terminal      :Check the ip address
-terminal          -left->  icap_url      :Set Custom
-icap_url          -left->  start_docker  :cd to k8-reverse-proxy/stable-src
-start_docker      -left->  host_file     :Edit
-host_file         -left->  browser       :Open engineering.glasswallsolutions.com.glasswall-icap.com
-browser           -->      documentation :Navigate
+icap_server       ->       browser       :Open
+browser           -->      ssl           :Avoid
+ssl               -left->  documentation :Navigate
+documentation     -left->  pdf           :Download
 
 @enduml

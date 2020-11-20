@@ -1,0 +1,35 @@
+@startuml
+skinparam defaultTextAlignment center
+
+!include <awslib/AWSCommon>
+!include <awslib/AWSSimplified.puml>
+!include <awslib/Compute/all.puml>
+!include <awslib/ManagementAndGovernance/all.puml>
+!include <awslib/DeveloperTools/all.puml>
+!include <awslib/MigrationAndTransfer/all.puml>
+!include <awslib/General/all.puml>
+!include <awslib/NetworkingAndContentDelivery/all.puml>
+
+title: <size:20>Minio Proxy OVA</size>
+
+CloudWatch(download_ova,                "\nDownload OVA" ," ")
+VMwareCloudOnAWS(virtual_box,           "\nVirtualBox" ," ")
+DeveloperTools(settings,                "\nSettings" ,"")
+ServerMigrationService(icap_server,     "\nMinio Proxy VM" ," ")
+User(user,                              "\nUser" ," ")
+CommandLineInterface(cmd,               "\nsudo docker-compose down\nsudo docker-compose up -d" ,"")
+GlobalAccelerator(browser,              "\nBrowser" ," ")
+CloudFormation(minio_server,            "\nMProxied Minio Server" ," ")
+User(users,                             "\nUser" ," ")
+
+
+download_ova      -->      virtual_box   :Open and Import
+virtual_box       ->       settings      :Go
+settings          ->       icap_server   :Start
+user              -->      icap_server   :Login
+icap_server       -->      cmd           :cd k8-reverse-proxy/stable-src
+cmd               -left->  browser       :Open
+browser           -->      minio_server  :Access
+users             ->       minio_server  :Login
+
+@enduml
