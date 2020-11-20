@@ -5,16 +5,17 @@ Please refer to wiki for the latest information: https://github.com/k8-proxy/GW-
 
 # OVAs
 
+- ICAP Server
+- Glasswall Engineering Website Proxy
 - Minio Server 
 - Minio Proxy 
-- Glasswall Engineering Website Proxied
-- ICAP Server
+
 
 ## ICAP server OVA
 
-- Download OVA file from [here](https://glasswall-sow-ova.s3.amazonaws.com/vms/ICAP-Server/ubuntu.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201116%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20201116T154927Z&X-Amz-Expires=31536000&X-Amz-SignedHeaders=host&X-Amz-Signature=be6d14893edfa8a63426d0b85de8f8ca5c4d0e9cfa90939f0bf116c654d9dea9)
+- Download OVA file from [here](https://glasswall-sow-ova.s3.eu-west-2.amazonaws.com/vms/ICAP-Server/ICAP-Rancher.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201120%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201120T151452Z&X-Amz-Expires=31536000&X-Amz-SignedHeaders=host&X-Amz-Signature=34aa9f375b4ea9e2ec3dee6c54d5ede62513c2a2c109290e2779d54ac44a9d8e)
 
-- Open VirtualBox and import downloaded OVA file: icap-server.ova
+- Open VirtualBox and import downloaded OVA file: icap-Rancher.ova
 
 - Once OVA is imported, go to Settings>Network>Adapter 2 
  
@@ -24,7 +25,7 @@ Please refer to wiki for the latest information: https://github.com/k8-proxy/GW-
 
 - Start ICAP Server VM
 
-- Login (username: **ubuntu**, password: **mikihiir**)
+- Login (username: **user**, password: **secret**)
 
 - In command line shell, type:
   
@@ -34,15 +35,24 @@ Please refer to wiki for the latest information: https://github.com/k8-proxy/GW-
 
 - On your localhost machine (make sure you have c-icap-client installed) run below command to test the connectivity to ICAP server:
 
-  `c-icap-client -i 192.168.56.104`
+  `c-icap-client -i 192.168.56.97`
 
 - Expected results: The command should respond with 200 OK.
+
+- You can also verify that server is working correctly by rebuilding a file:
+
+  `c-icap-client -f ./test.pdf -i 192.168.56.97  -p 1344 -s gw_rebuild -o rebuilt.pdf -v`
+
+#### Here is the video with above instructions: [ICAP Server and Glasswall Engineering Website OVAs](https://www.loom.com/share/08068432eebd48cba0e7ffe4480bfb4f)
+
+
 
 ## Glasswall Engineering OVA
 ​
 Glasswall Engineering OVA for demoing Glasswall Rebuild engine proxy for **engineering.glasswallsolutions.com** website
-​
-- Download OVA file from [here](https://glasswall-sow-ova.s3.amazonaws.com/vms/Engineering-website/glasswall-engineering.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201116%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20201116T155056Z&X-Amz-Expires=31536000&X-Amz-SignedHeaders=host&X-Amz-Signature=f3e4fd8bac2f4b6bb91169496527bcceb7781cf247d4fec4cfc3676d200aa372)
+
+### Make sure that ICAP Server OVA is imported into VM and is started. Glasswall Enfineering OVA is dependent on previous one.
+- Download OVA file from [here](https://glasswall-sow-ova.s3.eu-west-2.amazonaws.com/vms/Engineering-website/glasswall-engineering.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201120%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201120T151429Z&X-Amz-Expires=31536000&X-Amz-SignedHeaders=host&X-Amz-Signature=5c105c03c4e54e131a673705ee9c7603b73eea34d9d9b9b46eb84219aa80df74)
 
 - Open VirtualBox and import downloaded OVA file: glasswall-engineering.ova
 
@@ -55,47 +65,26 @@ Glasswall Engineering OVA for demoing Glasswall Rebuild engine proxy for **engin
 - Start Glasswall Engineering VM
 ​
 - Login (username: **user**, password: **secret**)
-​
-- In command line shell, type:
+​​​
+- Open any browser (preferably Firefox) and try to access: [engineering.glasswallsolutions.com.local.glasswall-icap.com](https://engineering.glasswallsolutions.com.local.glasswall-icap.com)
   
-  `ip a show eth1`
-​
-- Check the ip address for eth1 (this address to be used in the following step)
-​
-- If you need to set custom ICAP url, modify **./k8-reverse-proxy/stable-src/gwproxy.env** as follows
-​
-  `nano /home/user/k8-reverse-proxy/stable-src/gwproxy.env`
-  
-  Find the line that starts with **ICAP_URL=** , and change the value to the desired ICAP server URL 
+- To avoid SSL Certificate warning on your host machine run:
 
-- Navigate to k8-reverse-proxy/stable-src
-  
-  `docker-compose down`
+  `scp user@192.168.56.96:/home/user/ca.pem ca.pem`
 
-  `docker-compose up -d`
-​​
-- In your hosts file (on Windows: **C:\Windows\System32\drivers\etc**, on MAC/Linux: **/etc/hosts**) add following lines
+  `Import ca.pem certificate in Firefox under Options > View Certificates > Authorithies tab`
   
-  `<VM IPADDRESS> engineering.glasswallsolutions.com.glasswall-icap.com`
-
-  `<VM IPADDRESS> gw-demo-sample-files-eu1.s3-eu-west-1.amazonaws.com.glasswall-icap.com`
-​
-- Open any browser and try to access: [engineering.glasswallsolutions.com.glasswall-icap.com](https://engineering.glasswallsolutions.com.glasswall-icap.com)
+  `For Chrome this will not work since cert needs to be added on the system`
   
-  Add needed exceptions to be able to bypass the SSL Certificate warning.
-  
-#### Here is the video with above instructions:
-
-[![GW Engineering OVA](https://img.youtube.com/vi/itMyB8-HTMk/0.jpg)](https://youtu.be/vXrL_LYcamo)
-
-- Navigate to Documentation tab > Sample Files and try to download any and verify that file has "Glasswall Approved" watermark
+- Navigate to Documentation tab > Sample Files and try to download pdf file and verify that file has "Glasswall Approved" watermark
 
 #### Here is the video with above instructions: [Glasswall Engineering Website OVA](https://youtu.be/vXrL_LYcamo)
+#### Here is the video with above instructions: [ICAP Server and Glasswall Engineering Website OVAs](https://www.loom.com/share/08068432eebd48cba0e7ffe4480bfb4f)
 
 
 ## Minio Server OVA
 
-- Download the OVA from [here](https://glasswall-sow-ova.s3.eu-west-1.amazonaws.com/vms/Minio-Server/minio_server.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYW4UDSC6T%2F20201116%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20201116T095417Z&X-Amz-Expires=604740&X-Amz-SignedHeaders=host&X-Amz-Signature=15e1d91a6ac7b149ef2d92ef99928f4101c6a5a11e340c1c666bad6362397f88)
+- Download the OVA from [here](https://glasswall-sow-ova.s3.amazonaws.com/vms/Minio-Server/minio_server.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201119%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20201119T184914Z&X-Amz-Expires=31536000&X-Amz-SignedHeaders=host&X-Amz-Signature=c7596ef7f276979d660b9333ca4d5114654ad21d6fd23e6c3e997fbddfbf3132)
 
 - Open VirtualBox and import downloaded OVA file: minio-server.ova
 
@@ -120,7 +109,7 @@ Glasswall Engineering OVA for demoing Glasswall Rebuild engine proxy for **engin
   `<VM IPADDRESS> minio.server`
 Example:
 
-    192.168.56.102 minio.server
+    192.168.56.90 minio.server
 
 - Open any browser and try to access: http://minio.server
 
@@ -130,19 +119,12 @@ Example:
 
 [![Minio server OVA](https://img.youtube.com/vi/itMyB8-HTMk/0.jpg)](https://www.youtube.com/watch?v=itMyB8-HTMk)
 
+
 ## Minio Proxy OVA
 
-- You setup Minio Server as per steps above and Minio Server VM is up and running
+### You setup ICAP Server and Minio Server as per steps above and they are up and running
 
-- On Minio Server VM flush ip address:
-
-  `sudo ip addr flush eth1`
-
-  `sudo dhclient`
-
-  `ip a show eth1`
-
-- Download the Minio Proxy OVA from [here](https://glasswall-sow-ova.s3.eu-west-1.amazonaws.com/vms/Minio-Server/minio_proxy.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYW4UDSC6T%2F20201116%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20201116T095741Z&X-Amz-Expires=604740&X-Amz-SignedHeaders=host&X-Amz-Signature=65c8d8ebe4e79374a5cbb84df7c277b8fb9b848977e67ea6bf4f50e9cc5d41ec)
+- Download the Minio Proxy OVA from [here](https://glasswall-sow-ova.s3.amazonaws.com/vms/Minio-Server/minio_proxy.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201119%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20201119T185407Z&X-Amz-Expires=31536000&X-Amz-SignedHeaders=host&X-Amz-Signature=deb1b64f15610c5d201b8c62f74176155e42bfd0700fd85498040ac998a7a4d6)
 
 - Open VirtualBox and import downloaded OVA file: minio-proxy.ova
 
@@ -156,44 +138,15 @@ Example:
 
 - Login (username: **user**, password: **secret**)
 
-- Flush Minio Proxy IP address:
-  
-  `sudo ip addr flush eth1`
-
-  `sudo dhclient`
-
-  `ip a show eth1`
-
-- Inside Minio Proxy VM, update the /etc/hosts file with flush IP address of Minio Server:
- 
-  `<Minio Server flushed IPADDRESS> minio.server`
-
-Example:
-
-    192.168.56.102 minio.server
-
 - Run below commands in k8-reverse-proxy/stable-src
 
   `sudo docker-compose down`
 
   `sudo docker-compose up -d`
 
-- In your local hosts file (on win: C:\Windows\System32\drivers\etc, on MAC/Linux: /etc/hosts) add following lines:
-
-  `<Minio Server IPADDRESS> minio.server`
-
-  `<Minio Proxy IPADDRESS> minio.server.glasswall-icap.com`
-
-Example:
-
-    192.168.56.102 minio.server
-    192.168.56.103 minio.server.glasswall-icap.com
-
-- Access Proxied Minio Server at: http://minio.server.glasswall-icap.com
+- Access Proxied Minio Server at: http://minio.server.local.glasswall-icap.com/
 
 - Note: It takes some time for page to load
 
 - Login to Minio Proxied Server (username: **user**, password: **secret_password**)
-
-- **Note:** Make sure the Minio Server and Minio Proxy IP addresses are not same. If the IP address is the same, run flush commands on both VMs to get a new IP address.
 
