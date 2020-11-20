@@ -1,0 +1,37 @@
+@startuml
+skinparam defaultTextAlignment center
+!define ICONURL https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v2.2.0
+
+!include <office/Users/user.puml>
+!includeurl ICONURL/common.puml
+!includeurl ICONURL/font-awesome-5/check_circle.puml
+!include <awslib/AWSCommon>
+!include <awslib/AWSSimplified.puml>
+!include <awslib/Compute/all.puml>
+!include <awslib/ManagementAndGovernance/all.puml>
+!include <awslib/DeveloperTools/all.puml>
+!include <awslib/MigrationAndTransfer/all.puml>
+!include <awslib/General/all.puml>
+
+title: <size:20>ICAP server OVA</size>
+
+CloudWatch(download_ova,                "\nDownload OVA" ," ")
+VMwareCloudOnAWS(virtual_box,           "\nVirtualBox" ," ")
+DeveloperTools(settings,                "\nSettings" ,"")
+ServerMigrationService(icap_server,     "\nICAP Server VM" ," ")
+User(user,                              "\nUser" ," ")
+CommandLineInterface(cmd,               "\nCommand Line" ," ")
+Client(terminal,                        "\nTerminal" ," ")
+CommandLineInterface(cmd2,              "\nCommand Line" ," ")
+FA5_CHECK_CIRCLE(result,                  200 Ok) #LimeGreen
+
+download_ova      ->      virtual_box   :Open and Import
+virtual_box       -->     settings      :Go
+settings          ->      icap_server   :Open
+user              -->     icap_server   :Login
+icap_server       -->     cmd           :ip a show eth1
+cmd               ->      terminal      :Check the ip address
+terminal          ->      cmd2          :c-icap-client -i 192.168.56.104
+cmd2              -->     result
+
+@enduml
