@@ -13,7 +13,7 @@ Please refer to wiki for the latest information: https://github.com/k8-proxy/GW-
 
 ## ICAP server OVA
 
-- Download OVA file from [here](https://glasswall-sow-ova.s3.eu-west-2.amazonaws.com/vms/ICAP-Server/ICAP-Rancher.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201120%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201120T151452Z&X-Amz-Expires=31536000&X-Amz-SignedHeaders=host&X-Amz-Signature=34aa9f375b4ea9e2ec3dee6c54d5ede62513c2a2c109290e2779d54ac44a9d8e)
+- Download OVA file from [here](https://glasswall-sow-ova.s3.eu-west-1.amazonaws.com/vms/ICAP-Server/ICAP-Rancher.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201123%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20201123T102934Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=cb80de0b9739a122ac0f270fdbed6b1ffdc81dd6e538a4cbc97780b127949cde)
 
 - Open VirtualBox and import downloaded OVA file: icap-Rancher.ova
 
@@ -52,7 +52,7 @@ Please refer to wiki for the latest information: https://github.com/k8-proxy/GW-
 Glasswall Engineering OVA for demoing Glasswall Rebuild engine proxy for **engineering.glasswallsolutions.com** website
 
 ### Make sure that ICAP Server OVA is imported into VM and is started. Glasswall Enfineering OVA is dependent on previous one.
-- Download OVA file from [here](https://glasswall-sow-ova.s3.eu-west-2.amazonaws.com/vms/Engineering-website/glasswall-engineering.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201120%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201120T151429Z&X-Amz-Expires=31536000&X-Amz-SignedHeaders=host&X-Amz-Signature=5c105c03c4e54e131a673705ee9c7603b73eea34d9d9b9b46eb84219aa80df74)
+- Download OVA file from [here](https://glasswall-sow-ova.s3.eu-west-1.amazonaws.com/vms/Engineering-website/glasswall-engineering.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R/20201123/eu-west-1/s3/aws4_request&X-Amz-Date=20201123T103128Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=81014796a8554b5847e4d844530e578b4782ea7f10859113c5b1bd03d984322e)
 
 - Open VirtualBox and import downloaded OVA file: glasswall-engineering.ova
 
@@ -84,7 +84,7 @@ Glasswall Engineering OVA for demoing Glasswall Rebuild engine proxy for **engin
 
 ## Minio Server OVA
 
-- Download the OVA from [here](https://glasswall-sow-ova.s3.amazonaws.com/vms/Minio-Server/minio_server.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201119%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20201119T184914Z&X-Amz-Expires=31536000&X-Amz-SignedHeaders=host&X-Amz-Signature=c7596ef7f276979d660b9333ca4d5114654ad21d6fd23e6c3e997fbddfbf3132)
+- Download the OVA from [here](https://glasswall-sow-ova.s3.eu-west-1.amazonaws.com/vms/Minio-Server/minio_server.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R/20201123/eu-west-1/s3/aws4_request&X-Amz-Date=20201123T103211Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=fedd4e3498ba4c993064666debca7ccdedfc5860b8031298c8aa93076d08a2b1)
 
 - Open VirtualBox and import downloaded OVA file: minio-server.ova
 
@@ -124,7 +124,7 @@ Example:
 
 ### You setup ICAP Server and Minio Server as per steps above and they are up and running
 
-- Download the Minio Proxy OVA from [here](https://glasswall-sow-ova.s3.amazonaws.com/vms/Minio-Server/minio_proxy.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201119%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20201119T185407Z&X-Amz-Expires=31536000&X-Amz-SignedHeaders=host&X-Amz-Signature=deb1b64f15610c5d201b8c62f74176155e42bfd0700fd85498040ac998a7a4d6)
+- Download the Minio Proxy OVA from [here](https://glasswall-sow-ova.s3.eu-west-1.amazonaws.com/vms/Minio-Server/minio_proxy.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201123%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20201123T102619Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=1760b5805a2f1fcc0b8e7379d348cd0cefad120514786b5f309d22b3165a9b00)
 
 - Open VirtualBox and import downloaded OVA file: minio-proxy.ova
 
