@@ -6,7 +6,8 @@
 <br />
 
 
-![Glasswall_Engineering_OVA](https://user-images.githubusercontent.com/8102313/99830752-337b1280-2b6f-11eb-9722-3f0af184e538.png)
+![Glasswall_Engineering_OVA](https://user-images.githubusercontent.com/8102313/100145166-f71a2000-2ea8-11eb-9a86-3238031b09eb.png)
+
 <br />
 <br />
 <br />
