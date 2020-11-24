@@ -124,7 +124,7 @@ Example:
 
 ### You setup ICAP Server and Minio Server as per steps above and they are up and running
 
-- Download the Minio Proxy OVA from [here](https://glasswall-sow-ova.s3.eu-west-1.amazonaws.com/vms/Minio-Server/minio_proxy.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201123%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20201123T102619Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=1760b5805a2f1fcc0b8e7379d348cd0cefad120514786b5f309d22b3165a9b00)
+- Download the Minio Proxy OVA from [here](https://glasswall-sow-ova.s3.eu-west-1.amazonaws.com/vms/Minio-Server/minio_proxy.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201124%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20201124T130247Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2a2befdb7020452c030f7f29650f1dc65f66b5ab510129222244cfa9e4d06d94)
 
 - Open VirtualBox and import downloaded OVA file: minio-proxy.ova
 
