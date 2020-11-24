@@ -13,7 +13,7 @@
 <br />
 
 
-![Minio_Server_OVA](https://user-images.githubusercontent.com/8102313/99834657-91f6bf80-2b74-11eb-9fbe-a80b495c1972.png)
+![Minio_Server_OVA](https://user-images.githubusercontent.com/8102313/100146574-2d589f00-2eab-11eb-926c-307b162250e7.png)
 
 <br />
 <br />
