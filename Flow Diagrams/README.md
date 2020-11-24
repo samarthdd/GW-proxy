@@ -19,7 +19,8 @@
 <br />
 <br />
 
-![Minio_Proxy_OVA](https://user-images.githubusercontent.com/8102313/99837199-3dedda00-2b78-11eb-9ff4-8e113e3578ba.png)
+![Minio_Proxy_OVA](https://user-images.githubusercontent.com/8102313/100151033-9f33e700-2eb1-11eb-98d6-a3742aa9824b.png)
+
 
 
 
