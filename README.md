@@ -13,7 +13,7 @@ Please refer to wiki for the latest information: https://github.com/k8-proxy/GW-
 
 ## ICAP server OVA
 
-- Download OVA file from [here](https://glasswall-sow-ova.s3.eu-west-1.amazonaws.com/vms/ICAP-Server/ICAP-Rancher.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201123%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20201123T102934Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=cb80de0b9739a122ac0f270fdbed6b1ffdc81dd6e538a4cbc97780b127949cde)
+- Download OVA file from [here](https://glasswall-sow-ova.s3.eu-west-2.amazonaws.com/vms/ICAP-Server/ICAP-Rancher.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201120%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201120T151452Z&X-Amz-Expires=31536000&X-Amz-SignedHeaders=host&X-Amz-Signature=34aa9f375b4ea9e2ec3dee6c54d5ede62513c2a2c109290e2779d54ac44a9d8e)
 
 - Open VirtualBox and import downloaded OVA file: icap-Rancher.ova
 
@@ -32,6 +32,8 @@ Please refer to wiki for the latest information: https://github.com/k8-proxy/GW-
   `ip a show eth1`
 ​
 - Check the ip address for eth1 (this address to be used in the following step)
+
+- Give 5-10min for ICAP Server to completely start
 
 - On your localhost machine (make sure you have c-icap-client installed) run below command to test the connectivity to ICAP server:
 
@@ -52,7 +54,7 @@ Please refer to wiki for the latest information: https://github.com/k8-proxy/GW-
 Glasswall Engineering OVA for demoing Glasswall Rebuild engine proxy for **engineering.glasswallsolutions.com** website
 
 ### Make sure that ICAP Server OVA is imported into VM and is started. Glasswall Enfineering OVA is dependent on previous one.
-- Download OVA file from [here](https://glasswall-sow-ova.s3.eu-west-1.amazonaws.com/vms/Engineering-website/glasswall-engineering.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R/20201123/eu-west-1/s3/aws4_request&X-Amz-Date=20201123T103128Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=81014796a8554b5847e4d844530e578b4782ea7f10859113c5b1bd03d984322e)
+- Download OVA file from [here](https://glasswall-sow-ova.s3.eu-west-2.amazonaws.com/vms/Engineering-website/glasswall-engineering.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201120%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201120T151429Z&X-Amz-Expires=31536000&X-Amz-SignedHeaders=host&X-Amz-Signature=5c105c03c4e54e131a673705ee9c7603b73eea34d9d9b9b46eb84219aa80df74)
 
 - Open VirtualBox and import downloaded OVA file: glasswall-engineering.ova
 
@@ -84,7 +86,7 @@ Glasswall Engineering OVA for demoing Glasswall Rebuild engine proxy for **engin
 
 ## Minio Server OVA
 
-- Download the OVA from [here](https://glasswall-sow-ova.s3.eu-west-1.amazonaws.com/vms/Minio-Server/minio_server.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R/20201123/eu-west-1/s3/aws4_request&X-Amz-Date=20201123T103211Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=fedd4e3498ba4c993064666debca7ccdedfc5860b8031298c8aa93076d08a2b1)
+- Download the OVA from [here](https://glasswall-sow-ova.s3.amazonaws.com/vms/Minio-Server/minio_server.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201119%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20201119T184914Z&X-Amz-Expires=31536000&X-Amz-SignedHeaders=host&X-Amz-Signature=c7596ef7f276979d660b9333ca4d5114654ad21d6fd23e6c3e997fbddfbf3132)
 
 - Open VirtualBox and import downloaded OVA file: minio-server.ova
 
@@ -124,7 +126,7 @@ Example:
 
 ### You setup ICAP Server and Minio Server as per steps above and they are up and running
 
-- Download the Minio Proxy OVA from [here](https://glasswall-sow-ova.s3.eu-west-1.amazonaws.com/vms/Minio-Server/minio_proxy.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201124%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20201124T130247Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2a2befdb7020452c030f7f29650f1dc65f66b5ab510129222244cfa9e4d06d94)
+- Download the Minio Proxy OVA from [here](https://glasswall-sow-ova.s3.amazonaws.com/vms/Minio-Server/minio_proxy.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201119%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20201119T185407Z&X-Amz-Expires=31536000&X-Amz-SignedHeaders=host&X-Amz-Signature=deb1b64f15610c5d201b8c62f74176155e42bfd0700fd85498040ac998a7a4d6)
 
 - Open VirtualBox and import downloaded OVA file: minio-proxy.ova
 
@@ -138,15 +140,28 @@ Example:
 
 - Login (username: **user**, password: **secret**)
 
-- Run below commands in k8-reverse-proxy/stable-src
-
-  `sudo docker-compose down`
-
-  `sudo docker-compose up -d`
-
 - Access Proxied Minio Server at: http://minio.server.local.glasswall-icap.com/
 
 - Note: It takes some time for page to load
 
 - Login to Minio Proxied Server (username: **user**, password: **secret_password**)
+
+## Possible issues and how to fix them
+
+- If you are not able to rebuild file using ICAP-Server VM:
+    - Windows/WSL2 are not legit way to test that (can be added as exception) 
+
+    - If same issue is present on Linux: shut down virtual box, run in linux local host `sudo apt install build-essential dkms virtualbox-ext-pack`, in virtualbox: file> host network manager > make sure that the adapter created is enabled, then make sure that when the vm is shut down, in the vm's settings you can see the adapter that was created earlier in adapter 2
+
+- If you get NGINX error "Faithfully yours" in VM run:
+    
+    `sudo docker-compose down`
+    
+    `sudo docker-compose up -d`
+
+- If you get error for invalid URL containing additional `.local` you probably started GW ENG VM or Minio Proxy VM before starteing ICAP Server OVA. Make sure that ICAP Server OVA is always started first. 
+
+- Do not change any local host network or firewall configuration during or after starting the VMs it can compromise the adapters. 
+
+- In case you get error code 9 in your browser, it is due to ICAP TimeBomb for License files. Give it some time, it will disappears.
 
