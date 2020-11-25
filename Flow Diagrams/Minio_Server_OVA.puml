@@ -26,12 +26,12 @@ User(users,                             "\nUser" ," ")
 
 
 download_ova      -->      virtual_box   :Open and Import
-virtual_box       ->       settings      :Go
+virtual_box       ->       settings      :Verify/Configure
 settings          ->       icap_server   :Start
 user              -->      icap_server   :Login
 icap_server       ->       cmd           :ip a show eth1
-cmd               -->      terminal      :Check the ip address
-terminal          -left->  host_file     :Edit
+cmd               -->      terminal      :IP address
+terminal          -left->  host_file     :Update minio.server IP
 host_file         -left->  browser       :Open
 browser           -->      minio_server  :Access
 users             ->       minio_server  :Login

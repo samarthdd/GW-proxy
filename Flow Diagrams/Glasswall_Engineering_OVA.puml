@@ -2,6 +2,7 @@
 skinparam defaultTextAlignment center
 !define ICONURL https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v2.2.0
 
+!include <C4/C4_Context.puml>
 !include <office/Users/user.puml>
 !includeurl ICONURL/common.puml
 !includeurl ICONURL/font-awesome-5/file_pdf.puml
@@ -19,20 +20,24 @@ title: <size:20>Glasswall Engineering OVA</size>
 
 CloudWatch(download_ova,                "\nDownload OVA" ," ")
 VMwareCloudOnAWS(virtual_box,           "\nVirtualBox" ," ")
+CloudFormation(icap_server,             "\nICAP Server OVA", " ")
 DeveloperTools(settings,                "\nSettings" ,"")
-ServerMigrationService(icap_server,     "\nGlasswall Engineering VM" ," ")
+ServerMigrationService(engineering_vm,  "\nGlasswall Engineering VM" ," ")
 User(user,                              "\nUser" ," ")
 FA5_FIREFOX_BROWSER(browser,            "\nBrowser")#Orange
+System(site,                            "https://engineering.glasswallsolutions.com.local.glasswall-icap.com/")
 SSLPadlock(ssl,                         "\nSSL Certificate Warning" ," ")
 SystemsManagerDocuments(documentation,  "\nDocumentation" ," ")
 FA5_FILE_PDF(pdf,                       "\nPDF File")#White
 
 download_ova      -->      virtual_box   :Open and Import
-virtual_box       ->       settings      :Go
-settings          ->       icap_server   :Start
-user              -->      icap_server   :Login
-icap_server       ->       browser       :Open
-browser           -->      ssl           :Avoid
+virtual_box       ->       settings      :Verify/Configure
+icap_server       ->       virtual_box   :Download/Start
+settings          ->       engineering_vm:Start
+user              -->      engineering_vm:Login
+engineering_vm    ->       browser       :Open
+browser           -->      site          :Open
+site             -left->   ssl           :Avoid
 ssl               -left->  documentation :Navigate
 documentation     -left->  pdf           :Download
 

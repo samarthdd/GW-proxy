@@ -18,20 +18,20 @@ title: <size:20>ICAP server OVA</size>
 CloudWatch(download_ova,                "\nDownload OVA" ," ")
 VMwareCloudOnAWS(virtual_box,           "\nVirtualBox" ," ")
 DeveloperTools(settings,                "\nSettings" ,"")
-ServerMigrationService(icap_server,     "\nICAP Server VM" ," ")
+ServerMigrationService(icap_server_vm,  "\nICAP Server VM" ," ")
 User(user,                              "\nUser" ," ")
 CommandLineInterface(cmd,               "\nCommand Line" ," ")
 Client(terminal,                        "\nTerminal" ," ")
-CommandLineInterface(cmd2,              "\nCommand Line" ," ")
+CloudFormation(icap_server,             "\nICAP Server", " ")
 FA5_CHECK_CIRCLE(result,                  200 Ok) #LimeGreen
 
 download_ova      ->      virtual_box   :Open and Import
-virtual_box       -->     settings      :Go
-settings          ->      icap_server   :Open
-user              -->     icap_server   :Login
-icap_server       -->     cmd           :ip a show eth1
-cmd               ->      terminal      :Check the ip address
-terminal          ->      cmd2          :c-icap-client -i 192.168.56.104
-cmd2              -->     result
+virtual_box       -->     settings      :Verify/Configure
+settings          ->      icap_server_vm:Start
+user              -->     icap_server_vm:Login
+icap_server_vm    -->     cmd           :ip a show eth1
+cmd               ->      terminal      :IP address
+terminal          ->      icap_server   :Check Connectivity
+icap_server       -->     result
 
 @enduml
