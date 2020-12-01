@@ -142,6 +142,10 @@ $ ifconfig
         ServerAdmin webmaster@localhost
         DocumentRoot /usr/share/wordpress
  ```
+ - Reload apache server 
+ ```
+ sudo service apache2 reload
+ ```
 - Open `<your VM IP>/blog/wp-admin` in your browser, go to `Settings -> General`
 ![image](https://user-images.githubusercontent.com/29745336/100713901-9a0df500-33e7-11eb-9409-24f3ea2a2e4c.png)
 
