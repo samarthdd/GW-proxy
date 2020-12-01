@@ -1,5 +1,4 @@
-# TrueNas Installation
-
+# TrueNas Installation in ESXI: 
 
 ### Download TrueNas .iso file 
         Link - https://truenas.com/download 
