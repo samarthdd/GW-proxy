@@ -1,4 +1,4 @@
-#VMWare OVA creation for glasswallsolutions.com
+# VMWare OVA creation for glasswallsolutions.com
 
 This manual is the step by step OVA creation and deployment for:
 
@@ -8,11 +8,13 @@ This manual is the step by step OVA creation and deployment for:
 
 [glasswallsolutions.com](https://glasswallsolutions.com/)
 
-[www.glasswallsolutions.com](https://www.glasswallsolutions.com/)If you have OVA you can go to Create a Virtual machine on ESX Server from OVA.
+[www.glasswallsolutions.com](https://www.glasswallsolutions.com/)
+
+If you have OVA you can go to Create a Virtual machine on ESX Server from OVA.
 
 The purpose of this document is to provide a manual about installing any Glasswall solution on ESX Server and create/install OVA also.
 
-# Create a Virtual machine on the ESX Server.
+## Create a Virtual machine on the ESX Server.
 
 1.  Log in to the ESX server
 
@@ -38,11 +40,11 @@ The purpose of this document is to provide a manual about installing any Glasswa
 
 12. Remove the USB controller.
 
-13. **CD / DVD Drive 1** -- select **Datastore ISO file** with the operating system (recommended Ubuntu 20.x).
+13. **CD / DVD Drive 1** - select **Datastore ISO file** with the operating system (recommended Ubuntu 20.x).
 
 14. Click **Next** and **Finish**.
 
-# Install the Operating System in VM
+## Install the Operating System in VM
 
 1.  Choose VM and press **Power on.**
 
@@ -93,11 +95,11 @@ The purpose of this document is to provide a manual about installing any Glasswa
 
     -   sudo apt-get update.
 
-# Deploy Solution and export OVA
+## Deploy Solution and export OVA
 
 6.  Install workloads according to <https://github.com/MariuszFerdyn/gp-jira-website/tree/main/atlassian.net/no-local-dns-changes>. In that point you can follow other website install. Here is a step by step:
 
-    -   Install the dependencies:
+-   Install the dependencies:
 ```bash
 sudo apt install -y curl git
 curl https://get.docker.com | bash -
@@ -124,7 +126,7 @@ docker-compose up -d --force-recreate –build
 ```
 7.  Test solution
 
-    -   Modify local host file and test solution using web browser. Instead 91.109.25.87 use proper IP. You can add k8-reverse-proxy-glasswallsolutions.com-OVA/CA.cer to the Trusted Root Certification Authorities to avoid certificate error.
+-   Modify local host file and test solution using web browser. Instead 91.109.25.87 use proper IP. You can add k8-reverse-proxy-glasswallsolutions.com-OVA/CA.cer to the Trusted Root Certification Authorities to avoid certificate error.
 ```bash
 91.109.25.87 glasswallsolutions.com.glasswall-icap.com
 91.109.25.87 www.glasswallsolutions.com.glasswall-icap.com
@@ -135,7 +137,7 @@ docker-compose up -d --force-recreate –build
 
 8.  Prepare OVA
 
-    -   Delete unnecessary logs and history:
+-   Delete unnecessary logs and history:
 ```bash
 sudo rm -f /etc/ssh/*.pub
 sudo rm -f /etc/ssh/*.key
@@ -161,17 +163,17 @@ history -c && history -w
 
 10. Deploy OVA
 
-    -   Download OVA
+-   Download OVA
 
-    -   Log-in to the ESX
+-   Log-in to the ESX
 
-    -   Choose Create / register VM
+-   Choose Create / register VM
 
-    -   Choose Deploy a virtual machine from OVF or OVA file
+-   Choose Deploy a virtual machine from OVF or OVA file
 
-    -   Enter a name for Virtual Machine
+-   Enter a name for Virtual Machine
 
-# Create a Virtual machine on ESX Server from OVA.
+## Create a Virtual machine on ESX Server from OVA.
 
 1.  Log in to the ESX server.
 
