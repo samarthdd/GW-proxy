@@ -94,6 +94,8 @@
 - Or click **Export** button under the **actions** of the VM to export and download the OVF and vmdk
 
 ## Imorting OVA and setup proxy for a website
+- Download the OVA from [here](https://glasswall-sow-ova.s3.amazonaws.com/vms/proxy-rebuild/proxy-rebuild.ova?AWSAccessKeyId=AKIA3NUU5XSYVTP3BV6R&Signature=dtziT6Pbep9%2BmXosxGFo%2BBNnNkI%3D&Expires=1607594681
+)
 - Open VMware > Open A Virtual Machine > Pick downloaded OVA file
 - Before starting the VM, 
     - go to VM Settings > Add Network Adapter > Netowrk Connection: Host-only
