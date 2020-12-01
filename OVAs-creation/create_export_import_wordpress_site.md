@@ -34,7 +34,10 @@ Once installation is done restart the VM and press enter when it asks to remove 
 sudo apt update
 sudo apt install wordpress php libapache2-mod-php mysql-server php-mysql
 ```
-
+- Start Apache server
+```
+sudo service apache2 start
+```
 - Create Apache site for WordPress. Create `/etc/apache2/sites-available/wordpress.conf` with following lines:
 
 ```bash
@@ -184,6 +187,11 @@ ovftool vi://46.165.225.145/glasswall-wordpress ./glasswall-wordpress.ova
 
 - By default, Glasswall wordpress VM is web server and use static IP. Network mode is Brigde 
 ​​​
+- Get ethernets interface
+```
+$ ip a
+# get the network interface name for example ens160
+```
 - Change network IP mapping to your network following command :
 ```
 glasswall@glasswallwordpress:~$ sudo nano /etc/netplan/00-installer-config.yaml
@@ -200,6 +208,8 @@ network:
         addresses: [8.8.8.8]
   version: 2
 ```
+- Change ethernets interface `ens33` by your network interface above
+
 - Change `addresses` to your network example `[192.168.1.100/24]`
 
 - Change `gateway` to your Access point/gateway address, example `192.168.1.1`
