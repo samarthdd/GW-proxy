@@ -142,14 +142,16 @@ $ ifconfig
         ServerAdmin webmaster@localhost
         DocumentRoot /usr/share/wordpress
  ```
- - Reload apache server 
- ```
- sudo service apache2 reload
- ```
+
 - Open `<your VM IP>/blog/wp-admin` in your browser, go to `Settings -> General`
 ![image](https://user-images.githubusercontent.com/29745336/100713901-9a0df500-33e7-11eb-9409-24f3ea2a2e4c.png)
 
 - Change `WordPress Address (URL)` to `http://example.local` and `Site Address (URL)` to `http://example.local` , save the change
+
+ - Reload apache server 
+ ```
+ sudo service apache2 reload
+ ```
 
 - Add hosts records to your client system hosts file ( i.e **Windows**: C:\Windows\System32\drivers\etc\hosts , **Linux, macOS and  Unix-like:** /etc/hosts ) as follows
 
@@ -172,7 +174,7 @@ ovftool vi://46.165.225.145/glasswall-wordpress ./glasswall-wordpress.ova
 
 ## Importing OVA and setting wordpress site
 
-- Download OVA file from [here](https://glasswall-sow-ova.s3.amazonaws.com/vms/proxy-rebuild/Glasswall-wordpress.ova?AWSAccessKeyId=AKIA3NUU5XSYVTP3BV6R&Signature=hVq5Susm7dGDE0tFgdnwWoZoISA%3D&Expires=1607567053)
+- Download OVA file from [here](https://glasswall-sow-ova.s3.amazonaws.com/vms/wordpress/Glasswall-wordpress.ova?AWSAccessKeyId=AKIA3NUU5XSYVTP3BV6R&Signature=QwJ78so5inpe%2F4iVG8sqUTB5%2B0Q%3D&Expires=1607568331)
 
 - Open VirtualBox/VMware workstation and import downloaded OVA file: glasswall-wordpress.ova
 
