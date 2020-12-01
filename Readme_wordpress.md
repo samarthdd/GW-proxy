@@ -2,7 +2,6 @@
 ​
 Glasswall Wordpress OVA for demoing Glasswall Wordpress local downloading file for **example.local** website
 
-### Make sure that ICAP Server OVA is imported into VM and is started. Glasswall Enfineering OVA is dependent on previous one.
 - Download OVA file from [here](https://glasswall-sow-ova.s3.eu-west-1.amazonaws.com/vms/Engineering-website/glasswall-engineering.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R/20201123/eu-west-1/s3/aws4_request&X-Amz-Date=20201123T103128Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=81014796a8554b5847e4d844530e578b4782ea7f10859113c5b1bd03d984322e)
 
 - Open VirtualBox/VMware workstation and import downloaded OVA file: glasswall-wordpress.ova
