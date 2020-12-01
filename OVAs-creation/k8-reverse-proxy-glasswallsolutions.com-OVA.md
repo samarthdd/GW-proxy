@@ -99,7 +99,7 @@ The purpose of this document is to provide a manual about installing any Glasswa
 
 6.  Install workloads according to <https://github.com/MariuszFerdyn/gp-jira-website/tree/main/atlassian.net/no-local-dns-changes>. In that point you can follow other website install. Here is a step by step:
 
-    -   Install the dependencies:
+-   Install the dependencies:
 ```bash
 sudo apt install -y curl git
 curl https://get.docker.com | bash -
@@ -107,37 +107,37 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 sudo usermod -aG docker $(whoami)
 ```
-    -   Prepare the repositories:
+-   Prepare the repositories:
 ```bash
 git clone --recursive https://github.com/k8-proxy/k8-reverse-proxy.git
 git clone https://github.com/k8-proxy/GW-proxy
 wget https://github.com/filetrust/Glasswall-Rebuild-SDK-Evaluation/releases/download/1.117/libglasswall.classic.so -O k8-reverse-proxy/stable-src/c-icap/Glasswall-Rebuild-SDK-Evaluation/Linux/Library/libglasswall.classic.so
 cp -rf GW-proxy/OVAs-creation/k8-reverse-proxy-glasswallsolutions.com-OVA/* k8-reverse-proxy/stable-src/
 ```
-    -   Delete unnecessary files:
+-   Delete unnecessary files:
 ```bash
 rm -rf GW-proxy
 rm -fr k8-reverse-proxy/upwork-devs/
 ```
-    -   Start deployment and container with revers proxy:
+-   Start deployment and container with revers proxy:
 ```bash
 cd k8-reverse-proxy/stable-src/
 docker-compose up -d --force-recreate –build
 ```
 7.  Test solution
 
-    -   Modify local host file and test solution using web browser. Instead 91.109.25.87 use proper IP. You can add k8-reverse-proxy-glasswallsolutions.com-OVA/CA.cer to the Trusted Root Certification Authorities to avoid certificate error.
+-   Modify local host file and test solution using web browser. Instead 91.109.25.87 use proper IP. You can add k8-reverse-proxy-glasswallsolutions.com-OVA/CA.cer to the Trusted Root Certification Authorities to avoid certificate error.
 ```bash
 91.109.25.87 glasswallsolutions.com.glasswall-icap.com
 91.109.25.87 www.glasswallsolutions.com.glasswall-icap.com
 91.109.25.87 glasswallsolutions.com
 91.109.25.87 www.glasswallsolutions.com
 ```
-    -   Using ESX console **Shutdown** and then **Power on** the server and check if the solution is working after an unplanned reboot.
+-   Using ESX console **Shutdown** and then **Power on** the server and check if the solution is working after an unplanned reboot.
 
 8.  Prepare OVA
 
-    -   Delete unnecessary logs and history:
+-   Delete unnecessary logs and history:
 ```bash
 sudo rm -f /etc/ssh/*.pub
 sudo rm -f /etc/ssh/*.key
@@ -146,32 +146,32 @@ history -c && history -w
 
 ```
 
-    -   From ESX console Shut down VM.
+-   From ESX console Shut down VM.
 
-    -   Choose VM and click **Edit**, under CD/DVD Drive 1 make sure that no any iso is chosen it should be the point to "Host device". Click **Save**.
+-   Choose VM and click **Edit**, under CD/DVD Drive 1 make sure that no any iso is chosen it should be the point to "Host device". Click **Save**.
 
-    -   Download and install ovftool.exe tool from
+-   Download and install ovftool.exe tool from
     <https://my.vmware.com/web/vmware/downloads/details?productId=614&downloadGroup=OVFTOOL420>.
 
-    -   Export OVA (glasswallsolutions.com is a VM name)
+-   Export OVA (glasswallsolutions.com is a VM name)
 ```bash
 "C:\Program Files (x86)\VMware\VMware Workstation\OVFTool\ovftool.exe" vi://esxi01.glasswall-icap.com/glasswallsolutions.com glasswallsolutions.com.ova
 ```
-    -   Upload exported ova to S3
+-   Upload exported ova to S3
 
 9.  Delete the VM
 
 10. Deploy OVA
 
-    -   Download OVA
+-   Download OVA
 
-    -   Log-in to the ESX
+-   Log-in to the ESX
 
-    -   Choose Create / register VM
+-   Choose Create / register VM
 
-    -   Choose Deploy a virtual machine from OVF or OVA file
+-   Choose Deploy a virtual machine from OVF or OVA file
 
-    -   Enter a name for Virtual Machine
+-   Enter a name for Virtual Machine
 
 ## Create a Virtual machine on ESX Server from OVA.
 
