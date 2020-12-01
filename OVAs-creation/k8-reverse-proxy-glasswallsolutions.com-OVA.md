@@ -10,7 +10,7 @@ This manual is the step by step OVA creation and deployment for:
 
 [www.glasswallsolutions.com](https://www.glasswallsolutions.com/)
 
-If you have OVA you can go to Create a Virtual machine on ESX Server from OVA.
+If you have OVA you can go to Create a Virtual machine on ESX Server from OVA. Latest OVA is [here](https://hcompl-my.sharepoint.com/:u:/g/personal/mariusz_ferdyn_h_com_pl/EVOKXfdSfF9MtICrVOeIY4MBJz3S1ml3pfer6fv2M60STg?e=3at0Sd).
 
 The purpose of this document is to provide a manual about installing any Glasswall solution on ESX Server and create/install OVA also.
 
