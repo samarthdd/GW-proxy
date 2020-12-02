@@ -43,9 +43,6 @@
     
     8. From my Chrome Browser, I entered the IP address and was greeted with a login screen. I entered root as the username, and then entered my password.
     
-## Export OVF from VM
-    Power off the TrueNas VM in vsxi
-    Download OVF and vmdk by selecting Actions-->Export
     
 ## Important Note   
     In case, DNS is not configured,
