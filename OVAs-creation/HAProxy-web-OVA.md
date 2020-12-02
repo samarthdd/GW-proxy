@@ -50,19 +50,27 @@ apt install -y haproxy
 
 ```bash
 cat >> /etc/haproxy/haproxy.cfg << EOF
-#The frontend is the node by which HAProxy listens for connections.
-frontend glasswall
+frontend http-glasswall
         bind *:80
+        option tcplog
+        mode tcp
+        default_backend http-nodes        
+backend http-nodes
+        mode tcp
+        balance roundrobin
+        server web01 54.78.209.23:80 check
+
+frontend https-glasswall
         bind *:443
         option tcplog
         mode tcp
-        default_backend nodes        
-#Backend nodes are those by which HAProxy can forward requests
-backend nodes
+        default_backend https-nodes       
+backend https-nodes
         mode tcp
         balance roundrobin
         option ssl-hello-chk
         server web01 54.78.209.23:443 check
+          
 #Haproxy monitoring Webui(optional) configuration, access it <Haproxy IP>:32700
 listen stats
 bind :32700
