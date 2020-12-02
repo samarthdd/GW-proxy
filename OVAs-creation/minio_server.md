@@ -80,7 +80,7 @@
     ovftool vi://46.165.225.145/minio-server ./minio-server.ova
     ```
 
-## Imorting OVA
+## Importing OVA
 - Open VMware > Open A Virtual Machine > Pick downloaded OVA file
 - Before starting the VM, 
     - go to VM Settings > Add Network Adapter > Netowrk Connection: Host-only
