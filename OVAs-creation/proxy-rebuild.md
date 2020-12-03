@@ -20,9 +20,9 @@
 - `cd /etc/netplan` & run `ls` to check the files available (there should only be 1), so we'll modify it with `sudo vi $name_of_file)` and modify it to be:
     ```
     network:
-    version: 2
-    renderer: networkd
-    ethernets:
+      version: 2
+      renderer: networkd
+      ethernets:
         ens160:
         dhcp4: no
         addresses:
@@ -104,9 +104,9 @@
 - `cd /etc/netplan` & run `ls` to check the files available (there should only be 1), so we'll modify it with `sudo vi $name_of_file)` and modify it to assign an IP address and gateway. Below is an example configuration:
     ```
     network:
-    version: 2
-    renderer: networkd
-    ethernets:
+      version: 2
+      renderer: networkd
+      ethernets:
         ens160:
         dhcp4: no
         addresses:
