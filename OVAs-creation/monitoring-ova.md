@@ -1,4 +1,7 @@
 # Monitoring OVA
+## Diagram
+![Monitoring Diagram](images/monitoring-ova.png)
+## Image
 https://glasswall-sow-ova.s3.amazonaws.com/vms/visualog/visualog.ova?AWSAccessKeyId=AKIA3NUU5XSYVTP3BV6R&Signature=B3p%2FTRsLKyl6Pij6JoKvI4g10cw%3D&Expires=1607669097
 
 ## Install OS
