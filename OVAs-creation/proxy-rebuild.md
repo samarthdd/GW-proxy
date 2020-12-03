@@ -20,9 +20,9 @@
 - `cd /etc/netplan` & run `ls` to check the files available (there should only be 1), so we'll modify it with `sudo vi $name_of_file)` and modify it to be:
     ```
     network:
-    version: 2
-    renderer: networkd
-    ethernets:
+      version: 2
+      renderer: networkd
+      ethernets:
         ens160:
         dhcp4: no
         addresses:
@@ -98,10 +98,23 @@
 )
 - Open VMware > Open A Virtual Machine > Pick downloaded OVA file
 - Before starting the VM, 
-    - go to VM Settings > Add Network Adapter > Netowrk Connection: Host-only
-    - make sure the first network adapter is set to **NAT**
+    - make sure a network adapter is attached to the VM
 - Start Proxy Rebuild VM
 - Login (username: **glasswall**, password: **Gl@$$wall**)
+- `cd /etc/netplan` & run `ls` to check the files available (there should only be 1), so we'll modify it with `sudo vi $name_of_file)` and modify it to assign an IP address and gateway. Below is an example configuration:
+    ```
+    network:
+      version: 2
+      renderer: networkd
+      ethernets:
+        ens160:
+        dhcp4: no
+        addresses:
+            - 91.109.25.88/27
+        gateway4: 91.109.25.94
+        nameservers:
+            addresses: [8.8.8.8]
+    ```
 - Run helm upgrade/install command to setup proxy for the website. Below is an example to setup proxy for www.glasswallsolutions.com:
     ```
     helm upgrade --install \
