@@ -86,7 +86,7 @@ Once installation is done restart the VM and press enter when it asks to remove 
     echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 
     sudo apt-get update
-    
+
     sudo apt-get install helm -y
     ```
 
@@ -108,6 +108,11 @@ Once installation is done restart the VM and press enter when it asks to remove 
 - Download the OVA from [here](https://glasswall-sow-ova.s3.amazonaws.com/vms/proxy-rebuild/proxy-rebuild.ova?AWSAccessKeyId=AKIA3NUU5XSYVTP3BV6R&Signature=dtziT6Pbep9%2BmXosxGFo%2BBNnNkI%3D&Expires=1607594681
 )
 - Open VMware > Open A Virtual Machine > Pick downloaded OVA file
+
+- Be aware of the following errors:
+![image](https://user-images.githubusercontent.com/70108899/101050857-1ee24580-3585-11eb-90e3-6701379b769a.png)
+
+![image (1)](https://user-images.githubusercontent.com/70108899/101050996-489b6c80-3585-11eb-9865-f0204f00fa47.png)
 - Before starting the VM, 
     - go to VM Settings > Add Network Adapter > Netowrk Connection: Host-only
     - make sure the first network adapter is set to **NAT**
