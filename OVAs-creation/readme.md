@@ -15,11 +15,8 @@
 |Monitoring             |[Monitoring](https://glasswall-sow-ova.s3.amazonaws.com/vms/visualog/visualog.ova?AWSAccessKeyId=AKIA3NUU5XSYVTP3BV6R&Signature=B3p%2FTRsLKyl6Pij6JoKvI4g10cw%3D&Expires=1607669097)|ICAP monitoring tool|[How to use](https://github.com/k8-proxy/GW-proxy/blob/GINAGC-patch-27/OVAs-creation/monitoring-ova.md) |  
 |Gov.uk offine             |[GOV.uk](https://glasswall-sow-ova.s3-eu-west-1.amazonaws.com/vms/gov-uk/gov.uk.local.ova)|Offline Gov.uk website virtual machine|[How to use](https://github.com/k8-proxy/GW-proxy/blob/GINAGC-patch-27/OVAs-creation/create_gov_uk_offline_site.md) | 
 |Traffic Gen             |TBD|ICAP performance solution|[How to use](https://github.com/k8-proxy/aws-jmeter-test-engine/blob/ova-usage-instructions/jmeter-icap/instructions/How-to-Generate-Load-with-OVA.md) |  
-|Support             |[Support](https://glasswall-sow-ova.s3-eu-west-1.amazonaws.com/vms/SupportServer/SupportServer01.ova)||[How to use]() |  
-|Linux desktop             |TBD||[How to use]() |  
-
-
-
+|Support             |[Support](https://glasswall-sow-ova.s3-eu-west-1.amazonaws.com/vms/SupportServer/SupportServer01.ova)||[How to use](https://github.com/k8-proxy/GW-proxy/blob/master/OVAs-creation/SupportServer.md) |  
+|Linux desktop             |TBD||[How to use](https://github.com/k8-proxy/GW-proxy/blob/master/OVAs-creation/Linux-Desktop.md) |  
 
 </td></tr>
 

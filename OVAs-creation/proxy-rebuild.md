@@ -1,5 +1,34 @@
 ## Creating Proxy Rebuild VM on ESXI:
 
+## Creating the VM
+
+* Access esxi server with valid credentials   [esxi01.glasswall-icap.com](http://esxi01.glasswall-icap.com) or [esxi02.glasswall-icap.com](http://esxi02.glasswall-icap.com) 
+
+* Create a new Linux, Ubuntu (64-bit) VM with minimal hardware specs (1 CPU , 1 GB ram & 16 GB of Harddisk(remember to make disk Provisioning to be thin provisioned)) 
+
+  ![image](https://user-images.githubusercontent.com/58347752/100459771-b0a60a80-30ce-11eb-959e-018d88a8cf2b.png)
+
+* Set CD/DVD drive is connected at power on and choose the ISO to boot from
+
+  ![image](https://user-images.githubusercontent.com/58347752/100460151-66715900-30cf-11eb-914e-2f802acb5052.png)
+
+* Finish installation and boot the machine with default configuration
+
+* Once you "Power ON" your Machine start with setup. Pay attention to the steps below. 
+
+* In the network configuration, under ens160, edit the IPV4 method to be manual and add the network configuration. Example on image below. This IP addresses are ESXi related and can be obtained from corresponding channel.
+
+  ![Networkconnection](https://user-images.githubusercontent.com/70108899/100768735-82d90280-33fb-11eb-8e1d-f60164fad167.PNG)
+
+* Set the username to be glasswall and the agreed password (same password as the controller VM)
+
+Once installation is done restart the VM and press enter when it asks to remove the CD
+
+
+## Installation
+
+- In order to start the installation ssh to VM via putty (working directly from ESXi console will not give ability for copy/paste or similar acrions)
+
 ### Setting Up VM
 
 - on ESXI, head to controller VM, login and open Firefox
@@ -33,49 +62,65 @@
     ```
 - Run `sudo netplan apply`
 - In the VM, you'll be able to ping the gateway and have access to internet
+
 - Install docker by:
     ```
     sudo apt update
-    sudo apt-get install \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg-agent \
-    software-properties-common
+
+    sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
+    
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    
     sudo apt update
+    
     sudo apt-get install docker-ce docker-ce-cli containerd.io
     ```
 - Install rancher by:
     ```
-    docker run -d --restart=unless-stopped \
-    -p 8080:80 -p 8443:443 \
-    --privileged \
-    rancher/rancher:latest
+    docker run -d --restart=unless-stopped -p 8080:80 -p 8443:443 --privileged rancher/rancher:latest
   ```
 
-- To access rancher, in your host machine's browser, you can navigate to the VM's IP or in this case, `91.109.25.88` and setup the credentials with (username: **admin**, password: **Gl@$$wall**)
+- To access rancher, in your loaclhost machine's browser, you can navigate to the VM's IP (type `ip a` in case you are not sure what it is) or in this case, `https://<VM IP>:8443`, and setup the credentials with (username: **admin**, password: **Gl@$$wall**).
 
-- Give the rancher url as `https://172.17.0.1:8443` so that the IP of the rancher server remains the same when VMs are created using the OVA and doesn't depend on the public IP of the vm.
+- If you in any instance encount with "Network connection issues" try reloading.
 
-- Create a new cluster in the rancher by selecting the option of "Existing Nodes". In the next page, select etcd, controlplane and worker. Give the public IP of the node as 172.17.0.1 and run the command given by rancher on the VM.
+- Give the rancher url as `https://172.17.0.1:8443` so that the IP of the rancher server remains the same when VMs are created using the OVA and doesn't depend on the public IP of the vm. If you experience some issues with reloading after the change, just type agian initial URL, `https://<VM IP>:8443` and continue with the setup.
 
-- It takes few minutes, until all containers are up and the cluster is healthy. Once the cluster is healthy and active, select the cluster and click on Kubeconfig File. Copy the content of Kubeconfig and paste in `~/.kube/config` file of the VM. 
+- Create a new cluster in the rancher by going to "Add cluster" and selecting the option of "Existing Nodes". 
+
+- Give some name to the cluster and on the bottom of the page click "NEXT".
+
+- In the next page, select etcd, controlplane and worker. Click on "Show advanced options" in right corner to give the public IP of the node as 172.17.0.1 and run the command given by rancher on the VM. And on Rancher UI click "DONE"
+
+    Command example: 
+
+    `sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run rancher/rancher-agent:v2.5.3 --server https://172.17.0.1:8443 --token x87g9k76cmh5r5htlzp6cvwckhkt9hb7dl8gs6r7d5fcpjgfqz7sqm --ca-checksum 192fb5f7702a308654d8060bafd47cf89d44490e54086d52ce4db8bb75db7039 --address 172.17.0.1 --etcd --controlplane --worker`
+
+
+- It takes 10-15 minutes until all containers are up and the cluster is healthy. In case you get "refused to connect" site will reload itself.
+
+![image](https://user-images.githubusercontent.com/70108899/100937725-bbf49e00-34f3-11eb-92b0-9a25ef3e7a99.png)
+
+- Once the cluster is healthy and active, select the cluster and click on Kubeconfig File. Copy the content of Kubeconfig and paste in `~/.kube/config` file of the VM. 
 
 - Install kubectl and helm by running:
     ```
     curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+
     chmod +x ./kubectl
+
     sudo mv ./kubectl /usr/local/bin/kubectl
 
     curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
+
     sudo apt-get install apt-transport-https --yes
+
     echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+
     sudo apt-get update
+
     sudo apt-get install helm -y
     ```
 
@@ -97,6 +142,11 @@
 - Download the OVA from [here](https://glasswall-sow-ova.s3.amazonaws.com/vms/proxy-rebuild/proxy-rebuild.ova?AWSAccessKeyId=AKIA3NUU5XSYVTP3BV6R&Signature=dtziT6Pbep9%2BmXosxGFo%2BBNnNkI%3D&Expires=1607594681
 )
 - Open VMware > Open A Virtual Machine > Pick downloaded OVA file
+
+- Be aware of the following errors:
+![image](https://user-images.githubusercontent.com/70108899/101050857-1ee24580-3585-11eb-90e3-6701379b769a.png)
+
+![image (1)](https://user-images.githubusercontent.com/70108899/101050996-489b6c80-3585-11eb-9865-f0204f00fa47.png)
 - Before starting the VM, 
     - make sure a network adapter is attached to the VM
 - Start Proxy Rebuild VM
@@ -122,11 +172,10 @@
     --set image.nginx.tag=0.0.1 \
     --set image.squid.repository=pranaysahith/reverse-proxy-squid \
     --set image.squid.tag=0.0.6 \
-    --set application.nginx.env.ALLOWED_DOMAINS='glasswallsolutions.com,www.glasswallsolutions.com' \
+    --set application.nginx.env.ALLOWED_DOMAINS='glasswallsolutions.com\,www.glasswallsolutions.com' \
     --set application.nginx.env.ROOT_DOMAIN='glasswall-icap.com' \
     --set application.nginx.env.SUBFILTER_ENV='' \
-    --set application.nginx.env.ICAP_URL='icap://54.77.168.168:1344/gw_rebuild' \
-    --set application.squid.env.ALLOWED_DOMAINS='glasswallsolutions.com,www.glasswallsolutions.com' \
+    --set application.squid.env.ALLOWED_DOMAINS='glasswallsolutions.com\,www.glasswallsolutions.com' \
     --set application.squid.env.ROOT_DOMAIN='glasswall-icap.com' \
     --set application.squid.env.ICAP_URL='icap://54.77.168.168:1344/gw_rebuild' \
     reverse-proxy chart/
