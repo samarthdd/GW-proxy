@@ -20,9 +20,9 @@
 - `cd /etc/netplan` & run `ls` to check the files available (there should only be 1), so we'll modify it with `sudo vi $name_of_file)` and modify it to be:
     ```
     network:
-    version: 2
-    renderer: networkd
-    ethernets:
+      version: 2
+      renderer: networkd
+      ethernets:
         ens160:
         dhcp4: no
         addresses:
@@ -98,10 +98,23 @@
 )
 - Open VMware > Open A Virtual Machine > Pick downloaded OVA file
 - Before starting the VM, 
-    - go to VM Settings > Add Network Adapter > Netowrk Connection: Host-only
-    - make sure the first network adapter is set to **NAT**
+    - make sure a network adapter is attached to the VM
 - Start Proxy Rebuild VM
 - Login (username: **glasswall**, password: **Gl@$$wall**)
+- `cd /etc/netplan` & run `ls` to check the files available (there should only be 1), so we'll modify it with `sudo vi $name_of_file)` and modify it to assign an IP address and gateway. Below is an example configuration:
+    ```
+    network:
+      version: 2
+      renderer: networkd
+      ethernets:
+        ens160:
+        dhcp4: no
+        addresses:
+            - 91.109.25.88/27
+        gateway4: 91.109.25.94
+        nameservers:
+            addresses: [8.8.8.8]
+    ```
 - Run helm upgrade/install command to setup proxy for the website. Below is an example to setup proxy for www.glasswallsolutions.com:
     ```
     helm upgrade --install \
@@ -117,6 +130,10 @@
     --set application.squid.env.ROOT_DOMAIN='glasswall-icap.com' \
     --set application.squid.env.ICAP_URL='icap://54.77.168.168:1344/gw_rebuild' \
     reverse-proxy chart/
+    ```
+- If the nginx or squid needs few DNS names to be assigned to an IP address, host aliases(below line) can be added to the above command. For example if `www.glasswallsolutions. local` and `www.glasswallsolutions.local` domains should be assigned to `192.168.56.90` IP, add below line to above command:
+    ```
+    --set hostAliases."192\\.168\\.56\\.90"={"glasswallsolutions.local"\,"www.glasswallsolutions.local"} \
     ```
 - Depending on which websites need the proxy, update the above command with the domain names.
 - Note, the IP address of the ICAP server can be changed in above command as per need.
