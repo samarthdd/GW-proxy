@@ -24,7 +24,7 @@
 |OVA Name           |       Download Link                     |
 |--	                |--	     	                                |
 |Engineering Web    |                  |   	  
-|SOW-REST           | [SOW-REST](https://glasswall-sow-ova.s3.eu-west-1.amazonaws.com/vms/SOW-REST/sow-rest.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201203%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20201203T114115Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=0d99d1b620680da179ea91f5ed94b88d69dc28be151219a2b7af3ded9bd70758)                  |
+|SOW-REST           | [SOW-REST OVA](https://glasswall-sow-ova.s3.eu-west-1.amazonaws.com/vms/SOW-REST/sow-rest.ova?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3NUU5XSYVTP3BV6R%2F20201203%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20201203T114115Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=0d99d1b620680da179ea91f5ed94b88d69dc28be151219a2b7af3ded9bd70758)                  |
 
 
 </td></tr>
