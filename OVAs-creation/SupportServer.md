@@ -11,6 +11,10 @@ If you have OVA you can go to Create a Virtual machine on ESX Server from OVA. L
 
 OVA credentials login/password: glasswall/Komatoso101abam
 
+
+[How to use - Watch the Video](https://github.com/MariuszFerdyn/GW-proxy/blob/master/OVAs-creation/SupportServer/SupportServer.mp4?raw=true)
+
+
 ## Create a Virtual machine on the ESX Server.
 
 1.  Log in to the ESX server
