@@ -24,7 +24,7 @@
 
 * Edit Wired connection and go to IPV4 tab, Set IPV4 method to be ***Manual*** then add a valid IP address from the provided list & finally set the the DNS to be manual and add the following ***8.8.8.8***  (Please refer to this step again if you want to change any network configurations in later stages)
 
-  ![image-20201203141023162](/home/nader/.config/Typora/typora-user-images/image-20201203141023162.png)
+  ![image](https://user-images.githubusercontent.com/58347752/101046373-a9c53f00-3589-11eb-8aea-c4e263d0c2ff.png)
 
 * Open the terminal and use the following commands to apply network configuration changes
 
