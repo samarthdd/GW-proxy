@@ -91,18 +91,19 @@
 - `cd /etc/netplan` & run `ls` to check the files available (there should only be 1), so we'll modify it with `sudo vi $name_of_file)` and modify it to be:
     ```
     network:
-    version: 2
-    renderer: networkd
-    ethernets:
+      version: 2
+      renderer: networkd
+      ethernets:
         ens160:
-        dhcp4: no
-        addresses:
+          dhcp4: no
+          addresses:
             - 91.109.25.79/27
-        gateway4: 91.109.25.94
-        nameservers:
-            addresses: [8.8.8.8]
+          gateway4: 91.109.25.94
+          nameservers:
+              addresses: [8.8.8.8]
     ```
     where under `addresses` you give your VM an IP from your network, example: `192.168.43.100`, followed by a gateway IP, example `192.168.43.1`
+    **Note**: since this is a yaml file, please make sure that you follow the correct indentation 
 - run `sudo netplan apply`
 - In your local hosts file (win: C:\Windows\System32\drivers\etc, on MAC/Linux: /etc/hosts), add:
     ```
