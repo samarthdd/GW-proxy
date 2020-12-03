@@ -18,7 +18,7 @@
 
 * In the network configuration, edit the IPV4 method to be manual and add the network configuration 
 
-  ![image](https://user-images.githubusercontent.com/58347752/100460549-0a5b0480-30d0-11eb-89cb-5cabfeebbefd.png)
+  ![Networkconnection](https://user-images.githubusercontent.com/70108899/100768735-82d90280-33fb-11eb-8e1d-f60164fad167.PNG)
 
 * Set the username to be glasswall and the agreed password (same password as the controller VM)
 
@@ -32,9 +32,13 @@ Once installation is done restart the VM and press enter when it asks to remove 
 
 ```bash
 sudo apt update
-sudo apt install wordpress php libapache2-mod-php mysql-server php-mysql
+sudo apt install -y wordpress php libapache2-mod-php mysql-server php-mysql
 ```
-
+- Start Apache server
+```
+sudo service apache2 start
+sudo service apache2 status
+```
 - Create Apache site for WordPress. Create `/etc/apache2/sites-available/wordpress.conf` with following lines:
 
 ```bash
@@ -119,11 +123,11 @@ $ ifconfig
 
 ## Client configuration
 
-- Open `<your VM IP>/blog` in your browser. You will be asked for title of your new site, username, password and address e-mail
+- Open `<your VM IP>/blog` in your browser. You will be asked for title of your new site, username, password and address e-mail. Fill in all details as you like. Remember your username/password and install Wordpress.
 
 ![image](https://user-images.githubusercontent.com/29745336/100712334-308ce700-33e5-11eb-8117-08aaf43e338c.png)
 
- You can now login under `<your VM IP>/blog/wp-login.php`. In Dashboard, you will see bunch of icons and options. Don’t worry, it’s easy!
+ You can now login under `<your VM IP>/blog/wp-login.php`, or by clicking `Log In` button after installation. In Dashboard, you will see bunch of icons and options. Don’t worry, it’s easy!
  
  ![image](https://user-images.githubusercontent.com/29745336/100712645-a729e480-33e5-11eb-9866-dee90d2e627d.png)
  
@@ -156,7 +160,7 @@ $ ifconfig
 - Add hosts records to your client system hosts file ( i.e **Windows**: C:\Windows\System32\drivers\etc\hosts , **Linux, macOS and  Unix-like:** /etc/hosts ) as follows
 
 ```
-192.168.31.70 example.local www.example.local
+<VM IP ADDRESS> example.local www.example.local
 ```
 - Open `http://example.local` again and make sure we are in wordpress welcome site
 
@@ -164,7 +168,7 @@ $ ifconfig
 
 * Shut down the machine 
 * Open the controller machine (Or from your local machine, just the controller machine speed the things up)
-* Run the following command to export the VM with OVA extension, it will be exported in your current working directory.
+* Run the following command to export the VM with OVA extension (change to corresponding ESXI IP/URL and VM name), it will be exported in your current working directory.
 
 Note: the username and password to be provided here are the initial ESXI server credentials  
 
@@ -184,6 +188,11 @@ ovftool vi://46.165.225.145/glasswall-wordpress ./glasswall-wordpress.ova
 
 - By default, Glasswall wordpress VM is web server and use static IP. Network mode is Brigde 
 ​​​
+- Get ethernets interface
+```
+$ ip a
+# get the network interface name for example ens160
+```
 - Change network IP mapping to your network following command :
 ```
 glasswall@glasswallwordpress:~$ sudo nano /etc/netplan/00-installer-config.yaml
@@ -200,6 +209,8 @@ network:
         addresses: [8.8.8.8]
   version: 2
 ```
+- Change ethernets interface `ens33` by your network interface above
+
 - Change `addresses` to your network example `[192.168.1.100/24]`
 
 - Change `gateway` to your Access point/gateway address, example `192.168.1.1`

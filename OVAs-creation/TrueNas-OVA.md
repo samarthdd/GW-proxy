@@ -43,17 +43,36 @@
     
     8. From my Chrome Browser, I entered the IP address and was greeted with a login screen. I entered root as the username, and then entered my password.
     
-## Export OVF from VM
-    Power off the TrueNas VM in vsxi
-    Download OVF and vmdk by selecting Actions-->Export
     
 ## Important Note   
     In case, DNS is not configured,
     From TrueNas web interface,do the following
-        - Set appropriate Network Interface by clicking option 1 in TrueNas web interface and you need to add DHCP if it is not there already. Enter Ipv4 only (DHCP ipv4 - 91.109.25.77/27)
-        - Also you need to setup Default route by clicking 5 ( ipv4 - 91.109.25.94)
-        - Add Nameservers - 8.8.8.8
-        - Finally reboot to get proper TrueNas IP.
+        - Set appropriate Network Interface 
+            1. Click 1
+            2. Select vmx0 by clicking 1
+            3. Enter n for elete interface?
+            4. Enter n for remove current settings
+            5. Enter y for Configure interface for DHCP
+            6. Give interface name
+            7. Enter n for ipv6
+            8. Enter y for Configure fail over setting and just enter for all and finish.
+            9. Repeat first 3 steps and you will get prompt "Configure ipv4 option?"
+            10. Enter y and enter name and give proper ip (ipv4 - 91.109.25.xx/27)
+           
+        -  You need to setup Default route by clicking 5 ( ipv4 - 91.109.25.94)
+        -  Finally reboot to get proper TrueNas IP and on webinterface you will get TrueNas server IP.
+ 
+ ## Export OVA of VM
+    * Download OVA tool
+    * Shut down the machine 
+    * Open the controller machine (Or from your local machine, just the controller machine speed the things up)
+    * Run the following command to export the VM with OVA extension, it will be exported in your current working directory.
+
+    Note: the username and password to be provided here are the initial ESXI server credentials  
+
+        ```bash
+        ovftool vi://46.165.225.145/TrueNAS ./TrueNAS.ova
+        ```
     
     
     

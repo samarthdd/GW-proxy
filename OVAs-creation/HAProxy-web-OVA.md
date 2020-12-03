@@ -4,21 +4,23 @@
 
 ## Creating the VM
 
-* Access esxi server with valid credentials   [esxi01.glasswall-icap.com](http://esxi01.glasswall-icap.com) 
+* Access esxi server with valid credentials   [esxi01.glasswall-icap.com](http://esxi01.glasswall-icap.com) or [esxi02.glasswall-icap.com](http://esxi02.glasswall-icap.com) 
 
-* Create a new Ubuntu linux (64-bit) VM with minimal hardware specs (1 CPU , 1 GB ram & 16 GB of Harddisk(remember to make disk Provisioning to be thin provisioned  )) 
+* Create a new Linux, Ubuntu (64-bit) VM with minimal hardware specs (1 CPU , 1 GB ram & 16 GB of Harddisk(remember to make disk Provisioning to be thin provisioned)) 
 
   ![image](https://user-images.githubusercontent.com/58347752/100459771-b0a60a80-30ce-11eb-959e-018d88a8cf2b.png)
 
-* Also CD/DVD drive is connected at power on and choose the ISO to boot from
+* Set CD/DVD drive is connected at power on and choose the ISO to boot from
 
   ![image](https://user-images.githubusercontent.com/58347752/100460151-66715900-30cf-11eb-914e-2f802acb5052.png)
 
 * Finish installation and boot the machine with default configuration
 
-* In the network configuration, edit the IPV4 method to be manual and add the network configuration 
+* Once you "Power ON" your Machine start with setup. Pay attention to the steps below. 
 
-  ![image](https://user-images.githubusercontent.com/58347752/100460549-0a5b0480-30d0-11eb-89cb-5cabfeebbefd.png)
+* In the network configuration, under ens160, edit the IPV4 method to be manual and add the network configuration. Example on image below. This IP addresses are ESXi related and can be obtained from corresponding channel.
+
+  ![Networkconnection](https://user-images.githubusercontent.com/70108899/100768735-82d90280-33fb-11eb-8e1d-f60164fad167.PNG)
 
 * Set the username to be glasswall and the agreed password (same password as the controller VM)
 
@@ -50,19 +52,27 @@ apt install -y haproxy
 
 ```bash
 cat >> /etc/haproxy/haproxy.cfg << EOF
-#The frontend is the node by which HAProxy listens for connections.
-frontend glasswall
+frontend http-glasswall
         bind *:80
+        option tcplog
+        mode tcp
+        default_backend http-nodes        
+backend http-nodes
+        mode tcp
+        balance roundrobin
+        server web01 54.78.209.23:80 check
+
+frontend https-glasswall
         bind *:443
         option tcplog
         mode tcp
-        default_backend nodes        
-#Backend nodes are those by which HAProxy can forward requests
-backend nodes
+        default_backend https-nodes       
+backend https-nodes
         mode tcp
         balance roundrobin
         option ssl-hello-chk
         server web01 54.78.209.23:443 check
+          
 #Haproxy monitoring Webui(optional) configuration, access it <Haproxy IP>:32700
 listen stats
 bind :32700
@@ -92,7 +102,9 @@ systemctl status haproxy.service
 * Add hosts records to your client system hosts file ( i.e **Windows**: C:\Windows\System32\drivers\etc\hosts , **Linux, macOS and  Unix-like:** /etc/hosts ) as follows
 
 ```
-91.109.25.90 glasswallsolutions.com.glasswall-icap.com
+ip a
+
+<VM IP ADDRESS> glasswallsolutions.com.glasswall-icap.com
 ```
 
 make sure that tcp ports **80** and **443** are reachable and not blocked by firewall.
@@ -103,6 +115,8 @@ make sure that tcp ports **80** and **443** are reachable and not blocked by fir
 * Verify that your access is established through the haproxy loadbalancer through the network tab, the Request address should show the Loadbalancer server IP as shown below
 
 ![image](https://user-images.githubusercontent.com/58347752/100607205-4500af00-3313-11eb-8f14-b075e74108a7.png)
+
+* In case https://glasswallsolutions.com.glasswall-icap.com is not available, check non-proxied site (comment out values from local hosts file)
 
 ## Exporting OVA
 
