@@ -29,6 +29,40 @@ Once installation is done restart the VM and press enter when it asks to remove 
 
 - In order to start the installation ssh to VM via putty (working directly from ESXi console will not give ability for copy/paste or similar acrions)
 
+### Setting Up VM
+
+- on ESXI, head to controller VM, login and open Firefox
+- navigate to ESXI and login > create new VM
+- name your VM, and set
+    **Guest OS family**: Linux
+    **Guest OS Version**: Ubuntu Linux (64-bit)
+- Storage and Virtual Hardware can be left at minimum (default)
+- Scroll to **CD/DVD Drive 1** > Datastor ISO file > ubuntu-20.04.1-live-server-amd64.iso 
+- Review VM settings > Finish
+
+### Configuring VM
+
+- Power on VM > Pick settings for VM (language, username & password install openssh, etc.)
+- when asked to reboot now > power off VM > Actions > Edit Settings > Remove **CD/DVD Drive 1**
+- Now, Power on & let the OS finish setting up, after which you wil be able to login
+- Run `ip a` and find the name of the first network interface after loopback, which in this case is `ens160`
+- `cd /etc/netplan` & run `ls` to check the files available (there should only be 1), so we'll modify it with `sudo vi $name_of_file)` and modify it to be:
+    ```
+    network:
+      version: 2
+      renderer: networkd
+      ethernets:
+        ens160:
+        dhcp4: no
+        addresses:
+            - 91.109.25.88/27
+        gateway4: 91.109.25.94
+        nameservers:
+            addresses: [8.8.8.8]
+    ```
+- Run `sudo netplan apply`
+- In the VM, you'll be able to ping the gateway and have access to internet
+
 - Install docker by:
     ```
     sudo apt update
@@ -114,10 +148,23 @@ Once installation is done restart the VM and press enter when it asks to remove 
 
 ![image (1)](https://user-images.githubusercontent.com/70108899/101050996-489b6c80-3585-11eb-9865-f0204f00fa47.png)
 - Before starting the VM, 
-    - go to VM Settings > Add Network Adapter > Netowrk Connection: Host-only
-    - make sure the first network adapter is set to **NAT**
+    - make sure a network adapter is attached to the VM
 - Start Proxy Rebuild VM
 - Login (username: **glasswall**, password: **Gl@$$wall**)
+- `cd /etc/netplan` & run `ls` to check the files available (there should only be 1), so we'll modify it with `sudo vi $name_of_file)` and modify it to assign an IP address and gateway. Below is an example configuration:
+    ```
+    network:
+      version: 2
+      renderer: networkd
+      ethernets:
+        ens160:
+        dhcp4: no
+        addresses:
+            - 91.109.25.88/27
+        gateway4: 91.109.25.94
+        nameservers:
+            addresses: [8.8.8.8]
+    ```
 - Run helm upgrade/install command to setup proxy for the website. Below is an example to setup proxy for www.glasswallsolutions.com:
     ```
     helm upgrade --install \
@@ -125,14 +172,17 @@ Once installation is done restart the VM and press enter when it asks to remove 
     --set image.nginx.tag=0.0.1 \
     --set image.squid.repository=pranaysahith/reverse-proxy-squid \
     --set image.squid.tag=0.0.6 \
-    --set application.nginx.env.ALLOWED_DOMAINS='glasswallsolutions.com,www.glasswallsolutions.com' \
+    --set application.nginx.env.ALLOWED_DOMAINS='glasswallsolutions.com\,www.glasswallsolutions.com' \
     --set application.nginx.env.ROOT_DOMAIN='glasswall-icap.com' \
     --set application.nginx.env.SUBFILTER_ENV='' \
-    --set application.nginx.env.ICAP_URL='icap://54.77.168.168:1344/gw_rebuild' \
-    --set application.squid.env.ALLOWED_DOMAINS='glasswallsolutions.com,www.glasswallsolutions.com' \
+    --set application.squid.env.ALLOWED_DOMAINS='glasswallsolutions.com\,www.glasswallsolutions.com' \
     --set application.squid.env.ROOT_DOMAIN='glasswall-icap.com' \
     --set application.squid.env.ICAP_URL='icap://54.77.168.168:1344/gw_rebuild' \
     reverse-proxy chart/
+    ```
+- If the nginx or squid needs few DNS names to be assigned to an IP address, host aliases(below line) can be added to the above command. For example if `www.glasswallsolutions. local` and `www.glasswallsolutions.local` domains should be assigned to `192.168.56.90` IP, add below line to above command:
+    ```
+    --set hostAliases."192\\.168\\.56\\.90"={"glasswallsolutions.local"\,"www.glasswallsolutions.local"} \
     ```
 - Depending on which websites need the proxy, update the above command with the domain names.
 - Note, the IP address of the ICAP server can be changed in above command as per need.
