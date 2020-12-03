@@ -131,6 +131,10 @@
     --set application.squid.env.ICAP_URL='icap://54.77.168.168:1344/gw_rebuild' \
     reverse-proxy chart/
     ```
+- If the nginx or squid needs few DNS names to be assigned to an IP address, host aliases(below line) can be added to the above command. For example if `www.glasswallsolutions. local` and `www.glasswallsolutions.local` domains should be assigned to `192.168.56.90` IP, add below line to above command:
+    ```
+    --set hostAliases."192\\.168\\.56\\.90"={"glasswallsolutions.local"\,"www.glasswallsolutions.local"} \
+    ```
 - Depending on which websites need the proxy, update the above command with the domain names.
 - Note, the IP address of the ICAP server can be changed in above command as per need.
 - In the VM's terminal, run `ip a ` where you will find the IP address for `ens160`
