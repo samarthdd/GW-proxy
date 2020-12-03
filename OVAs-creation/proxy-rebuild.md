@@ -122,11 +122,10 @@
     --set image.nginx.tag=0.0.1 \
     --set image.squid.repository=pranaysahith/reverse-proxy-squid \
     --set image.squid.tag=0.0.6 \
-    --set application.nginx.env.ALLOWED_DOMAINS='glasswallsolutions.com,www.glasswallsolutions.com' \
+    --set application.nginx.env.ALLOWED_DOMAINS='glasswallsolutions.com\,www.glasswallsolutions.com' \
     --set application.nginx.env.ROOT_DOMAIN='glasswall-icap.com' \
     --set application.nginx.env.SUBFILTER_ENV='' \
-    --set application.nginx.env.ICAP_URL='icap://54.77.168.168:1344/gw_rebuild' \
-    --set application.squid.env.ALLOWED_DOMAINS='glasswallsolutions.com,www.glasswallsolutions.com' \
+    --set application.squid.env.ALLOWED_DOMAINS='glasswallsolutions.com\,www.glasswallsolutions.com' \
     --set application.squid.env.ROOT_DOMAIN='glasswall-icap.com' \
     --set application.squid.env.ICAP_URL='icap://54.77.168.168:1344/gw_rebuild' \
     reverse-proxy chart/
