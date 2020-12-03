@@ -1,4 +1,4 @@
-# Creating & exporting Client-Showcase OVA on ESXI
+# Creating & exporting Linux-Desktop OVA on ESXI
 
 
 
