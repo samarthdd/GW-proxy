@@ -38,21 +38,38 @@ https://glasswall-sow-ova.s3.amazonaws.com/vms/visualog/visualog.ova?AWSAccessKe
 ### Fluentd on each VM
 ```
 {
+	sudo su -
 	wget -qO - https://packages.fluentbit.io/fluentbit.key | sudo apt-key add -
-	sudo echo "deb https://packages.fluentbit.io/ubuntu/bionic bionic main" >  /etc/apt/sources.list
-	sudo apt-get update
-	sudo apt-get install td-agent-bit
-	sudo service td-agent-bit start
+	echo "deb https://packages.fluentbit.io/ubuntu/focal focal main" >>  /etc/apt/sources.list
+	apt-get update
+	apt-get install td-agent-bit
+	service td-agent-bit start
 }
 ```
 ### Update Configuration
-- Append these lines at the end of file /etc/td-agent-bit/td-agent-bit.conf
+- Rewrite file /etc/td-agent-bit/td-agent-bit.conf at the end of the file
 ```
+[INPUT]
+    name cpu
+    tag  cpu.local
+
+    # Read interval (sec) Default: 1
+    interval_sec 1
+
+[INPUT]
+    name mem
+    tag  mem.local
+
 [OUTPUT]
     name es
     match *
     Host 78.159.113.37
     Port 9200
+
+[FILTER]
+    Name record_modifier
+    Match *
+    Record hostname ${HOSTNAME}
 ```
 - Restart fluentbit agent.
 ```
