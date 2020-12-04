@@ -34,3 +34,33 @@ https://glasswall-sow-ova.s3.amazonaws.com/vms/visualog/visualog.ova?AWSAccessKe
 	sudo systemctl start kibana.service
 }
 ```
+
+## Log Aggregator
+### Fluentd on each VM
+```
+{
+	wget -qO - https://packages.fluentbit.io/fluentbit.key | sudo apt-key add -
+	sudo echo "deb https://packages.fluentbit.io/ubuntu/bionic bionic main" >  /etc/apt/sources.list
+	sudo apt-get update
+	sudo apt-get install td-agent-bit
+	sudo service td-agent-bit start
+}
+```
+### Update Configuration
+- Append these lines at the end of file /etc/td-agent-bit/td-agent-bit.conf
+```
+[OUTPUT]
+    name es
+    match *
+    Host 78.159.113.37
+    Port 9200
+```
+- Restart fluentbit agent.
+```
+sudo service td-agent-bit restart
+```
+
+
+## Credentials
+Username: ubuntu
+Password: ubuntu123
