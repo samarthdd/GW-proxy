@@ -82,7 +82,7 @@ Once installation is done restart the VM and press enter when it asks to remove 
     docker run -d --restart=unless-stopped -p 8080:80 -p 8443:443 --privileged rancher/rancher:latest
   ```
 
-- To access rancher, in your loaclhost machine's browser, you can navigate to the VM's IP (type `ip a` in case you are not sure what it is) or in this case, `https://<VM IP>:8443`, and setup the credentials with (username: **admin**, password: **Gl@$$wall**).
+- To access rancher, in your loaclhost machine's browser, you can navigate to the VM's IP (type `ip a` in case you are not sure what it is) or in this case, `https://<VM IP>:8443`, and setup the credentials with (username: , password: ).
 
 - If you in any instance encount with "Network connection issues" try reloading.
 
