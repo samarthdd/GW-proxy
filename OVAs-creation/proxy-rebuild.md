@@ -150,7 +150,7 @@ Once installation is done restart the VM and press enter when it asks to remove 
 - Before starting the VM, 
     - make sure a network adapter is attached to the VM
 - Start Proxy Rebuild VM
-- Login (username: **glasswall**, password: **Gl@$$wall**)
+- Login (username:, password: )
 - `cd /etc/netplan` & run `ls` to check the files available (there should only be 1), so we'll modify it with `sudo vi $name_of_file)` and modify it to assign an IP address and gateway. Below is an example configuration:
     ```
     network:
@@ -160,8 +160,8 @@ Once installation is done restart the VM and press enter when it asks to remove 
         ens160:
         dhcp4: no
         addresses:
-            - 91.109.25.88/27
-        gateway4: 91.109.25.94
+            
+        gateway4: 
         nameservers:
             addresses: [8.8.8.8]
     ```
