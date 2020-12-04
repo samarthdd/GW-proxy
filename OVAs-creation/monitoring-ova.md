@@ -1,4 +1,24 @@
 # Monitoring OVA
+
+Table of Contents
+=================
+
+   * [Monitoring OVA](#monitoring-ova)
+   * [Table of Contents](#table-of-contents)
+      * [Diagram](#diagram)
+      * [Image](#image)
+      * [Install OS](#install-os)
+      * [Install Elasticsearch](#install-elasticsearch)
+      * [Install Kibana](#install-kibana)
+      * [Log Aggregator](#log-aggregator)
+         * [Fluentd on each VM](#fluentd-on-each-vm)
+         * [Update Configuration](#update-configuration)
+      * [Kubernetes logging](#kubernetes-logging)
+         * [Create necessary resources](#create-necessary-resources)
+         * [Download daemon set manifest](#download-daemon-set-manifest)
+         * [Update elasticsearch endpoint](#update-elasticsearch-endpoint)
+         * [Deploy fluentbit daemonset](#deploy-fluentbit-daemonset)
+      * [Credentials](#credentials)
 ## Diagram
 ![Monitoring Diagram](images/monitoring-ova.png)
 ## Image
@@ -42,7 +62,7 @@ https://glasswall-sow-ova.s3.amazonaws.com/vms/visualog/visualog.ova?AWSAccessKe
 	wget -qO - https://packages.fluentbit.io/fluentbit.key | sudo apt-key add -
 	echo "deb https://packages.fluentbit.io/ubuntu/focal focal main" >>  /etc/apt/sources.list
 	apt-get update
-	apt-get install td-agent-bit
+	apt-get install -y td-agent-bit
 	service td-agent-bit start
 }
 ```
@@ -76,7 +96,33 @@ https://glasswall-sow-ova.s3.amazonaws.com/vms/visualog/visualog.ova?AWSAccessKe
 sudo service td-agent-bit restart
 ```
 
-
+## Kubernetes logging
+### Create necessary resources
+```
+{
+	kubectl create namespace logging
+	kubectl create -f https://raw.githubusercontent.com/fluent/fluent-bit-kubernetes-logging/master/fluent-bit-service-account.yaml
+	kubectl create -f https://raw.githubusercontent.com/fluent/fluent-bit-kubernetes-logging/master/fluent-bit-role.yaml
+	kubectl create -f https://raw.githubusercontent.com/fluent/fluent-bit-kubernetes-logging/master/fluent-bit-role-binding.yaml
+	kubectl create -f https://raw.githubusercontent.com/fluent/fluent-bit-kubernetes-logging/master/output/elasticsearch/fluent-bit-configmap.yaml
+}
+```
+### Download daemon set manifest
+```
+wget https://raw.githubusercontent.com/fluent/fluent-bit-kubernetes-logging/master/output/elasticsearch/fluent-bit-ds.yaml
+```
+### Update elasticsearch endpoint
+```
+        - name: FLUENT_ELASTICSEARCH_HOST
+          value: "78.159.113.37"
+        - name: FLUENT_ELASTICSEARCH_PORT
+          value: "9200"
+```
+### Deploy fluentbit daemonset
+```
+kubectl create -f fluent-bit-ds.yaml
+```
+## 
 ## Credentials
 Username: ubuntu
 Password: ubuntu123
