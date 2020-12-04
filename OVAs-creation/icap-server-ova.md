@@ -166,14 +166,35 @@ From VMWare esxi console or VMware workstation, just do
 2. Start the VM
 
 3. Edit the vm main IP (do not touch the secondary one)
+- Filename /etc/netplan/01-netcfg.yaml , edit it as root . Bellow is an example of content, do not change the second one (192.168.99.37/24)
+```
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens160:
+      dhcp4: no
+      addresses:
+        - 91.109.25.77/27
+        - 192.168.99.37/24
+      gateway4: 91.109.25.94
+      nameservers:
+          addresses: [8.8.8.8]
+```
+- Run netplan apply to persist the changes
+- Make a connectivity test by running a ping to google (ping www.google.com ) if the network settings are correct, then it should work.
 
 4. Reboot the VM
 
 5. Edit the service and update the external IP to the new server IP (run the command bellow and update the externalIPs section)
 ```
-kubectl -n icap-adaptation edit svc/icap-svc
+kubectl -n icap-adaptation edit svc/icap-svc-host
 ```
 
 6. Your vm should be up and running with ICAP server running. Do not hesitate to ssh to the machine and run kubectl commands to check pod status and logs
+```
+kubectl -n icap-adaptation get pods
+```
+All pods should be in running status. 
 
 
