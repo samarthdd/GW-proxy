@@ -19,6 +19,23 @@ Table of Contents
          * [Update elasticsearch endpoint](#update-elasticsearch-endpoint)
          * [Deploy fluentbit daemonset](#deploy-fluentbit-daemonset)
       * [Credentials](#credentials)
+
+## Monitoring features
+|Feature          |Type                     |   Status              |  OVAs that support it |
+|--	           |--	     	            |--                      |--                    |
+|  CPU usage | Host |Implemented |
+|  Memory usage |Host | Implemented|
+|  Disk usage |Host |Implemented |
+|  Network usage |Host |Implemented |
+|  Rebuild success rate |Rebuild | Implemented|
+|  Rebuild error rate |Rebuild |Implemented |
+|  Rebuild rate  |Rebuild |Implemented |
+|  CPU usage |	pod | |
+|  Memory usage | pod| |
+|  Disk usage |pod | |
+|  Network usage |pod | |
+
+
 ## Diagram
 ![Monitoring Diagram](images/monitoring-ova.png)
 ## Image
