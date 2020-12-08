@@ -84,13 +84,11 @@ OVA credentials login/password: glasswall/Komatoso101abam
 
     -   Install minimum packages.
 
-4.  Update operating system (e.g. Install Operating system using the following:
+4.  Test connection using SSH:
 
     -   Connect using SSH.
 
-    -   sudo apt-get update.
-
-5.  Update operating system (e.g. Install Operating system using the following:
+5.  Update operating system:
 
     -   Connect using SSH.
 
@@ -105,8 +103,8 @@ OVA credentials login/password: glasswall/Komatoso101abam
 sudo su -
 apt-get update
 apt-get install -y bind9
-sudo systemctl enable bind9
-sudo systemctl restart bind9
+systemctl enable bind9
+systemctl restart bind9
 ```
 -   Create Initial Config of Bind vi /etc/bind/named.conf:
 ```bash
@@ -140,13 +138,7 @@ zone "glasstest.com" {
         file "/var/lib/bind/glasstest.com.hosts";
         };
 ```
--   Create Initial Config of Bind vi cat /etc/bind/rndc.key:
-```bash
-key "rndc-key" {
-        algorithm hmac-sha256;
-        secret "GoEHtLLLDhYdnPwBcRZQfOZ6V3JHJs/AzO+/4uXyL04=";
-};
-```
+
 -   Create Initial Config of Bind vi /etc/bind/named.conf.options:
 ```bash
 options {
@@ -206,26 +198,20 @@ rm /etc/resolv.conf
 nameserver 127.0.0.1
 ```
 
--   Reconfigure resolver:
-```bash
-systemctl stop systemd-resolved.service
-systemctl disable systemd-resolved.service
-systemctl restart bind9.service
-```
-
 -   Install Webmin:
 ```bash
-https://kifarunix.com/setup-bind-dns-using-webmin-on-debian-10/
+sudo su -
 apt-get update
-apt -y install mc
 apt -y install software-properties-common apt-transport-https wget
-wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
+wget -q http://www.webmin.com/jcameron-key.asc -O- | apt-key add -
 add-apt-repository "deb [arch=amd64] http://download.webmin.com/download/repository sarge contrib"
 apt -y install webmin
 ufw allow 10000/tcp
 ```
 
--   Add PKI to Webmin - https://IP_ADDRESS:10000/webmin/edit_mods.cgi?xnavigation=1 install extension from HTTP or FTP URL:
+-   Test to login to webmin using operating system credentials - https://IP_ADDRESS:10000
+
+-   Add PKI to Webmin - https://IP_ADDRESS:10000/webmin/edit_mods.cgi?xnavigation=1 chosse Webmin Modules and install module from HTTP or FTP URL:
 
 ```bash
 http://www.webmin.com/download/modules/certmgr.wbm.gz
@@ -234,7 +220,6 @@ http://www.webmin.com/download/modules/certmgr.wbm.gz
 -   Install Easy-RSA:
 ```bash
 apt -y install easy-rsa
-mkdir /opt/easyrsa
 cd /opt
 make-cadir easyrsa
 cd /opt/easyrsa
