@@ -10,7 +10,7 @@ sleep 1
 }
 
 function main_dialog () {
-choice=$( dialog $DIALOG_OPTS --menu Wizard -1 -1 0 1 'Configure network' 2 'Change password' )
+choice=$( dialog $DIALOG_OPTS --menu Wizard -1 -1 -1 1 'Configure network' 2 'Change password' )
 case "$choice" in
    1)
       choice=$( network_dialog )
@@ -69,7 +69,8 @@ function errorbox () {
 dialog $DIALOG_OPTS --msgbox "$1" 0 0
 }
 
-
+ 
+which dialog || install_dialog
 true
 while [ "$?" == "0" ] ; do
 main_dialog
