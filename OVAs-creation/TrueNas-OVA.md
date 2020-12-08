@@ -13,20 +13,19 @@
     
     3. Give some name to VM 
        Select 
-           - Guest OS - Linux
-           - Guest OS Version - Ubuntu linux(64 bit)
+           - Guest OS - other
+           - Guest OS Version - FreeBSD 12 or later versions (64-bit)
     
     4. Select Storage in next screen and click next
     
     5. Customize settings specifications
             - CPU - 2
-            - RAM - 8gb ( Tick reserve all guest memory )
+            - RAM - 8gb ( select checkbox "Reserve all guest memory (All locked)" )
             - Hard disk - Create 3 hard discs , one with 8 gb and other two with 16 gb with all 3 thin provisioned.
             - Click on add another device and select SCSI Controller , select LSI Logic Parallel from dropdown.
             - Expand CD/DVD Media , Select Database ISO file and select TrueNas ISO which was uploaded in first step 
     
 ![pp](https://user-images.githubusercontent.com/70108899/101371990-b27c8480-38ab-11eb-85eb-98f87b327966.PNG)
-
     
     6. Select Next and click finish.
     
@@ -56,23 +55,24 @@ From TrueNas web interface,do the following
     2. Select vmx0 by entering `1`
     3. Enter `n` for delete interface? If this question is not shown move to step 4
     4. Enter `n` for remove current settings
-    5. Enter `y` for Configure interface for DHCP
-    6. Give interface some description
-    7. Enter `n` for configuring ipv6
-    8. Enter `n` for Configure fail over setting
-    9. Repeat first 3 steps and you will get prompt "Configure ipv4 option?"
-    10. Enter `y` and enter name and give proper ip (ipv4 example - 91.109.25.xx/27)
+    5. You will get prompt "Configure ipv4 option?"
+    6. Enter `y` and enter Interface name and give proper ip (ipv4 example - 91.109.25.xx/26)
+    7. Enter `n` for configure IPv6?
+    8. Enter `n` for Configure failover settings?
            
- -  You need to setup Default route by entering `5`
-    1. Enter destination (ex. 91.109.25.94)
-    2. Enter gateway
+-  You need to setup Default route by entering `4`
+      Enter gateway IPv4 (ex. 91.109.25.94)
+   
 -  Finally reboot by entering `10` and get proper TrueNas IP and use it to access TrueNas interface.
- 
+-  Open the Network Interface IP ( which appears in web gui ) in browser to open TrueNAS ui
+        username: root
+        password: Gl@$$wall
+        
  ## Export OVA of VM
-    * Download OVA tool
-    * Shut down the machine 
-    * Open the controller machine (Or from your local machine, just the controller machine speed the things up)
-    * Run the following command to export the VM with OVA extension, it will be exported in your current working directory.
+    1. Download OVA tool
+    2. Shut down the machine 
+    3. Open the controller machine (Or from your local machine, just the controller machine speed the things up)
+    4. Run the following command to export the VM with OVA extension, it will be exported in your current working directory.
 
     Note: the username and password to be provided here are the initial ESXI server credentials  
 
