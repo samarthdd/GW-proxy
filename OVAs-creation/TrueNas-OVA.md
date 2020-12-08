@@ -65,7 +65,7 @@ From TrueNas web interface,do the following
       Enter gateway IPv4 (ex. 91.109.25.94)
    
 -  Finally reboot by entering `10` and get proper TrueNas IP and use it to access TrueNas interface.
- 
+-  Open the IP in browser and use 'root' as username
  ## Export OVA of VM
     1. Download OVA tool
     2. Shut down the machine 
