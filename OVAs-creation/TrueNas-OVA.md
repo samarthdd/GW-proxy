@@ -20,7 +20,7 @@
     
     5. Customize settings specifications
             - CPU - 2
-            - RAM - 8gb ( Tick reserve all guest memory )
+            - RAM - 8gb ( select checkbox "Reserve all guest memory (All locked)" )
             - Hard disk - Create 3 hard discs , one with 8 gb and other two with 16 gb with all 3 thin provisioned.
             - Click on add another device and select SCSI Controller , select LSI Logic Parallel from dropdown.
             - Expand CD/DVD Media , Select Database ISO file and select TrueNas ISO which was uploaded in first step 
@@ -55,17 +55,19 @@ From TrueNas web interface,do the following
     2. Select vmx0 by entering `1`
     3. Enter `n` for delete interface? If this question is not shown move to step 4
     4. Enter `n` for remove current settings
-    5. Enter `y` for Configure interface for DHCP
-    6. You will get prompt "Configure ipv4 option?"
-    7. Enter `y` and enter Interface name and give proper ip (ipv4 example - 91.109.25.xx/26)
-    8. Enter `n` for configure IPv6?
-    9. Enter `n` for Configure failover settings?
+    5. You will get prompt "Configure ipv4 option?"
+    6. Enter `y` and enter Interface name and give proper ip (ipv4 example - 91.109.25.xx/26)
+    7. Enter `n` for configure IPv6?
+    8. Enter `n` for Configure failover settings?
            
 -  You need to setup Default route by entering `4`
       Enter gateway IPv4 (ex. 91.109.25.94)
    
 -  Finally reboot by entering `10` and get proper TrueNas IP and use it to access TrueNas interface.
--  Open the IP in browser and use 'root' as username
+-  Open the Network Interface IP ( which appears in web gui ) in browser to open TrueNAS ui
+        username: root
+        password: Gl@$$wall
+        
  ## Export OVA of VM
     1. Download OVA tool
     2. Shut down the machine 
