@@ -32,7 +32,9 @@ OVF + VMDK hosting a clone of `www.gov.uk`
   cd GW-proxy/OVAs-creation/govuk
   ./configure.sh
   ```
-- Download the Gov.uk clone archive `wget -O ~/gov_uk.zip <Links goes here>`
+
+- Download the Gov.uk clone archive `wget -O ~/gov_uk.zip https://glasswall-sow-ova.s3-eu-west-1.amazonaws.com/vms/gov-uk/gov_uk.zip`
+
 - Extract the archive into **`/var/www/html`**
   
   ```bash
