@@ -10,7 +10,7 @@ sleep 1
 }
 
 function main_dialog () {
-choice=$( dialog $DIALOG_OPTS --menu Wizard -1 -1 -1 1 'Configure network' 2 'Change password' )
+choice=$( dialog $DIALOG_OPTS --menu Wizard -1 -1 5 1 'Configure network' 2 'Change password' )
 case "$choice" in
    1)
       choice=$( network_dialog )
@@ -22,9 +22,9 @@ esac
 }
 
 function chpass_dialog () {
-npw1=$(dialog $DIALOG_OPTS --ok-label "Submit" --insecure --passwordbox "New password for $USER" 0 0 '*')
-npw2=$(dialog $DIALOG_OPTS --ok-label "Submit" --insecure --passwordbox "Confirm password for $USER" 0 0 '*')
-echo -e "$npw1\n$npw2" | sudo passwd || errorbox "Failed to change password"
+npw1=$(dialog $DIALOG_OPTS --ok-label "Submit" --insecure --passwordbox "New password for $USER" 0 0 )
+npw2=$(dialog $DIALOG_OPTS --ok-label "Submit" --insecure --passwordbox "Confirm password for $USER" 0 0 )
+echo -e "$npw1\n$npw2" | sudo passwd $USER 2>/dev/null || errorbox "Failed to change password"
 }
 
 function network_dialog () {
@@ -46,8 +46,8 @@ read dns
 [ -z $dns ] && return
 if [ "$(ls /etc/netplan/*.yaml /etc/netplan/*.yml 2>/dev/null |  tail -n1 | wc -l)" != 0 ] ; then
 [ -d /etc/netplan.backup ] || sudo mkdir -p /etc/netplan.backup
-sudo mv /etc/netplan/*.yaml /etc/netplan.backup || true
-sudo mv /etc/netplan/*.yml /etc/netplan.backup || true
+sudo mv /etc/netplan/*.yaml /etc/netplan.backup 2>/dev/null || true
+sudo mv /etc/netplan/*.yml /etc/netplan.backup 2>/dev/null || true
 fi
 sudo tee /etc/netplan/$(date +%F-%H_%M).yaml <<EOF >/dev/null
 network:
