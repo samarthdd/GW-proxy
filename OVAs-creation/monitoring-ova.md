@@ -14,13 +14,15 @@
 	* 8.3. [Update elasticsearch endpoint](#Updateelasticsearchendpoint)
 	* 8.4. [Deploy fluentbit daemonset](#Deployfluentbitdaemonset)
 * 9. [VM Metrics](#VMMetrics)
-	* 9.1. [Download, extract and install node_exporter](#Downloadextractandinstallnode_exporter)
-	* 9.2. [Create systemd service for node_exporter](#Createsystemdservicefornode_exporter)
-	* 9.3. [Test metrics endpoint](#Testmetricsendpoint)
+	* 9.1. [Clone this repo](#Clonethisrepo)
+	* 9.2. [Download, extract and install node_exporter](#Downloadextractandinstallnode_exporter)
+	* 9.3. [Create systemd service for node_exporter](#Createsystemdservicefornode_exporter)
+	* 9.4. [Test metrics endpoint](#Testmetricsendpoint)
 * 10. [Kubernetes Metrics](#KubernetesMetrics)
-	* 10.1. [Configure VM_IP_ADDRESS](#ConfigureVM_IP_ADDRESS)
-	* 10.2. [Deploy kube-state-metrics](#Deploykube-state-metrics)
-	* 10.3. [Test metrics endpoint](#Testmetricsendpoint-1)
+	* 10.1. [Follow section 9 above to install node_exporter](#Followsection9abovetoinstallnode_exporter)
+	* 10.2. [Configure VM_IP_ADDRESS](#ConfigureVM_IP_ADDRESS)
+	* 10.3. [Deploy kube-state-metrics](#Deploykube-state-metrics)
+	* 10.4. [Test metrics endpoint](#Testmetricsendpoint-1)
 * 11. [Credentials](#Credentials)
 
 <!-- vscode-markdown-toc-config
@@ -154,27 +156,33 @@ kubectl create -f fluent-bit-ds.yaml
 ```
 ##  9. <a name='VMMetrics'></a>VM Metrics
 To collect VM metrics, please follow the instruction
-###  9.1. <a name='Downloadextractandinstallnode_exporter'></a>Download, extract and install node_exporter
+###  9.1. <a name='Clonethisrepo'></a>Clone this repo
+```
+	git clone https://github.com/k8-proxy/GW-proxy
+	cd GW-proxy/OVAs-creation
+```
+###  9.2. <a name='Downloadextractandinstallnode_exporter'></a>Download, extract and install node_exporter
 ```
 {
     wget https://github.com/prometheus/node_exporter/releases/download/v1.0.1/node_exporter-1.0.1.linux-amd64.tar.gz
     tar xvzf node_exporter-1.0.1.linux-amd64.tar.gz
-    sudo cp node_exporter /usr/sbin/
+    sudo cp node_exporter-1.0.1.linux-amd64/node_exporter /usr/sbin/
 }    
 ```
-###  9.2. <a name='Createsystemdservicefornode_exporter'></a>Create systemd service for node_exporter
+###  9.3. <a name='Createsystemdservicefornode_exporter'></a>Create systemd service for node_exporter
 ```
 {
-    sudo cp node_exporter.service /etc/systemd/system/
+	sudo useradd node_exporter -s /sbin/nologin
+    sudo cp monitoring-scripts/node_exporter.service /etc/systemd/system/
     sudo mkdir -p /etc/prometheus
-    sudo cp node_exporter.config /etc/prometheus/node_exporter.config
+    sudo cp monitoring-scripts/node_exporter.config /etc/prometheus/node_exporter.config
     sudo systemctl daemon-reload
     sudo systemctl enable node_exporter
     sudo systemctl start node_exporter
     sudo systemctl status node_exporter
 }
 ```
-###  9.3. <a name='Testmetricsendpoint'></a>Test metrics endpoint
+###  9.4. <a name='Testmetricsendpoint'></a>Test metrics endpoint
 ```
 curl http://localhost:9100/metrics
 ...
@@ -189,13 +197,14 @@ go_gc_duration_seconds_count 67
 ```
 ##  10. <a name='KubernetesMetrics'></a>Kubernetes Metrics
 To collect Kubernetes metrics, please follow the instruction
-###  10.1. <a name='ConfigureVM_IP_ADDRESS'></a>Configure VM_IP_ADDRESS
+###  10.1. <a name='Followsection9abovetoinstallnode_exporter'></a>Follow section 9 above to install node_exporter 
+###  10.2. <a name='ConfigureVM_IP_ADDRESS'></a>Configure VM_IP_ADDRESS
 Open file ```monitoring-scripts/k8s/service.yaml``` and change variable ```VM_IP_ADDRESS``` to the assigned VM IP Address
-###  10.2. <a name='Deploykube-state-metrics'></a>Deploy kube-state-metrics
+###  10.3. <a name='Deploykube-state-metrics'></a>Deploy kube-state-metrics
 ```
 	kubectl apply -f monitoring-scripts/k8s
 ```
-###  10.3. <a name='Testmetricsendpoint-1'></a>Test metrics endpoint
+###  10.4. <a name='Testmetricsendpoint-1'></a>Test metrics endpoint
 ```
 	curl http://VM_IP_ADDRESS:8080/metrics
 ```
