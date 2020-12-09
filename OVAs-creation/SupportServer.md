@@ -103,7 +103,7 @@ OVA credentials login/password: glasswall/Komatoso101abam
 sudo su -
 apt-get update
 apt-get install -y bind9
-systemctl enable bind9
+systemctl enable named
 systemctl restart bind9
 ```
 -   Create Initial Config of Bind vi /etc/bind/named.conf:
@@ -275,7 +275,7 @@ user-mapping:    /etc/guacamole/user-mapping.xml
 ```bash
 mkdir /etc/guacamole/{extensions,lib}
 echo "GUACAMOLE_HOME=/etc/guacamole" >> /etc/default/tomcat9
-echo -n yourpassword | openssl md5
+echo -n 'Gl@$$wall' | openssl md5
 ```
 
 -   Configure Guacamole adding md5 password for user admin from prevoius command, you can also modify servers IP and users that Guacamole can use in meny - vi  /etc/guacamole/user-mapping.xml:
@@ -283,8 +283,8 @@ echo -n yourpassword | openssl md5
 ```bash
 <user-mapping>
     <authorize
-            username="admin"
-            password="49aa66843380c377e93b198b966eb699"
+            username="glasswall"
+            password="cac932abcf03019cd760951f23c6b079"
             encoding="md5">
 
         <connection name="Ubuntu20.04-Server">
