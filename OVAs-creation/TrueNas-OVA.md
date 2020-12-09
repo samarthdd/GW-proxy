@@ -51,7 +51,7 @@
 
 3. Next it will ask you which of 3 hard disc to use for installation, Select the one with 8 gb,by pressing spacebar to select. 
 
-4. Give a password for your TrueNas ( Gl@$$wall )
+4. Give a password for your TrueNas ( This password will be used for TrueNas Ui login in browser )
 
 5. Lastly select boot via BIOS.
 
@@ -98,7 +98,7 @@ From TrueNas web interface,do the following
      Open https://{Network Interface IPv4}
         
         username: root
-        password: Gl@$$wall
+        ( The password will be the one entere in step 4 )
         
     ![image](https://user-images.githubusercontent.com/64204445/101631967-35881100-3a4b-11eb-81f6-90304c9ecc78.png)
 
