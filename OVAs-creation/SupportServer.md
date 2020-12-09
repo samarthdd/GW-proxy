@@ -11,6 +11,10 @@ If you have OVA you can go to Create a Virtual machine on ESX Server from OVA. L
 
 OVA credentials login/password: glasswall/Komatoso101abam
 
+
+[How to use - Watch the Video](https://github.com/MariuszFerdyn/GW-proxy/blob/master/OVAs-creation/SupportServer/SupportServer.mp4?raw=true)
+
+
 ## Create a Virtual machine on the ESX Server.
 
 1.  Log in to the ESX server
@@ -80,13 +84,11 @@ OVA credentials login/password: glasswall/Komatoso101abam
 
     -   Install minimum packages.
 
-4.  Update operating system (e.g. Install Operating system using the following:
+4.  Test connection using SSH:
 
     -   Connect using SSH.
 
-    -   sudo apt-get update.
-
-5.  Update operating system (e.g. Install Operating system using the following:
+5.  Update operating system:
 
     -   Connect using SSH.
 
@@ -101,8 +103,8 @@ OVA credentials login/password: glasswall/Komatoso101abam
 sudo su -
 apt-get update
 apt-get install -y bind9
-sudo systemctl enable bind9
-sudo systemctl restart bind9
+systemctl enable bind9
+systemctl restart bind9
 ```
 -   Create Initial Config of Bind vi /etc/bind/named.conf:
 ```bash
@@ -136,13 +138,7 @@ zone "glasstest.com" {
         file "/var/lib/bind/glasstest.com.hosts";
         };
 ```
--   Create Initial Config of Bind vi cat /etc/bind/rndc.key:
-```bash
-key "rndc-key" {
-        algorithm hmac-sha256;
-        secret "GoEHtLLLDhYdnPwBcRZQfOZ6V3JHJs/AzO+/4uXyL04=";
-};
-```
+
 -   Create Initial Config of Bind vi /etc/bind/named.conf.options:
 ```bash
 options {
@@ -202,26 +198,20 @@ rm /etc/resolv.conf
 nameserver 127.0.0.1
 ```
 
--   Reconfigure resolver:
-```bash
-systemctl stop systemd-resolved.service
-systemctl disable systemd-resolved.service
-systemctl restart bind9.service
-```
-
 -   Install Webmin:
 ```bash
-https://kifarunix.com/setup-bind-dns-using-webmin-on-debian-10/
+sudo su -
 apt-get update
-apt -y install mc
 apt -y install software-properties-common apt-transport-https wget
-wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
+wget -q http://www.webmin.com/jcameron-key.asc -O- | apt-key add -
 add-apt-repository "deb [arch=amd64] http://download.webmin.com/download/repository sarge contrib"
 apt -y install webmin
 ufw allow 10000/tcp
 ```
 
--   Add PKI to Webmin - https://IP_ADDRESS:10000/webmin/edit_mods.cgi?xnavigation=1 install extension from HTTP or FTP URL:
+-   Test to login to webmin using operating system credentials - https://IP_ADDRESS:10000
+
+-   Add PKI to Webmin - https://IP_ADDRESS:10000/webmin/edit_mods.cgi?xnavigation=1 chosse Webmin Modules and install module from HTTP or FTP URL:
 
 ```bash
 http://www.webmin.com/download/modules/certmgr.wbm.gz
@@ -230,7 +220,6 @@ http://www.webmin.com/download/modules/certmgr.wbm.gz
 -   Install Easy-RSA:
 ```bash
 apt -y install easy-rsa
-mkdir /opt/easyrsa
 cd /opt
 make-cadir easyrsa
 cd /opt/easyrsa
@@ -238,8 +227,24 @@ cd /opt/easyrsa
 ./easyrsa build-ca nopass
 ```
 
+-   Install Easy-RSA - for Ubuntu 18.x - if previous doesn't work
+```bash
+sudo su -
+rm -r /opt/easyrsa
+cd /opt
+curl -L https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.8/EasyRSA-3.0.8.tgz | tar xzvf -
+mv EasyRSA* easyrsa
+chown root:root -R easyrsa
+cd easyrsa
+./easyrsa init-pki
+./easyrsa build-ca nopass
+```
+
+
 -   Install Guacamole:
 ```bash
+sudo su -
+cd ~
 apt-get install make gcc g++ libcairo2-dev libjpeg-turbo8-dev libpng-dev libtool-bin libossp-uuid-dev libavcodec-dev libavutil-dev libswscale-dev freerdp2-dev libpango1.0-dev libssh2-1-dev libvncserver-dev libtelnet-dev libssl-dev libvorbis-dev libwebp-dev -y
 apt-get install tomcat9 tomcat9-admin tomcat9-common tomcat9-user -y
 systemctl start tomcat9
@@ -273,7 +278,7 @@ echo "GUACAMOLE_HOME=/etc/guacamole" >> /etc/default/tomcat9
 echo -n yourpassword | openssl md5
 ```
 
--   Configure Guacamole adding md5 password from prevoius command vi  /etc/guacamole/user-mapping.xml:
+-   Configure Guacamole adding md5 password for user admin from prevoius command, you can also modify servers IP and users that Guacamole can use in meny - vi  /etc/guacamole/user-mapping.xml:
 
 ```bash
 <user-mapping>
@@ -297,6 +302,15 @@ echo -n yourpassword | openssl md5
 </user-mapping>
 ```
 
+-   Configure Guacamole to use ad-hock connections:
+
+```bash
+cd ~
+wget "http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/1.2.0/binary/guacamole-auth-quickconnect-1.2.0.tar.gz" -O guacamole-auth-quickconnect-1.2.0.tar.gz
+tar xvfz guacamole-auth-quickconnect-1.2.0.tar.gz
+mv guacamole-auth-quickconnect-1.2.0/guacamole-auth-quickconnect-1.2.0.jar /etc/guacamole/extensions/
+```
+
 -   Restart Guacamole:
 ```bash
 systemctl restart guacd
@@ -312,27 +326,49 @@ systemctl restart tomcat9
 
     Go to Guacamole http://IP_ADDRESS:8080/guacamole/#/:
 	
-	Ad hack connection: rdp://aw:password@40.127.163.22/?security=any&ignore-cert=true
-	
-	For password see bellow.
-
+	Ad hack connection (Enter Connection URI): ssh://IP_ADDRESS/ or rdp://aw:password@40.127.163.22/?security=any&ignore-cert=true 
 
 -   PKI
 
-    Create new request https://91.109.25.80:10000/certmgr/gencsr.cgi?xnavigation=1
+    Generate Key and Certificate Signing Request (CSR) 2048 bits https://IP_ADDRESS:10000/certmgr/gencsr.cgi?xnavigation=1
 	
-	Sign the request:
+	Sign the request (use uniq RequestTest01):
 	
 ```bash
+sudo su -
+cd /opt/easyrsa
 ./easyrsa import-req /etc/ssl/csr/hostcsr.pem RequestTest01
 ./easyrsa sign-req server RequestTest01
 ```
+
+-   Copy key (/etc/ssl/private/hostkey.pem), cert (/opt/easyrsa/pki/issued/RequestTest01.crt) and CA cert (/opt/easyrsa/pki/ca.crt) and delete files for next request
+
+```bash
+sudo su -
+rm /etc/ssl/csr/hostcsr.pem
+rm /etc/ssl/private/hostkey.pem
+```
+
 
 -   DNS
 
     https://IP_ADDRESS:10000/bind8/?xnavigation=1
 	
-	After reconfigure always do systemctl restart bind9.service
+	After reconfigure DNS always do 
+	
+```bash
+sudo su -
+systemctl restart bind9.service
+```
+
+    You can test DNS solution by:
+
+```bash
+nslookup
+server 127.0.0.1
+google.com
+second.glasstest.com
+```
 
 8.  Prepare OVA
 
@@ -353,6 +389,7 @@ history -c && history -w
     <https://my.vmware.com/web/vmware/downloads/details?productId=614&downloadGroup=OVFTOOL420>.
 
 -   Export OVA (glasswallsolutions.com is a VM name)
+
 ```bash
 "C:\Program Files (x86)\VMware\VMware Workstation\OVFTool\ovftool.exe" vi://esxi01.glasswall-icap.com/glasswallsolutions.com glasswallsolutions.com.ova
 ```
