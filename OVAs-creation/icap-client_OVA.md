@@ -128,6 +128,23 @@ glasswallsolutions/k8-centos7   latest              431852dc2eb5        3 weeks 
 #Make sure have any stable ICAP server, I use ICAP-server 54.77.168.168 for this test
 #Run command below:
 docker run -v /root:/root --network host c-icap-client -i 54.77.168.168 -p 1344 -s gw_rebuild -f /root/Execute+Java+Script_JS_PDF.pdf -o /root/clean.pdf -v
+#output like:
+ICAP server:54.77.168.168, ip:91.109.25.89, port:1344
+
+
+ICAP HEADERS:
+        ICAP/1.0 200 OK
+        Server: C-ICAP/0.5.6
+        Connection: keep-alive
+        ISTag: CI0001-2.1.1
+        Encapsulated: res-hdr=0, res-body=207
+
+RESPMOD HEADERS:
+        HTTP/1.0 200 OK
+        Date: Wed Dec  9 15:38:51 2020
+        Last-Modified: Wed Dec  9 15:38:51 2020
+        Content-Length: 383912
+        Via: ICAP/1.0 mvp-icap-service-5dbb694956-gccdf (C-ICAP/0.5.6 Glasswall Rebuild service )
 #check to make sure file clean.pdf is created
 ls -l
 -rwxr----- 1 root root 383912 Dec  9 15:08 clean.pdf
@@ -249,6 +266,23 @@ cd ~
 #Make sure we have a stable ICAP server, I use ICAP-server 54.77.168.168 for this test
 #Run command below:
 docker run -v /root:/root --network host c-icap-client -i 54.77.168.168 -p 1344 -s gw_rebuild -f /root/Execute+Java+Script_JS_PDF.pdf -o /root/clean.pdf -v
+#Output like:
+ICAP server:54.77.168.168, ip:91.109.25.89, port:1344
+
+
+ICAP HEADERS:
+        ICAP/1.0 200 OK
+        Server: C-ICAP/0.5.6
+        Connection: keep-alive
+        ISTag: CI0001-2.1.1
+        Encapsulated: res-hdr=0, res-body=207
+
+RESPMOD HEADERS:
+        HTTP/1.0 200 OK
+        Date: Wed Dec  9 15:38:51 2020
+        Last-Modified: Wed Dec  9 15:38:51 2020
+        Content-Length: 383912
+        Via: ICAP/1.0 mvp-icap-service-5dbb694956-gccdf (C-ICAP/0.5.6 Glasswall Rebuild service )
 #check to make sure file clean.pdf is created
 ls -l
 -rwxr----- 1 root root 383912 Dec  9 15:08 clean.pdf
