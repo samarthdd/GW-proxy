@@ -76,7 +76,7 @@ From TrueNas web interface,do the following
 7. Enter `n` for "Configure IPv6?"
 8. Enter `n` for "Configure failover settings?". After this you will redirected to Figure 3.
 
-    Note : if you get "Configure ntergace for DHCP?" Enter `y` 
+    Note : if you get "Configure network for DHCP?" Enter `y` 
 
    ![image](https://user-images.githubusercontent.com/64204445/101627046-c78c1b80-3a43-11eb-8d86-1a07a017f9cb.png)  
         Figure 4 : Sequence of commands to set IPv4
@@ -91,7 +91,7 @@ From TrueNas web interface,do the following
         
 10. Finally reboot by entering `10`
             
-11.  Open the Network Interface IP ( which appears in gui ) in browser to open TrueNAS ui
+11.  Open the Network Interface IP in browser to open TrueNAS UI
 
     ![image](https://user-images.githubusercontent.com/64204445/101631401-46845280-3a4a-11eb-9359-c3b9fb353cea.png)
 
