@@ -88,8 +88,10 @@ From TrueNas web interface,do the following
       
       ![image](https://user-images.githubusercontent.com/64204445/101626935-a4616c00-3a43-11eb-9a63-a4f75820b01f.png)  
         Figure 5 : Gateway configaration
+        
+10. Finally reboot by entering `10`
             
--  Open the Network Interface IP ( which appears in gui ) in browser to open TrueNAS ui
+11.  Open the Network Interface IP ( which appears in gui ) in browser to open TrueNAS ui
 
     ![image](https://user-images.githubusercontent.com/64204445/101631401-46845280-3a4a-11eb-9359-c3b9fb353cea.png)
 
