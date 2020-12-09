@@ -6,23 +6,36 @@
 
 * Access esxi server with valid credentials 
 
-* Create a new Ubuntu linux (64-bit) VM with minimal hardware  minimum specs recommended by ubuntu  (2 CPU , 4 GB ram & 32 GB of Harddisk (remember to make disk Provisioning to be thin provisioned  )) 
+* Create a new Ubuntu linux (64-bit) VM with:
+  * 2 CPU
+  * 4 GB ram 
+  * 32 GB of Harddisk (set disk Provisioning to be thin provisioned) 
 
   ![image](https://user-images.githubusercontent.com/58347752/101004090-23006a00-3569-11eb-9052-1f5a9d3dbb99.png)
 
-* Also CD/DVD drive is connected at power on and choose ubuntu desktop ISO to boot from
+* Also CD/DVD drive is connected at power on and choose ***UBUNTU DESKTOP ISO*** to boot from
 
   ![image](https://user-images.githubusercontent.com/58347752/101005217-74a8f480-3569-11eb-8e7d-2fa83835c179.png)
 
-* Finish installation and boot the machine then select install ubuntu and continue with all default configuration.
+* Finish installation and reboot the VM.
 
-* Set the username to be glasswall and the agreed password (same password as the controller VM) 
+**Implementation**
 
-* Once installation is done restart the VM and press enter when it asks to remove the CD
+* Power on created VM.
 
-* Open Network settings
+* Select to install ubuntu and continue with all default configuration.
 
-* Edit Wired connection and go to IPV4 tab, Set IPV4 method to be ***Manual*** then add a valid IP address from the provided list & finally set the the DNS to be manual and add the following ***8.8.8.8***  (Please refer to this step again if you want to change any network configurations in later stages)
+* Set the username to be `glasswall` and password to `Gl@$$wall`
+
+* Once installation is done restart the VM and press enter when it asks to remove the CD.
+
+* Once Ubuntu Desktop interface appears, login and open Network settings (Go to Power button in the upper right corner, select Settings and choose Network from the left side bar)
+
+* Edit Wired connection (click on settings button next to "Connected - 10000Mb/s")
+  * go to IPV4 tab
+  * set IPV4 method to be ***Manual*** 
+  * add a valid IP address from the provided list, along with netmask and gateway
+  * set the the DNS to be manual (set to off automatic button) and add the following ***8.8.8.8***  (Please refer to this step again if you want to change any network configurations in later stages)
 
   ![image](https://user-images.githubusercontent.com/58347752/101046373-a9c53f00-3589-11eb-8aea-c4e263d0c2ff.png)
 
@@ -31,6 +44,7 @@
   ```bash
   nmcli connection down Wired\ connection\ 1
   nmcli connection up Wired\ connection\ 1
+  ip a # verify correct address for ens160
   ```
 
 * Install prerequisites 
@@ -43,7 +57,6 @@
   ```
 
   
-
 * Allow Remote desktop connection 
 
   ```bash
@@ -52,20 +65,19 @@
   sudo ufw allow from any to any port 3389 proto tcp
   ```
 
-* Install ***Nomachine*** (optional) which is a remote desktop tool that's more reliable than RDC
+* OPTIONAL (in case you want to access Linux Desktop VM remotely)
 
-  ​	from Firefox visit the following link https://www.nomachine.com/download/download&id=2 and click on download
+  Install ***Nomachine*** - a remote desktop tool that's more reliable than Remote Desktop
 
-  ​	then from terminal run the following
+  ​From Firefox visit the following link https://www.nomachine.com/download/download&id=2 and click on download and then from terminal run the following
 
   ```bash
   cd /home/glasswall/Downloads
   sudo dpkg -i nomachine_6.12.3_7_amd64.deb
   ```
-
-  ​	Now from any remote client that has nomachine installed on it you can access this vm using the configured IP and the username and password.
-
   
+  ​Now from any remote client that has nomachine installed on it you can access this VM using the configured IP and the username and password.
+
 
 * Download and install ovftool from This [link](https://download2.vmware.com/software/vmtools/1105/VMware-ovftool-4.4.0-15722219-lin.x86_64.bundle?HashKey=0ae0062f8101b853e7c677c183820f4a&params=%7B%22custnumber%22%3A%22dEBkaHdlamUqZQ%3D%3D%22%2C%22sourcefilesize%22%3A%2238.57+MB%22%2C%22dlgcode%22%3A%22OVFTOOL440%22%2C%22languagecode%22%3A%22en%22%2C%22source%22%3A%22BETA%22%2C%22downloadtype%22%3A%22manual%22%2C%22eula%22%3A%22N%22%2C%22downloaduuid%22%3A%226a50c45a-8320-489a-89cd-caba573f7462%22%2C%22purchased%22%3A%22N%22%2C%22dlgtype%22%3A%22Drivers+%26+Tools%22%2C%22productversion%22%3A%224.4.0%22%7D&AuthKey=1607006924_f313c8fb4e891f142ef8ac5a6180cd63) (you will may need login credentials)
 
@@ -76,7 +88,7 @@
   ./VMware*
   ```
 
-* Install this certificate into the client machine and mark it as a trusted root certificate from browsers point of view
+* Install this certificate into the client machine and mark it as a trusted root certificate from browsers point of view. As you will need to copy/paste, you should ssh via putty or local cmd to VM in order to create certificate.pem
 
   ```bash
   cd /home/glasswall/Desktop
@@ -120,7 +132,6 @@
   ![image](https://user-images.githubusercontent.com/58347752/101022000-6ebb0f80-3579-11eb-964f-fccd2afea757.png)
 
 
-
 ## Exporting OVA
 
 * Shut down the machine 
@@ -136,4 +147,7 @@ ovftool vi://78.159.113.4/Linux-Desktop ./Linux_Desktop.ova
 * From the controller (or from whatever the machine you have exported the OVA file to) , access the esxi server
 *  Register a new VM and choose to be deployed from OVA or OVF file option
 * Upload the OVA file and then finish the installation with default configuration
-* Wait the upload to be done and you are good to go.
+* Wait the upload to be done
+* Linux Desktop VM is now ready to be used
+* Login into the VM (`glasswall/Gl@$$wall`)
+* Open Firefox and verify home page is set to: https://github.com/k8-proxy/ESXI-setup-server/wiki
