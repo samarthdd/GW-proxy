@@ -35,15 +35,17 @@
     - Click on add another device and select SCSI Controller , select LSI Logic Parallel from dropdown.
     - Expand CD/DVD Media ,Select Datastore ISO file and select TrueNas ISO which was uploaded in earlier step. 
 
-![pp](https://user-images.githubusercontent.com/70108899/101371990-b27c8480-38ab-11eb-85eb-98f87b327966.PNG)
+        ![pp](https://user-images.githubusercontent.com/70108899/101371990-b27c8480-38ab-11eb-85eb-98f87b327966.PNG)
     
 6. Select Next and click finish.
     
 ### Start VM   
  
 1. Once you start VM , you will get TrueNas installtion screen and click enter.
-        ![image](https://user-images.githubusercontent.com/64204445/101630468-e9d46800-3a48-11eb-928b-b197b4ef53bc.png)
-            fig 1: TrueNAS Installtion Screen
+        
+      ![image](https://user-images.githubusercontent.com/64204445/101630468-e9d46800-3a48-11eb-928b-b197b4ef53bc.png)
+            
+      fig 1: TrueNAS Installtion Screen
         
 2. Next from installtion wizard, select install/upgrade 
 
@@ -57,9 +59,9 @@
 
 7. After the system is rebooted,you should get below screen.
 
- ![image](https://user-images.githubusercontent.com/64204445/101628021-36b63f80-3a45-11eb-913e-65547fc7d6c2.png)
+    ![image](https://user-images.githubusercontent.com/64204445/101628021-36b63f80-3a45-11eb-913e-65547fc7d6c2.png)
     
-    fig 2: TrueNAS Gui 
+      fig 2: TrueNAS Gui 
            
 ## Configure IP and Gateway   
 
@@ -84,7 +86,7 @@ From TrueNas web interface,do the following
       2. Enter IPv4 gateway  
       3. Configure IPv6 Default Route? Enter `n`
       
-   ![image](https://user-images.githubusercontent.com/64204445/101626935-a4616c00-3a43-11eb-9a63-a4f75820b01f.png)  
+      ![image](https://user-images.githubusercontent.com/64204445/101626935-a4616c00-3a43-11eb-9a63-a4f75820b01f.png)  
         fig 4 : Gateway configaration
             
 -  Open the Network Interface IP ( which appears in gui ) in browser to open TrueNAS ui
@@ -96,21 +98,20 @@ From TrueNas web interface,do the following
         username: root
         password: Gl@$$wall
         
-    ![image](https://user-images.githubusercontent.com/64204445/101630962-97477b80-3a49-11eb-81c8-f6af0a7790d8.png)
-    
+    ![image](https://user-images.githubusercontent.com/64204445/101631967-35881100-3a4b-11eb-81f6-90304c9ecc78.png)
+
         
  ## Export OVA of VM
-    1. Download OVA tool
-    2. Shut down the machine 
-    3. Open the controller machine (Or from your local machine, just the controller machine speed the things up)
-    4. Run the following command to export the VM with OVA extension, it will be exported in your current working directory.
+1. Download OVA tool
+2. Shut down the machine 
+3. Open the controller machine (Or from your local machine, just the controller machine speed the things up)
+4. Run the following command to export the VM with OVA extension, it will be exported in your current working directory.
 
-    Note: the username and password to be provided here are the initial ESXI server credentials  
+Note: the username and password to be provided here are the initial ESXI server credentials  
 
-        ```bash
-        ovftool vi://46.165.225.145/TrueNAS ./TrueNAS.ova
-        ```
-    
-    
-    
-   
+    ```bash
+    ovftool vi://46.165.225.145/TrueNAS ./TrueNAS.ova
+    ```
+
+
+
