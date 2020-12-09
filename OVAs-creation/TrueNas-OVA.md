@@ -93,14 +93,14 @@ From TrueNas web interface,do the following
             
 11.  Open the Network Interface IP in browser to open TrueNAS UI
 
-    ![image](https://user-images.githubusercontent.com/64204445/101631401-46845280-3a4a-11eb-9359-c3b9fb353cea.png)
+   ![image](https://user-images.githubusercontent.com/64204445/101631401-46845280-3a4a-11eb-9359-c3b9fb353cea.png)
 
      Open https://{Network Interface IPv4}
         
         username: root
         ( The password will be the one entered in step 4 )
         
-    ![image](https://user-images.githubusercontent.com/64204445/101631967-35881100-3a4b-11eb-81f6-90304c9ecc78.png)
+   ![image](https://user-images.githubusercontent.com/64204445/101631967-35881100-3a4b-11eb-81f6-90304c9ecc78.png)
 
         
  ## Export OVA of VM
