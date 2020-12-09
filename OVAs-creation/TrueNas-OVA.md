@@ -109,9 +109,8 @@ From TrueNas web interface,do the following
 
 Note: the username and password to be provided here are the initial ESXI server credentials  
 
-    ```bash
-    ovftool vi://46.165.225.145/TrueNAS ./TrueNAS.ova
-    ```
+     ovftool vi://46.165.225.145/TrueNAS ./TrueNAS.ova
+    
 
 
 
