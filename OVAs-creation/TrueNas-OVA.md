@@ -25,11 +25,15 @@
 4. Select proper Storage in next screen and click next
 
 5. Customize settings specifications
-        - CPU - 2
-        - RAM - 8gb ( select checkbox "Reserve all guest memory (All locked)" )
-        - Hard disk - Create 3 hard discs , one with 8 gb and other two with 16 gb with all 3 thin provisioned.
-        - Click on add another device and select SCSI Controller , select LSI Logic Parallel from dropdown.
-        - Expand CD/DVD Media , Select Datastore ISO file and select TrueNas ISO which was uploaded in first step 
+    - CPU - 2
+    - RAM - 8gb ( select checkbox "Reserve all guest memory (All locked)" )
+    - Hard disk - Create 3 hard discs , 
+      1. HardDisc1 - 8 gb and thin provisioned.
+      2. HardDisc2 - 16 gb and thin provisioned.
+      3. HardDisc3 - 16 gb and thin provisioned.
+    
+    - Click on add another device and select SCSI Controller , select LSI Logic Parallel from dropdown.
+    - Expand CD/DVD Media ,Select Datastore ISO file and select TrueNas ISO which was uploaded in earlier step. 
 
 ![pp](https://user-images.githubusercontent.com/70108899/101371990-b27c8480-38ab-11eb-85eb-98f87b327966.PNG)
     
@@ -38,12 +42,14 @@
 ### Start VM   
  
 1. Once you start VM , you will get TrueNas installtion screen and click enter.
-
+        ![image](https://user-images.githubusercontent.com/64204445/101630468-e9d46800-3a48-11eb-928b-b197b4ef53bc.png)
+        fig 2: TrueNAS Installtion Screen
+        
 2. Next from installtion wizard, select install/upgrade 
 
 3. Next it will ask you which of 3 hard disc to use for installation, Select the one with 8 gb,by pressing spacebar to select. 
 
-4. Give a password for your TrueNas
+4. Give a password for your TrueNas ( Gl@$$wall )
 
 5. Lastly select boot via BIOS.
 
@@ -77,11 +83,14 @@ From TrueNas web interface,do the following
       2. Enter IPv4 gateway  
       3. Configure IPv6 Default Route? Enter `n`
       
-   ![image](https://user-images.githubusercontent.com/64204445/101626935-a4616c00-3a43-11eb-9a63-a4f75820b01f.png)
-
+   ![image](https://user-images.githubusercontent.com/64204445/101626935-a4616c00-3a43-11eb-9a63-a4f75820b01f.png)  
+            fig3 : Gateway configaration
+            
 -  Open the Network Interface IP ( which appears in web gui ) in browser to open TrueNAS ui
         username: root
         password: Gl@$$wall
+  ![image](https://user-images.githubusercontent.com/64204445/101630962-97477b80-3a49-11eb-81c8-f6af0a7790d8.png)
+
         
  ## Export OVA of VM
     1. Download OVA tool
