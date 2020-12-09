@@ -151,3 +151,4 @@ ovftool vi://78.159.113.4/Linux-Desktop ./Linux_Desktop.ova
 * Linux Desktop VM is now ready to be used
 * Login into the VM (`glasswall/Gl@$$wall`)
 * Open Firefox and verify home page is set to: https://github.com/k8-proxy/ESXI-setup-server/wiki
+* Run `ip a` to check VM ip and use it in case you want to ssh or connect to remote Desktop
