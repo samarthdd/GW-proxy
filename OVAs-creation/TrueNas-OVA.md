@@ -56,6 +56,7 @@
 6. After successfull installation, reboot the system.
 
 7. After the system is rebooted,you should get below screen.
+
  ![image](https://user-images.githubusercontent.com/64204445/101628021-36b63f80-3a45-11eb-913e-65547fc7d6c2.png)
     
     fig 2: TrueNAS Gui 
