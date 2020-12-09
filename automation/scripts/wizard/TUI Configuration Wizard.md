@@ -61,7 +61,7 @@ Configuration wizard, currently features the following configuration
 - Install the wizard as following
   
   ```bash
-  sudo install GW-proxy/automation/scripts/wizard.sh -T /usr/local/bin/wizard -m 0755
+  sudo install GW-proxy/automation/scripts/wizard/wizard.sh -T /usr/local/bin/wizard -m 0755
   ```
 
 ## Usage
