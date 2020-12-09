@@ -66,6 +66,7 @@ Configuration wizard, currently features the following configuration
 
 ## Usage
 
+Check the [demo video](https://github.com/NourEddineX/GW-proxy/raw/master/automation/scripts/wizard/wizard.mp4)
 - Run: `wizard`
 
 - Select option from the menu
