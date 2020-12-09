@@ -43,7 +43,7 @@
  
 1. Once you start VM , you will get TrueNas installtion screen and click enter.
         ![image](https://user-images.githubusercontent.com/64204445/101630468-e9d46800-3a48-11eb-928b-b197b4ef53bc.png)
-        fig 2: TrueNAS Installtion Screen
+            fig 1: TrueNAS Installtion Screen
         
 2. Next from installtion wizard, select install/upgrade 
 
@@ -58,7 +58,7 @@
 7. After the system is rebooted,you should get below screen.
  ![image](https://user-images.githubusercontent.com/64204445/101628021-36b63f80-3a45-11eb-913e-65547fc7d6c2.png)
     
-    fig 1: TrueNAS Gui 
+    fig 2: TrueNAS Gui 
            
 ## Configure IP and Gateway   
 
@@ -71,12 +71,12 @@ From TrueNas web interface,do the following
 5. You will get prompt "Configure ipv4 option?"
 6. Enter `y` and enter Interface name and give proper ipv4 with subnet (ipv4 example - 91.109.25.xx/26)
 7. Enter `n` for "Configure IPv6?"
-8. Enter `n` for "Configure failover settings?". After this you will redirected to fig 1.
+8. Enter `n` for "Configure failover settings?". After this you will redirected to fig 2.
 
     Note : if you get "Configure ntergace for DHCP?" Enter `y` 
 
    ![image](https://user-images.githubusercontent.com/64204445/101627046-c78c1b80-3a43-11eb-8d86-1a07a017f9cb.png)  
-           fig2 : Sequence of commands to set IPv4
+        fig 3 : Sequence of commands to set IPv4
                     
 9. In TrueNas GUI Set Default route by entering `4`
       1. Configure IPv4 Default Route ? Enter `y`
@@ -84,13 +84,19 @@ From TrueNas web interface,do the following
       3. Configure IPv6 Default Route? Enter `n`
       
    ![image](https://user-images.githubusercontent.com/64204445/101626935-a4616c00-3a43-11eb-9a63-a4f75820b01f.png)  
-            fig3 : Gateway configaration
+        fig 4 : Gateway configaration
             
--  Open the Network Interface IP ( which appears in web gui ) in browser to open TrueNAS ui
+-  Open the Network Interface IP ( which appears in gui ) in browser to open TrueNAS ui
+
+    ![image](https://user-images.githubusercontent.com/64204445/101631401-46845280-3a4a-11eb-9359-c3b9fb353cea.png)
+     
+     Open https://{Network Interface IPv4}
+        
         username: root
         password: Gl@$$wall
-  ![image](https://user-images.githubusercontent.com/64204445/101630962-97477b80-3a49-11eb-81c8-f6af0a7790d8.png)
-
+        
+    ![image](https://user-images.githubusercontent.com/64204445/101630962-97477b80-3a49-11eb-81c8-f6af0a7790d8.png)
+    
         
  ## Export OVA of VM
     1. Download OVA tool
