@@ -160,31 +160,20 @@ Once installation is done restart the VM and press enter when it asks to remove 
         ens160:
         dhcp4: no
         addresses:
-            
-        gateway4: 
+          - 192.168.56.90
+        gateway4: 192.168.56.1
         nameservers:
             addresses: [8.8.8.8]
     ```
-- Run helm upgrade/install command to setup proxy for the website. Below is an example to setup proxy for www.glasswallsolutions.com:
+- Run `sudo netplan apply` to apply the changes.
+- Go to `~/s-k8-proxy-rebuild/stable-src/` folder and run `setup.sh` to upgrade the helm release with the ICAP server IP address we need to use by the proxy.
     ```
-    helm upgrade --install \
-    --set image.nginx.repository=pranaysahith/reverse-proxy-nginx \
-    --set image.nginx.tag=0.0.1 \
-    --set image.squid.repository=pranaysahith/reverse-proxy-squid \
-    --set image.squid.tag=0.0.6 \
-    --set application.nginx.env.ALLOWED_DOMAINS='glasswallsolutions.com\,www.glasswallsolutions.com' \
-    --set application.nginx.env.ROOT_DOMAIN='glasswall-icap.com' \
-    --set application.nginx.env.SUBFILTER_ENV='' \
-    --set application.squid.env.ALLOWED_DOMAINS='glasswallsolutions.com\,www.glasswallsolutions.com' \
-    --set application.squid.env.ROOT_DOMAIN='glasswall-icap.com' \
-    --set application.squid.env.ICAP_URL='icap://54.77.168.168:1344/gw_rebuild' \
-    reverse-proxy chart/
+    cd ~/s-k8-proxy-rebuild/stable-src/
+    ./setup.sh <ICAP server IP>
     ```
-- If the nginx or squid needs few DNS names to be assigned to an IP address, host aliases(below line) can be added to the above command. For example if `www.glasswallsolutions. local` and `www.glasswallsolutions.local` domains should be assigned to `192.168.56.90` IP, add below line to above command:
+- If the nginx or squid needs few DNS names to be assigned to an IP address, host aliases(below line) can be added to the setup.sh script. For example if `www.glasswallsolutions. local` and `www.glasswallsolutions.local` domains should be assigned to `192.168.56.90` IP, add below line to setup.sh script:
     ```
     --set hostAliases."192\\.168\\.56\\.90"={"glasswallsolutions.local"\,"www.glasswallsolutions.local"} \
     ```
 - Depending on which websites need the proxy, update the above command with the domain names.
-- Note, the IP address of the ICAP server can be changed in above command as per need.
-- In the VM's terminal, run `ip a ` where you will find the IP address for `ens160`
-- Open any browser and access [www.glasswallsolutions.com](https://www.glasswallsolutions.com)
+- Open any browser and access [www.glasswallsolutions.com](https://www.glasswallsolutions.com) after adding the IP address of this server to this DNS in hosts file.
