@@ -28,9 +28,9 @@
     - CPU - 2
     - RAM - 8gb ( select checkbox "Reserve all guest memory (All locked)" )
     - Hard disk - Create 3 hard discs , 
-      1. HardDisc1 - 8 gb and thin provisioned.
-      2. HardDisc2 - 16 gb and thin provisioned.
-      3. HardDisc3 - 16 gb and thin provisioned.
+      1. HardDisc 1 - 8 gb and thin provisioned.
+      2. HardDisc 2 - 16 gb and thin provisioned.
+      3. HardDisc 3 - 16 gb and thin provisioned.
     
     - Click on add another device and select SCSI Controller , select LSI Logic Parallel from dropdown.
     - Expand CD/DVD Media ,Select Datastore ISO file and select TrueNas ISO which was uploaded in earlier step. 
