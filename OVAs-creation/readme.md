@@ -18,7 +18,7 @@
 |Traffic Gen             |[Traffic Gen](https://glasswall-sow-ova.s3-eu-west-1.amazonaws.com/vms/Traffic-Generator/Traffic-Generator.ova)|2.6 GB|ICAP performance solution deploy OVA|[How to deploy OVA](https://github.com/k8-proxy/aws-jmeter-test-engine/blob/master/jmeter-icap/instructions/How-to-Deploy-OVA.md) |  
 |Traffic Gen             |NA|   |ICAP performance solution load|[How to generate load](https://github.com/k8-proxy/aws-jmeter-test-engine/blob/master/jmeter-icap/instructions/How-to-Generate-Load-with-OVA.md) |
 |Support             |[Support](https://glasswall-sow-ova.s3-eu-west-1.amazonaws.com/vms/SupportServer/SupportServer01.ova)|2.8 GB  |  |[How to use](https://github.com/k8-proxy/GW-proxy/blob/master/OVAs-creation/SupportServer.md) |  
-|Linux desktop             |TBD|  |  |[How to use](https://github.com/k8-proxy/GW-proxy/blob/master/OVAs-creation/Linux-Desktop.md) |  
+|Linux desktop             |[Linux desktop](https://glasswall-sow-ova.s3-eu-west-1.amazonaws.com/vms/LinuxDesktop/Linux-Desktop.ova)|  |  |[How to use](https://github.com/k8-proxy/GW-proxy/blob/master/OVAs-creation/Linux-Desktop.md) |  
 
 
 </td></tr>
