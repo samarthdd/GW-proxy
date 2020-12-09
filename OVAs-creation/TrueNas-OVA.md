@@ -36,7 +36,7 @@
     - Expand CD/DVD Media ,Select Datastore ISO file and select TrueNas ISO which was uploaded in earlier step. 
 
         ![pp](https://user-images.githubusercontent.com/70108899/101371990-b27c8480-38ab-11eb-85eb-98f87b327966.PNG)
-    
+        Figure 1: TrueNAS VM Custom settings.
 6. Select Next and click finish.
     
 ### Start VM   
@@ -45,7 +45,7 @@
         
       ![image](https://user-images.githubusercontent.com/64204445/101630468-e9d46800-3a48-11eb-928b-b197b4ef53bc.png)
             
-      fig 1: TrueNAS Installtion Screen
+      Figure 2: TrueNAS Installtion Screen
         
 2. Next from installtion wizard, select install/upgrade 
 
@@ -61,7 +61,7 @@
 
     ![image](https://user-images.githubusercontent.com/64204445/101628021-36b63f80-3a45-11eb-913e-65547fc7d6c2.png)
     
-      fig 2: TrueNAS Gui 
+      Figure 3: TrueNAS Gui 
            
 ## Configure IP and Gateway   
 
@@ -74,12 +74,12 @@ From TrueNas web interface,do the following
 5. You will get prompt "Configure ipv4 option?"
 6. Enter `y` and enter Interface name and give proper ipv4 with subnet (ipv4 example - 91.109.25.xx/26)
 7. Enter `n` for "Configure IPv6?"
-8. Enter `n` for "Configure failover settings?". After this you will redirected to fig 2.
+8. Enter `n` for "Configure failover settings?". After this you will redirected to Figure 3.
 
     Note : if you get "Configure ntergace for DHCP?" Enter `y` 
 
    ![image](https://user-images.githubusercontent.com/64204445/101627046-c78c1b80-3a43-11eb-8d86-1a07a017f9cb.png)  
-        fig 3 : Sequence of commands to set IPv4
+        Figure 4 : Sequence of commands to set IPv4
                     
 9. In TrueNas GUI Set Default route by entering `4`
       1. Configure IPv4 Default Route ? Enter `y`
@@ -87,12 +87,12 @@ From TrueNas web interface,do the following
       3. Configure IPv6 Default Route? Enter `n`
       
       ![image](https://user-images.githubusercontent.com/64204445/101626935-a4616c00-3a43-11eb-9a63-a4f75820b01f.png)  
-        fig 4 : Gateway configaration
+        Figure 5 : Gateway configaration
             
 -  Open the Network Interface IP ( which appears in gui ) in browser to open TrueNAS ui
 
     ![image](https://user-images.githubusercontent.com/64204445/101631401-46845280-3a4a-11eb-9359-c3b9fb353cea.png)
-     
+
      Open https://{Network Interface IPv4}
         
         username: root
