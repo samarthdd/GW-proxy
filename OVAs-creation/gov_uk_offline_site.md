@@ -2,30 +2,35 @@
 
 OVF + VMDK hosting a clone of `www.gov.uk`
 
+## Creating the VM
+
+* Access esxi server with valid credentials   [esxi01.glasswall-icap.com](http://esxi01.glasswall-icap.com) or [esxi02.glasswall-icap.com](http://esxi02.glasswall-icap.com) 
+
+* Create a new Linux, Ubuntu (64-bit) VM with minimal hardware specs (1 CPU , 1 GB ram & 16 GB of Harddisk(remember to make disk Provisioning to be thin provisioned)) 
+
+  ![image](https://user-images.githubusercontent.com/58347752/100459771-b0a60a80-30ce-11eb-959e-018d88a8cf2b.png)
+
+* Set CD/DVD drive is connected at power on and choose the ISO to boot from
+
+  ![image](https://user-images.githubusercontent.com/58347752/100460151-66715900-30cf-11eb-914e-2f802acb5052.png)
+
+* Finish installation and boot the machine with default configuration
+
+* Once you "Power ON" your Machine start with setup. Pay attention to the steps below. 
+
+* In the network configuration, under ens160, edit the IPV4 method to be manual and add the network configuration. Example on image below. This IP addresses are ESXi related and can be obtained from corresponding channel.
+
+  ![Networkconnection](https://user-images.githubusercontent.com/70108899/100768735-82d90280-33fb-11eb-8e1d-f60164fad167.PNG)
+
+* Set the username to be `glasswall` and the password `Gl@$$wall`
+
+Once installation is done restart the VM and press enter when it asks to remove the CD
+
 ## Implementation
 
-- Install Ubuntu LTS on a VM, set the username `glasswall`  and password `Gl@$$wall`
+- Access the VM
 
-- Login to the system
-
-- Make the user a sudoer by running `echo glasswall ALL=(ALL) NOPASSWD: ALL | sudo tee /etc/sudoers.d/glasswall`
-
-- Configure network to use DHCP
-  
-  ```bash
-  sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"/g' /etc/default/grub
-  update-grub
-  rm /etc/netplan/*.yml /etc/netplan/*.yaml
-  cat > /etc/netplan/network.yaml <<EOF
-  network:
-    version: 2
-    ethernets:
-      eth0:
-        dhcp4: true
-  EOF
-  ```
-
-- Clone the repo , change dir into GW-proxy/OVAs-creation/govuk, and run configure.sh
+- Clone the repoand run configure.sh from /home/glasswall/GW-proxy/OVAs-creation/govuk
   
   ```bash
   git clone https://github.com/k8-proxy/GW-proxy
@@ -35,10 +40,16 @@ OVF + VMDK hosting a clone of `www.gov.uk`
 
 - Download the Gov.uk clone archive `wget -O ~/gov_uk.zip https://glasswall-sow-ova.s3-eu-west-1.amazonaws.com/vms/gov-uk/gov_uk.zip`
 
-- Extract the archive into **`/var/www/html`**
-  
+- Extract the archive into **`/var/www/html`**, but before that create directory www and html inside 
+
   ```bash
-  cd /var/www/html
+  cd /var
+  sudo mkdir www
+  cd www/
+  sudo mkdir html
+  cd html/
+  # In order to avoid message "You don't have enough free space in /var/cache/apt/archives/." when installing unzip, clean cache
+  sudo apt-get clean 
   sudo apt install -y unzip
   unzip ~/gov_uk.zip
   # The last command will take some time
@@ -46,7 +57,7 @@ OVF + VMDK hosting a clone of `www.gov.uk`
 
 - Power off the VM `sudo poweroff` then export the VM to OVA/OVF
 
-## Import the VM
+## Import OVA in the VM
 
 - Download all files from **s3://glasswall-sow-ova/vms/gov-uk/** (AWS S3 bucket)
 
@@ -68,7 +79,7 @@ OVF + VMDK hosting a clone of `www.gov.uk`
 
 - Start the VM and wait until it's fully booted
 
-- login as **`glasswall`** using the password **`Gl@$$wall`**
+- login as **`glasswall`** using the password **`glasswall`**
 * Unless your environment does **not** use DHCP for network configuration,  you should have everything running, you can get your VM ip by running `ip addr show`
   
   If DHCP isn't used or for some reason the VM could not fetch automatic network configuration, you will have to:
@@ -87,18 +98,18 @@ OVF + VMDK hosting a clone of `www.gov.uk`
               nameservers:
                 addresses: [8.8.8.8, 1.1.1.1] # Replace DNS servers if needed
     ```
-- Run `netplan apply` to apply new network configuration
+- Run `sudo netplan apply` to apply new network configuration
 
 - Edit the client computer hosts file, append the following to the end of the file, replace the placeholder ip address with the VM ip address
   
   ```
-  192.168.0.3 www.gov.uk assets.publishing.service.gov.uk www.gov.uk.local assets.publishing.service.gov.uk.local
+  <VM IP ADDRESS> www.gov.uk assets.publishing.service.gov.uk www.gov.uk.local assets.publishing.service.gov.uk.local
   ```
 
 - Download ca.pem from the VM home folder, this can be done by running `scp`  from your client computer as in the following example, replace the placeholder IP with the VM IP
   
   ```bash
-  scp glasswall@192.168.0.3
+  scp glasswall@<VM IP ADDRESS>
   ```
 
 - In your certificate store (for example, Firefox certificates store) import from a modern web browser, navigate to the VM IP address over HTTPS (i.e: **https://www.gov.uk** ) to access the project UI
