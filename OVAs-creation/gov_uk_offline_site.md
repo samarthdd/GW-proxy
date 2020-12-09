@@ -6,9 +6,8 @@ OVF + VMDK hosting a clone of `www.gov.uk`
 
 * Access esxi server with valid credentials   [esxi01.glasswall-icap.com](http://esxi01.glasswall-icap.com) or [esxi02.glasswall-icap.com](http://esxi02.glasswall-icap.com) 
 
-* Create a new Linux, Ubuntu (64-bit) VM with minimal hardware specs (1 CPU , 1 GB ram & 16 GB of Harddisk(remember to make disk Provisioning to be thin provisioned)) 
+* Create a new Linux, Ubuntu (64-bit) VM with the follwing hardware specs (1 CPU , 1 GB ram & 40 GB of Harddisk(remember to make disk Provisioning to be thin provisioned)) 
 
-  ![image](https://user-images.githubusercontent.com/58347752/100459771-b0a60a80-30ce-11eb-959e-018d88a8cf2b.png)
 
 * Set CD/DVD drive is connected at power on and choose the ISO to boot from
 
@@ -52,14 +51,15 @@ Once installation is done restart the VM and press enter when it asks to remove 
   sudo apt-get clean 
   sudo apt install -y unzip
   unzip ~/gov_uk.zip
-  # The last command will take some time
+  # This last command will take some time
   ```
+- After extracting the archive correctly, delete the archive to save space `rm ~/gov_uk.zip`
 
 - Power off the VM `sudo poweroff` then export the VM to OVA/OVF
 
 ## Import OVA in the VM
 
-- Download all files from **s3://glasswall-sow-ova/vms/gov-uk/** (AWS S3 bucket)
+- Download **s3://glasswall-sow-ova/vms/gov-uk/GovUK.ova** (AWS S3 bucket), you can download it [here](https://glasswall-sow-ova.s3-eu-west-1.amazonaws.com/vms/gov-uk/GovUK.ova)
 
 - Login to VMware ESXi with a privliged user (i.e: **root**)
 
@@ -109,7 +109,7 @@ Once installation is done restart the VM and press enter when it asks to remove 
 - Download ca.pem from the VM home folder, this can be done by running `scp`  from your client computer as in the following example, replace the placeholder IP with the VM IP
   
   ```bash
-  scp glasswall@<VM IP ADDRESS>
+  scp glasswall@<VM IP ADDRESS>:/home/glasswall/ca.pem .
   ```
 
 - In your certificate store (for example, Firefox certificates store) import from a modern web browser, navigate to the VM IP address over HTTPS (i.e: **https://www.gov.uk** ) to access the project UI
