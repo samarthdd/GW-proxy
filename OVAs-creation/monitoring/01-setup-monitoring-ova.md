@@ -158,7 +158,7 @@ kubectl create -f fluent-bit-ds.yaml
 To collect VM metrics, please follow the instruction
 ###  9.1. <a name='Clonethisrepo'></a>Clone this repo
 ```
-	git clone https://github.com/k8-proxy/GW-proxy
+	git clone https://github.com/k8-proxy/vmware-scripts
 	cd GW-proxy/OVAs-creation
 ```
 ###  9.2. <a name='Downloadextractandinstallnode_exporter'></a>Download, extract and install node_exporter
