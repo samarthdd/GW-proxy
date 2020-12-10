@@ -151,21 +151,10 @@ Once installation is done restart the VM and press enter when it asks to remove 
     - make sure a network adapter is attached to the VM
 - Start Proxy Rebuild VM
 - Login (username:, password: )
-- `cd /etc/netplan` & run `ls` to check the files available (there should only be 1), so we'll modify it with `sudo vi $name_of_file)` and modify it to assign an IP address and gateway. Below is an example configuration:
+- Run below command after updating the IP address of the VM and gateway IP address.
     ```
-    network:
-      version: 2
-      renderer: networkd
-      ethernets:
-        ens160:
-        dhcp4: no
-        addresses:
-          - 192.168.56.90
-        gateway4: 192.168.56.1
-        nameservers:
-            addresses: [8.8.8.8]
+    sudo python3 configure_ip.py -i 192.168.56.91 -g 192.168.56.1
     ```
-- Run `sudo netplan apply` to apply the changes.
 - Go to `~/s-k8-proxy-rebuild/stable-src/` folder and run `setup.sh` to upgrade the helm release with the ICAP server IP address we need to use by the proxy.
     ```
     cd ~/s-k8-proxy-rebuild/stable-src/
