@@ -28,3 +28,6 @@ scrape_configs:
      static_configs:
      - targets: ['VM_IP_ADDRESS:9100']
 ```
+## Configure kibana
+### Edit VM IP Address
+Open file /etc/kibana/kibana.yaml and replace the value of ```server.host``` to the VM IP Address
