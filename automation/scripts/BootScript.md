@@ -97,3 +97,15 @@ WantedBy=cloud-init.target
  -   systemctl enable initconfig
  
  To reanable First Boot experience you can issue only the last command.
+ 
+ -   Cleanup and delete unnecessary logs and history:
+```bash
+sudo rm -f /var/lib/apt/lists/*
+sudo apt autoclean
+sudo apt clean all
+sudo journalctl --rotate && sudo journalctl --vacuum-size=1
+sudo rm -f /etc/ssh/*.pub
+sudo rm -f /etc/ssh/*.key
+sudo logrotate --force /etc/logrotate.conf
+history -c && history -w
+```
