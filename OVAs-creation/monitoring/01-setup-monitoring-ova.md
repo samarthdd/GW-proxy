@@ -53,7 +53,7 @@
 ##  2. <a name='Diagram'></a>Diagram
 ![Monitoring Diagram](images/monitoring-ova.png)
 ##  3. <a name='Image'></a>Image
-https://glasswall-sow-ova.s3.amazonaws.com/vms/visualog/visualog.ova?AWSAccessKeyId=AKIA3NUU5XSYVTP3BV6R&Signature=B3p%2FTRsLKyl6Pij6JoKvI4g10cw%3D&Expires=1607669097
+The OVA is available at this location [s3://glasswall-sow-ova/vms/visualog/visualog.ova](s3://glasswall-sow-ova/vms/visualog/visualog.ova)
 
 ##  4. <a name='InstallOS'></a>Install OS
 - Download Ubuntu 20.04 Live Server ISO file
