@@ -8,8 +8,9 @@ This manual is the step by step OVA creation and deployment for Support Server t
 
 If you have OVA you can go to Create a Virtual machine on ESX Server from OVA. Latest OVA is [here](https://hcompl-my.sharepoint.com/:u:/g/personal/mariusz_ferdyn_h_com_pl/EZZJRXJXPAVEoCrCAo99iRQBgaKOg3zII7iX0dBrz3CR3w?e=QrjDnb) or [zip](https://hcompl-my.sharepoint.com/:u:/g/personal/mariusz_ferdyn_h_com_pl/EYgNGRWgLrZIhzmuRiHBczcB504SfLao7MywMR062S9i8w?e=mficTx) or [S3](s3://glasswall-sow-ova/vms/SupportServer/SupportServer03.ova).
 
+Latest OVA with First Boot Experience is [here](https://hcompl-my.sharepoint.com/:u:/g/personal/mariusz_ferdyn_h_com_pl/ESPBNn0H0_RJqxYdrKdiNIYBbaGLuXlgtCYWu3zBEFihww?e=lQmLW0) or [zip](https://hcompl-my.sharepoint.com/:u:/g/personal/mariusz_ferdyn_h_com_pl/EUK2ND_qwkBHkV4OplMtX98B8lUjTVPSwk3UqEg_22YPcw?e=5XXN1S).
 
-OVA credentials login/password: glasswall/Komatoso101abam
+OVA credentials login/password: {Standard}
 
 
 [How to use - Watch the Video](https://github.com/MariuszFerdyn/GW-proxy/blob/master/OVAs-creation/SupportServer/SupportServer.mp4?raw=true)
@@ -275,7 +276,7 @@ user-mapping:    /etc/guacamole/user-mapping.xml
 ```bash
 mkdir /etc/guacamole/{extensions,lib}
 echo "GUACAMOLE_HOME=/etc/guacamole" >> /etc/default/tomcat9
-echo -n 'Gl@$$wall' | openssl md5
+echo -n 'your_password' | openssl md5
 ```
 
 -   Configure Guacamole adding md5 password for user admin from prevoius command, you can also modify servers IP and users that Guacamole can use in meny - vi  /etc/guacamole/user-mapping.xml:
