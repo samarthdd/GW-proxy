@@ -2,15 +2,18 @@
 
 ### Usage
 
-- Clone the repo to /tmp
+- Download the script
   ```bash
-  git clone https://github.com/k8-proxy/GW-proxy /tmp/GW-proxy
+  wget https://raw.githubusercontent.com/k8-proxy/GW-proxy/master/automation/scripts/pw-reset-onlogin/pw-reset-onlogin.sh 
   ```
 
 - Run the script
   ```bash
-  git clone https://github.com/k8-proxy/GW-proxy /tmp/GW-proxy
-  /tmp/GW-proxy/automation/scripts/pw-reset-onlogin/pw-reset-onlogin.sh
+  ./pw-reset-onlogin.sh
+  ```
+- Optionally, delete the script
+  ```bash
+  rm pw-reset-onlogin.sh
   ```
 
 - Logout `logout`
