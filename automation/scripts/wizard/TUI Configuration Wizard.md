@@ -52,16 +52,16 @@ Configuration wizard, currently features the following configuration
 
 ## Installation
 
-- Clone the repo
+- Download the script
   
   ```bash
-  git clone https://github.com/k8-proxy/GW-proxy
+  wget https://raw.githubusercontent.com/k8-proxy/GW-proxy/master/automation/scripts/wizard/wizard.sh
   ```
 
 - Install the wizard as following
   
   ```bash
-  sudo install GW-proxy/automation/scripts/wizard/wizard.sh -T /usr/local/bin/wizard -m 0755
+  sudo install wizard.sh -T /usr/local/bin/wizard -m 0755
   ```
 
 ## Usage
