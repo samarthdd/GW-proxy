@@ -6,7 +6,7 @@ This manual is the step by step OVA creation and deployment for Support Server t
 -   Private PKI
 -   RDP, SSH, VNC, TELNET HTML5 Client
 
-If you have OVA you can go to Create a Virtual machine on ESX Server from OVA. Latest OVA is [here](https://hcompl-my.sharepoint.com/:u:/g/personal/mariusz_ferdyn_h_com_pl/EZZJRXJXPAVEoCrCAo99iRQBgaKOg3zII7iX0dBrz3CR3w?e=riezjO).
+If you have OVA you can go to Create a Virtual machine on ESX Server from OVA. Latest OVA is [here](https://hcompl-my.sharepoint.com/:u:/g/personal/mariusz_ferdyn_h_com_pl/EZZJRXJXPAVEoCrCAo99iRQBgaKOg3zII7iX0dBrz3CR3w?e=QrjDnb) or [zip](https://hcompl-my.sharepoint.com/:u:/g/personal/mariusz_ferdyn_h_com_pl/EYgNGRWgLrZIhzmuRiHBczcB504SfLao7MywMR062S9i8w?e=mficTx) or [S3](s3://glasswall-sow-ova/vms/SupportServer/SupportServer03.ova).
 
 
 OVA credentials login/password: glasswall/Komatoso101abam
