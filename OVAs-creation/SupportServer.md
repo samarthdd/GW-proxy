@@ -6,7 +6,7 @@ This manual is the step by step OVA creation and deployment for Support Server t
 -   Private PKI
 -   RDP, SSH, VNC, TELNET HTML5 Client
 
-If you have OVA you can go to Create a Virtual machine on ESX Server from OVA. Latest OVA is [here](https://hcompl-my.sharepoint.com/:u:/g/personal/mariusz_ferdyn_h_com_pl/EZZJRXJXPAVEoCrCAo99iRQBgaKOg3zII7iX0dBrz3CR3w?e=riezjO).
+If you have OVA you can go to Create a Virtual machine on ESX Server from OVA. Latest OVA is [here](https://hcompl-my.sharepoint.com/:u:/g/personal/mariusz_ferdyn_h_com_pl/EZZJRXJXPAVEoCrCAo99iRQBgaKOg3zII7iX0dBrz3CR3w?e=QrjDnb) or [zip](https://hcompl-my.sharepoint.com/:u:/g/personal/mariusz_ferdyn_h_com_pl/EYgNGRWgLrZIhzmuRiHBczcB504SfLao7MywMR062S9i8w?e=mficTx) or [S3](s3://glasswall-sow-ova/vms/SupportServer/SupportServer03.ova).
 
 
 OVA credentials login/password: glasswall/Komatoso101abam
@@ -103,7 +103,7 @@ OVA credentials login/password: glasswall/Komatoso101abam
 sudo su -
 apt-get update
 apt-get install -y bind9
-systemctl enable bind9
+systemctl enable named
 systemctl restart bind9
 ```
 -   Create Initial Config of Bind vi /etc/bind/named.conf:
@@ -161,7 +161,7 @@ options {
         // If BIND logs error messages about the root key being expired,
         // you will need to update your keys.  See https://www.isc.org/bind-keys
         //======================================================================                                                            ==
-        dnssec-validation auto;
+        dnssec-validation no;
 
         listen-on-v6 { any; };
         forwarders {
@@ -275,7 +275,7 @@ user-mapping:    /etc/guacamole/user-mapping.xml
 ```bash
 mkdir /etc/guacamole/{extensions,lib}
 echo "GUACAMOLE_HOME=/etc/guacamole" >> /etc/default/tomcat9
-echo -n yourpassword | openssl md5
+echo -n 'Gl@$$wall' | openssl md5
 ```
 
 -   Configure Guacamole adding md5 password for user admin from prevoius command, you can also modify servers IP and users that Guacamole can use in meny - vi  /etc/guacamole/user-mapping.xml:
@@ -283,8 +283,8 @@ echo -n yourpassword | openssl md5
 ```bash
 <user-mapping>
     <authorize
-            username="admin"
-            password="49aa66843380c377e93b198b966eb699"
+            username="glasswall"
+            password="cac932abcf03019cd760951f23c6b079"
             encoding="md5">
 
         <connection name="Ubuntu20.04-Server">
