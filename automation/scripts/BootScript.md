@@ -2,7 +2,7 @@
 
  -   sudo su -
 
-    -   vi /usr/bin/initconfig.sh
+ -   vi /usr/bin/initconfig.sh
 
 ```bash
 #!/bin/bash
@@ -71,9 +71,9 @@ reboot
 exit
 ```
 
-    -   chmod 755 /usr/bin/initconfig.sh
+ -   chmod 755 /usr/bin/initconfig.sh
 	
-	-   vi /etc/systemd/system/initconfig.service
+ -   vi /etc/systemd/system/initconfig.service
 	
 ```bash
 [Unit]
@@ -92,6 +92,8 @@ StandardOutput=journal+console
 [Install]
 WantedBy=cloud-init.target
 ```
-    -   systemctl daemon-reload
+ -   systemctl daemon-reload
 	
-	-   systemctl enable initconfig
+ -   systemctl enable initconfig
+ 
+ To reanable First Boot experience you can issue only the last command.
