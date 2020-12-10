@@ -163,17 +163,19 @@ If the server is working well then you are ready to do with the next section and
 From VMWare esxi console or VMware workstation, just do
 1. File import and browse that OVA
 
-2. Start the VM
+2. Start the VM and log in as glasswall user
 
-3. Edit the vm main IP (do not touch the secondary one)
-
-4. Reboot the VM
-
-5. Edit the service and update the external IP to the new server IP (run the command bellow and update the externalIPs section)
+3. Run the configuration scripts and health checks as explained bellow
 ```
-kubectl -n icap-adaptation edit svc/icap-svc
+cd vmware-scripts/icap-server
+
+## Configure network interface
+01-network-setup.sh <ip_address/mask> <gateway_address>
+
+## Configure kubernetes service
+./02-k8s-patch.sh
+
+## Run health check
+./03-service-health.sh
 ```
-
-6. Your vm should be up and running with ICAP server running. Do not hesitate to ssh to the machine and run kubectl commands to check pod status and logs
-
 
