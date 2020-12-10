@@ -3,12 +3,12 @@ kind: Service
 metadata:
   labels:
     app.kubernetes.io/name: kube-state-metrics
-    app.kubernetes.io/version: 2.0.0-beta
+    app.kubernetes.io/version: v1.9.7
   name: kube-state-metrics
   namespace: kube-system
 spec:
   externalIPs:
-  - 91.109.25.77
+  - VM_IP_ADDRESS
   externalTrafficPolicy: Cluster
   ports:
   - name: http-metrics
@@ -19,4 +19,4 @@ spec:
     targetPort: telemetry
   selector:
     app.kubernetes.io/name: kube-state-metrics
-  type: LoadBalancer
+  type: LoadBalancer 
