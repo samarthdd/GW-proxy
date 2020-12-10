@@ -1,6 +1,6 @@
 # Script that ask during first boot for network parameters, password and hostanme
 
-    -   sudo su -
+ -   sudo su -
 
     -   vi /usr/bin/initconfig.sh
 
