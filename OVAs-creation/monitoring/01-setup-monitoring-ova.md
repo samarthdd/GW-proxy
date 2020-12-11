@@ -18,6 +18,7 @@
 	* 9.2. [Download, extract and install node_exporter](#Downloadextractandinstallnode_exporter)
 	* 9.3. [Create systemd service for node_exporter](#Createsystemdservicefornode_exporter)
 	* 9.4. [Test metrics endpoint](#Testmetricsendpoint)
+	* 9.5. [Or, use one-liner script](#Oruseone-linerscript)
 * 10. [Kubernetes Metrics](#KubernetesMetrics)
 	* 10.1. [Follow section 9 above to install node_exporter](#Followsection9abovetoinstallnode_exporter)
 	* 10.2. [Configure VM_IP_ADDRESS](#ConfigureVM_IP_ADDRESS)
@@ -195,6 +196,19 @@ go_gc_duration_seconds_sum 0.000510228
 go_gc_duration_seconds_count 67
 ...
 ```
+###  9.5. <a name='Oruseone-linerscript'></a>Or, use one-liner script
+- Download and set execute permission
+```
+{
+	wget https://raw.githubusercontent.com/k8-proxy/vmware-scripts/main/visualog/enable_metrics.sh
+	chmod +x enable_metrics.sh
+}
+```
+- Execute the script
+```
+	sudo ./enable_metrics.sh
+``` 
+In the output, you should see ```Started Node Exporter```. 
 ##  10. <a name='KubernetesMetrics'></a>Kubernetes Metrics
 To collect Kubernetes metrics, please follow the instruction
 ###  10.1. <a name='Followsection9abovetoinstallnode_exporter'></a>Follow section 9 above to install node_exporter 
