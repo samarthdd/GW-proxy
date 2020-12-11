@@ -169,8 +169,11 @@ From VMWare esxi console or VMware workstation, just do
 ```
 cd vmware-scripts/icap-server
 
+## Pull up to date files from repository
+git pull origin main
+
 ## Configure network interface
-01-network-setup.sh <ip_address/mask> <gateway_address>
+./01-network-setup.sh <ip_address/mask> <gateway_address>
 
 ## Configure kubernetes service
 ./02-k8s-patch.sh
