@@ -173,7 +173,7 @@ cd vmware-scripts/icap-server
 git pull origin main
 
 ## Configure network interface
-./01-network-setup.sh <ip_address/mask> <gateway_address>
+sudo ./01-network-setup.sh <ip_address/nn> <gateway_address> (example : sudo ./01-network-setup.sh 78.159.113.47/26 78.159.113.62 )
 
 ## Configure kubernetes service
 ./02-k8s-patch.sh
