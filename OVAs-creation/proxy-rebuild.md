@@ -150,19 +150,22 @@ Once installation is done restart the VM and press enter when it asks to remove 
 - Before starting the VM, 
     - make sure a network adapter is attached to the VM
 - Start Proxy Rebuild VM
-- Login (username:, password: )
-- Run below command after updating the IP address of the VM and gateway IP address.
-    ```
-    sudo python3 configure_ip.py -i 192.168.56.91 -g 192.168.56.1
-    ```
-- Go to `~/s-k8-proxy-rebuild/stable-src/` folder and run `setup.sh` to upgrade the helm release with the ICAP server IP address we need to use by the proxy.
-    ```
-    cd ~/s-k8-proxy-rebuild/stable-src/
-    ./setup.sh <ICAP server IP>
-    ```
+- Login (username: glasswall, password: )
+- Go to `~/vmware-scripts/proxy-rebuild` folder and update git repo
+  ```
+  cd ~/vmware-scripts/proxy-rebuild && git pull origin main
+  ```
+- Run below command after updating it with the IP address of the VM and gateway IP address of our choice.
+  ```
+  sudo ./01-network-setup.sh <ip_address/nn> <gateway_address>  (example : sudo ./01-network-setup.sh 78.159.113.48/26 78.159.113.62 )
+  ```
+- Run `02-setup-proxy.sh` to upgrade the helm release with the ICAP server IP address we need to use by the proxy.
+  ```
+  ./02-setup-proxy.sh <ICAP server IP> (example: ./02-setup-proxy.sh 78.159.113.47)
+  ```
 - If the nginx or squid needs few DNS names to be assigned to an IP address, host aliases(below line) can be added to the setup.sh script. For example if `www.glasswallsolutions. local` and `www.glasswallsolutions.local` domains should be assigned to `192.168.56.90` IP, add below line to setup.sh script:
-    ```
-    --set hostAliases."192\\.168\\.56\\.90"={"glasswallsolutions.local"\,"www.glasswallsolutions.local"} \
-    ```
+  ```
+  --set hostAliases."192\\.168\\.56\\.90"={"glasswallsolutions.local"\,"www.glasswallsolutions.local"} \
+  ```
 - Depending on which websites need the proxy, update the above command with the domain names.
 - Open any browser and access [www.glasswallsolutions.com](https://www.glasswallsolutions.com) after adding the IP address of this server to this DNS in hosts file.
