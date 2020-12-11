@@ -7,7 +7,13 @@ Use ESXi to launch an instance using above OVA
 ### Manual configuration
 Update the IP Address, Netmask and Gateway in file /etc/netplan/00-installer-config.yaml
 ### Scripted configuration
-TBD
+Use network_setup.sh. 
+```
+    sh network_setup.sh IP_ADDRESS NETMASK GATEWAY DNS_SERVER
+```
+See a screenshot below:
+[]()
+![](images/visualog-network.png)
 ### Check outgoing connection
 ```
     ping 8.8.8.8

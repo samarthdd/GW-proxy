@@ -159,7 +159,7 @@ To collect VM metrics, please follow the instruction
 ###  9.1. <a name='Clonethisrepo'></a>Clone this repo
 ```
 	git clone https://github.com/k8-proxy/vmware-scripts
-	cd GW-proxy/OVAs-creation
+	cd visualog
 ```
 ###  9.2. <a name='Downloadextractandinstallnode_exporter'></a>Download, extract and install node_exporter
 ```
