@@ -290,6 +290,7 @@ ovftool vi://46.165.225.145/icap-client icap-client.ova
 - By default, you should change password of username glasswall and configure network when VM start, please follow to change it
 
 - Welcome screen
+
 ![image](https://user-images.githubusercontent.com/29745336/101893950-09e66180-3bd8-11eb-9cf7-ad36657005c1.PNG)
 
 - Change password screen
