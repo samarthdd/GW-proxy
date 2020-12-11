@@ -7,9 +7,13 @@
 	* 3.3. [Check outgoing connection](#Checkoutgoingconnection)
 	* 3.4. [Check incoming connection](#Checkincomingconnection)
 * 4. [Configure metrics monitoring](#Configuremetricsmonitoring)
-	* 4.1. [Edit file /etc/prometheus/prometheus.yml](#Editfileetcprometheusprometheus.yml)
+	* 4.1. [Monitor Server metrics](#MonitorServermetrics)
+		* 4.1.1. [Find the IP Address of ICAP server](#FindtheIPAddressofICAPserver)
+		* 4.1.2. [Edit file /etc/prometheus/prometheus.yml](#Editfileetcprometheusprometheus.yml)
+		* 4.1.3. [Restart prometheus service](#Restartprometheusservice)
+		* 4.1.4. [Server metrics should be available in the dashboard](#Servermetricsshouldbeavailableinthedashboard)
 * 5. [Configure kibana](#Configurekibana)
-	* 5.1. [Edit VM IP Address](#EditVMIPAddress)
+	* 5.1. [Edit Kibana IP Address](#EditKibanaIPAddress)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -43,16 +47,26 @@ See the screenshot below:
 ```
 ##  4. <a name='Configuremetricsmonitoring'></a>Configure metrics monitoring 
 Note: this is temporary solution until push method is used for metrics monitoring. It shouldn't be needed anymore in the next OVA releases that use push method.
-###  4.1. <a name='Editfileetcprometheusprometheus.yml'></a>Edit file /etc/prometheus/prometheus.yml 
-- Collect VM IP Addresses 
-- Add a job for each IP
+###  4.1. <a name='MonitorServermetrics'></a>Monitor Server metrics 
+####  4.1.1. <a name='FindtheIPAddressofICAPserver'></a>Find the IP Address of ICAP server 
+####  4.1.2. <a name='Editfileetcprometheusprometheus.yml'></a>Edit file /etc/prometheus/prometheus.yml 
+To add a monitoring job for the ICAP server, replace the ```ICAP_SERVER_NAME``` and ```ICAP_IP_ADDRESS``` with the name and the IP of the ICAP server.
 ```
 scrape_configs:
-   - job_name: VM_NAME
+   - job_name: ICAP_SERVER_NAME
      scrape_interval: 5s
      static_configs:
-     - targets: ['VM_IP_ADDRESS:9100']
+     - targets: ['ICAP_IP_ADDRESS:9100']
 ```
+####  4.1.3. <a name='Restartprometheusservice'></a>Restart prometheus service
+```
+	sudo systemctl restart prometheus
+```
+####  4.1.4. <a name='Servermetricsshouldbeavailableinthedashboard'></a>Server metrics should be available on the dashboard
+See the screenshot.
+
+[]()
+![](images/add-icap-metrics.png)
 ##  5. <a name='Configurekibana'></a>Configure kibana
-###  5.1. <a name='EditVMIPAddress'></a>Edit VM IP Address
-Open file /etc/kibana/kibana.yaml and replace the value of ```server.host``` to the VM IP Address
+###  5.1. <a name='EditKibanaIPAddress'></a>Edit Kibana IP Address
+Open file /etc/kibana/kibana.yaml and replace the value of ```server.host``` to the IP Address of the monitoring VM.
