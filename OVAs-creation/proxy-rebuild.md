@@ -126,9 +126,14 @@ Once installation is done restart the VM and press enter when it asks to remove 
 
 - Test the connectivity to the kubernets cluster by running `kubectl get nodes`
 
-- Clone the proxy-rebuild repository (https://github.com/k8-proxy/s-k8-proxy-rebuild.git) and navigate to s-k8-proxy-rebuild/stable-src folder. 
+- Clone the proxy-rebuild repository (https://github.com/k8-proxy/s-k8-proxy-rebuild.git)
 
-- Follow the steps [here](https://github.com/k8-proxy/s-k8-proxy-rebuild/tree/master/stable-src#apps-deployment) to deploy the helm chart for setting up proxy for a given website.
+- Clone the vmware-scripts repository (https://github.com/k8-proxy/vmware-scripts.git) and navigate to vmware-scripts/proxy-rebuild folder.
+
+- Run `02-setup-proxy.sh` script to deploy the proxy rebuild helm chart by passing the IP address of ICAP server as argument. When prompted pass the IP addresses of offline gov.uk and wordpress websites, and hit Enter to use defaults.
+  ```
+  ./02-setup-proxy.sh <ICAP server IP> (example: ./02-setup-proxy.sh 78.159.113.47)
+  ```
 
 ## Exporting OVA
 - shut down the machine
@@ -151,7 +156,7 @@ Once installation is done restart the VM and press enter when it asks to remove 
     - make sure a network adapter is attached to the VM
 - Start Proxy Rebuild VM
 - Login (username: glasswall, password: )
-- Go to `~/vmware-scripts/proxy-rebuild` folder and update git repo
+- Go to `~/vmware-scripts/proxy-rebuild` folder and update git repo:
   ```
   cd ~/vmware-scripts/proxy-rebuild && git pull origin main
   ```
@@ -159,13 +164,14 @@ Once installation is done restart the VM and press enter when it asks to remove 
   ```
   sudo ./01-network-setup.sh <ip_address/nn> <gateway_address>  (example : sudo ./01-network-setup.sh 78.159.113.48/26 78.159.113.62 )
   ```
-- Run `02-setup-proxy.sh` to upgrade the helm release with the ICAP server IP address we need to use by the proxy.
+- Run `02-setup-proxy.sh` to upgrade the helm release with the ICAP server IP address that needs to be used by the proxy. When prompted, pass the IP addresses of offline gov.uk and wordpress websites, or hit Enter to use defaults.
   ```
   ./02-setup-proxy.sh <ICAP server IP> (example: ./02-setup-proxy.sh 78.159.113.47)
   ```
-- If the nginx or squid needs few DNS names to be assigned to an IP address, host aliases(below line) can be added to the setup.sh script. For example if `www.glasswallsolutions. local` and `www.glasswallsolutions.local` domains should be assigned to `192.168.56.90` IP, add below line to setup.sh script:
+- Download ca.pem from VM via `scp glasswall@<VM_IP>:/vmware-scripts/proxy-rebuild/ca.pem <local/directory>`
+- In Firefox > Preferences > View Certificates > Authorities > Import ca.pem > Trust this CA to identify websites > OK
+- Add below line to the system's hosts file ( C:\Windows\System32\drivers\etc\hosts on Windows , /etc/hosts on Linux ) for example:
   ```
-  --set hostAliases."192\\.168\\.56\\.90"={"glasswallsolutions.local"\,"www.glasswallsolutions.local"} \
+  <vm_ip_address> glasswallsolutions.com www.glasswallsolutions.com example.local www.example.local gov.uk www.gov.uk assets.publishing.service.gov.uk owasp.org www.owasp.org
   ```
-- Depending on which websites need the proxy, update the above command with the domain names.
 - Open any browser and access [www.glasswallsolutions.com](https://www.glasswallsolutions.com) after adding the IP address of this server to this DNS in hosts file.
