@@ -164,7 +164,7 @@ Once installation is done restart the VM and press enter when it asks to remove 
   ```
   sudo ./01-network-setup.sh <ip_address/nn> <gateway_address>  (example : sudo ./01-network-setup.sh 78.159.113.48/26 78.159.113.62 )
   ```
-- Run `02-setup-proxy.sh` to upgrade the helm release with the ICAP server IP address that needs to used by the proxy. When prompted, pass the IP addresses of offline gov.uk and wordpress websites, or hit Enter to use defaults.
+- Run `02-setup-proxy.sh` to upgrade the helm release with the ICAP server IP address that needs to be used by the proxy. When prompted, pass the IP addresses of offline gov.uk and wordpress websites, or hit Enter to use defaults.
   ```
   ./02-setup-proxy.sh <ICAP server IP> (example: ./02-setup-proxy.sh 78.159.113.47)
   ```
