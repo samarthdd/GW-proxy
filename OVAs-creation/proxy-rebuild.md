@@ -170,4 +170,8 @@ Once installation is done restart the VM and press enter when it asks to remove 
   ```
 - Download ca.pem from VM via `scp glasswall@<VM_IP>:/vmware-scripts/proxy-rebuild/ca.pem <local/directory>`
 - In Firefox > Preferences > View Certificates > Authorities > Import ca.pem > Trust this CA to identify websites > OK
+- Add below line to the system's hosts file ( C:\Windows\System32\drivers\etc\hosts on Windows , /etc/hosts on Linux ) for example:
+  ```
+  <vm_ip_address> glasswallsolutions.com www.glasswallsolutions.com example.local www.example.local gov.uk www.gov.uk assets.publishing.service.gov.uk owasp.org www.owasp.org
+  ```
 - Open any browser and access [www.glasswallsolutions.com](https://www.glasswallsolutions.com) after adding the IP address of this server to this DNS in hosts file.
