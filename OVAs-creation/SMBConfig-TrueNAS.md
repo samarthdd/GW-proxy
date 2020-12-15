@@ -18,17 +18,20 @@
    4. Next Go to Storage and then Pools 
         1. If Pool is not there, create a Pool by clicking Add option
         2. Once a Pool is available ,right click and click on Add dataset
+        
             ![image](https://user-images.githubusercontent.com/64204445/102223357-a24b5180-3f0a-11eb-8bef-f4e1f10bf5b5.png)
 
         3. Give name to dataset
         4. Change Share Type to SMB 
         5. Click Submit
+        
             ![image](https://user-images.githubusercontent.com/64204445/102223455-bee78980-3f0a-11eb-906e-447b246d5a09.png)
 
    5. Enable SMB Service
         1. Go to Services
         2. Enable SMB
         3. Select checkbox under Start automatically column for SMB
+        
             ![image](https://user-images.githubusercontent.com/64204445/102223590-f0605500-3f0a-11eb-895d-e8e6c82f9225.png)
         
    6. Create Share
@@ -37,6 +40,7 @@
        3. Select the path of the Dataset
        4. Give a name to SMB share
        5. Click Submit
+       
             ![image](https://user-images.githubusercontent.com/64204445/102223752-1d146c80-3f0b-11eb-8021-55203ce98e32.png)
           
    7. Set Permission for dataset
@@ -48,6 +52,7 @@
        4. Change the Group to the one created above and select Apply Group checkbox under it
        5. Here you can change lot of permission as per requirements.
        6. Click Save
+       
             ![image](https://user-images.githubusercontent.com/64204445/102224032-767c9b80-3f0b-11eb-8a0d-855563068030.png)
             
    8. Connect to SMB                 
