@@ -50,4 +50,26 @@
        6. Click Save
             ![image](https://user-images.githubusercontent.com/64204445/102224032-767c9b80-3f0b-11eb-8a0d-855563068030.png)
             
-                    
+   8. Connect to SMB                 
+        1. Mac OS
+            - Finder -->  Go --> Connect to Server
+            - Enter `smb://<Server_IP or Domain>/share_name`
+            - Enter the username and password for the user.
+            - Click OK
+            - You should be able to connect to the Samba share.
+            - Once the connection has successfully completed, a new location will be created in Finder
+              
+        2. Windows
+            - Go to File Explorer
+            - Right click on This PC
+            - Add a Network Location
+            - Click Next
+            - Enter the Windows style address of the Samba server and the share name. Windows uses the following form of a Samba URL: `\\your_samba_hostname_or_server_ip\share\`
+            - Click Next
+            - Enter the username and password for the user.
+            - Click OK.
+            - File Explorer will now connect to the Samba share. Once the connection has successfully completed, a new location will be created under This PC in File Explorer:
+     
+            
+            
+        
