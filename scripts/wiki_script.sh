@@ -33,9 +33,9 @@ if [ -z "$GH_PERSONAL_ACCESS_TOKEN" ]; then
     exit 1
 fi
 
-SRC_DIR=${FOLDER}
-STRING=${EXCLUDE_REGEX}
-WIKI_NAME=${WIKI_NAME}
+SRC_DIR="OVAs-creation/OVA-MDs"
+STRING="Creating_OVA"
+WIKI_NAME="ESXI_Setup.md"
 add_mask "${GH_PERSONAL_ACCESS_TOKEN}"
 
 if [ -z "${WIKI_COMMIT_MESSAGE:-}" ]; then
