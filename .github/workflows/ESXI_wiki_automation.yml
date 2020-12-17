@@ -6,7 +6,7 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
-    paths: OVA-MDs/**
+    paths:  OVAs-creation/OVA-MDs/**
     
 
   # Allows you to run this workflow manually from the Actions tab
@@ -37,6 +37,6 @@ jobs:
         env:
           GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
           TARGET_REPO: k8-proxy/ESXI-setup-server.wiki.git
-          FOLDER: OVA-MDs
+          FOLDER: OVAs-creation/OVA-MDs
           EXCLUDE_REGEX: Creating_OVA
           WIKI_NAME: ESXI_VMware_Setup.md
