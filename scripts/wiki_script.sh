@@ -33,9 +33,9 @@ if [ -z "$GH_PERSONAL_ACCESS_TOKEN" ]; then
     exit 1
 fi
 
-SRC_DIR=${FOLDER}
-STRING=${EXCLUDE_REGEX}
-WIKI_NAME=${WIKI_NAME}
+SRC_DIR="OVAs-creation/OVA-MDs"
+STRING="Creating_OVA"
+WIKI_NAME="ESXI_Setup.md"
 add_mask "${GH_PERSONAL_ACCESS_TOKEN}"
 
 if [ -z "${WIKI_COMMIT_MESSAGE:-}" ]; then
@@ -56,9 +56,6 @@ tmp_dir=$(mktemp -d -t ci-XXXXXXXXXX)
     git pull "$GIT_REPOSITORY_URL"
 ) || exit 1
 
-debug "Enumerating contents of $SRC_DIR"
-
-
 printf 'Enumerating contents of'  "$SRC_DIR"
 for folder in $(find $SRC_DIR -maxdepth 1 -execdir basename '{}' ';' | sort )  ; do
   printf '%s\n' "$folder"
@@ -76,12 +73,12 @@ for folder in $(find $SRC_DIR -maxdepth 1 -execdir basename '{}' ';' | sort )  ;
   done
 done
 
-debug "Committing and pushing changes"
+printf "Committing and pushing changes"
 (
     cd "$tmp_dir" || exit 1
     git add .
     git commit -m "$WIKI_COMMIT_MESSAGE"
-    git push --set-upstream "$GIT_REPOSITORY_URL" main
+    git push --set-upstream "$GIT_REPOSITORY_URL" master
 ) || exit 1
 
 rm -rf "$tmp_dir"
