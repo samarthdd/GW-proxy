@@ -8,7 +8,6 @@ on:
     branches: [ master ]
     paths: "OVAs-creation/OVA-MDs/**"
     
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
