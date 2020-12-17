@@ -67,7 +67,7 @@ for folder in $(find $SRC_DIR -maxdepth 1 -execdir basename '{}' ';' | sort )  ;
       if [[ "$file" == *"$STRING"* ]];then
         printf '%s\n' "$file"
       else
-        debug "Copying $file"
+        printf "Copying $file"
         printf '%s\n' "$SRC_DIR/$folder/$file"
         cat "$SRC_DIR/$folder/$file" >> $WIKI_NAME
         echo '' >> $WIKI_NAME
